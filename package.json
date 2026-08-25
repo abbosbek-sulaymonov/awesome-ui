@@ -1,25 +1,31 @@
 {
-  "name": "@abek/awesome-ui",
-  "version": "0.0.1",
-  "description": "Personalized UI library",
-  "license": "MIT",
-  "type": "commonjs",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "files": [
-    "dist"
-  ],
-  "scripts": {},
-  "author": "Abbosbek Sulaymonov",
-  "dependencies": {
-    "@types/react": "^19.2.2",
-    "typescript": "^5.9.3"
+  "name": "awesome-ui",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "registry": "tsx scripts/build-registry.ts",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-typescript": "^12.3.0",
-    "rollup": "^4.52.5",
-    "rollup-plugin-dts": "^6.2.3"
+    "@changesets/cli": "^2.29.7",
+    "tsx": "^4.20.6",
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

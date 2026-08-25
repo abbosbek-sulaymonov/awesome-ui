@@ -1,2 +1,6 @@
 node_modules
 dist
+.turbo
+*.tsbuildinfo
+.DS_Store
+registry/__generated__
