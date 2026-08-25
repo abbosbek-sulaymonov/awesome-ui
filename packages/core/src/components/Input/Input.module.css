@@ -1,0 +1,129 @@
+@layer aui.components {
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--aui-space-1);
+    font-family: var(--aui-font-sans);
+  }
+
+  .label {
+    font-size: var(--aui-text-sm);
+    font-weight: var(--aui-weight-medium);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg);
+  }
+
+  .required {
+    margin-inline-start: var(--aui-space-1);
+    color: var(--aui-color-danger);
+  }
+
+  /* The bordered box. Holds the affixes and the real <input>. */
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--aui-space-2);
+
+    background-color: var(--aui-color-surface);
+    border: 1px solid var(--aui-color-border-strong);
+    border-radius: var(--aui-radius-md);
+    color: var(--aui-color-fg);
+
+    transition:
+      border-color var(--aui-duration-fast) var(--aui-ease-standard),
+      box-shadow var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  /* Focus lives on the wrapper, not the input, so the affixes are inside the ring. */
+  .wrapper:focus-within {
+    outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
+    outline-offset: var(--aui-focus-ring-offset);
+    border-color: var(--aui-color-accent);
+  }
+
+  .wrapper[data-invalid="true"] {
+    border-color: var(--aui-color-danger);
+  }
+
+  .wrapper[data-invalid="true"]:focus-within {
+    outline-color: var(--aui-color-danger);
+  }
+
+  .wrapper[data-disabled="true"] {
+    background-color: var(--aui-color-bg-subtle);
+    color: var(--aui-color-fg-subtle);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .filled {
+    background-color: var(--aui-color-bg-subtle);
+    border-color: transparent;
+  }
+
+  .flushed {
+    border-width: 0;
+    border-block-end-width: 1px;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  /* ---------- sizes ---------- */
+  .sm {
+    min-height: var(--aui-space-8);
+    padding-inline: var(--aui-space-2);
+    font-size: var(--aui-text-sm);
+  }
+
+  .md {
+    min-height: var(--aui-space-10);
+    padding-inline: var(--aui-space-3);
+    font-size: var(--aui-text-sm);
+  }
+
+  .lg {
+    min-height: var(--aui-space-12);
+    padding-inline: var(--aui-space-4);
+    font-size: var(--aui-text-md);
+  }
+
+  /* The input itself is chromeless — the wrapper carries every visual. */
+  .input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    outline: none;
+  }
+
+  .input::placeholder {
+    color: var(--aui-color-fg-subtle);
+  }
+
+  .input:disabled {
+    cursor: not-allowed;
+  }
+
+  .affix {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--aui-color-fg-muted);
+  }
+
+  .description {
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg-muted);
+  }
+
+  .error {
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-danger);
+  }
+}

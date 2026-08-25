@@ -1,0 +1,35 @@
+/**
+ * Opt-in baseline. Imported by `src/index.ts`, so it lands in `styles.css`
+ * alongside the component CSS.
+ *
+ * Deliberately NOT a full reset — a library that rewrites the consumer's
+ * `<h1>` and `<p>` is a library people fight. Everything here is scoped to
+ * `.aui-*` classes or to universal box-sizing inside our own components.
+ */
+
+@layer aui.base, aui.components;
+
+@layer aui.base {
+  [class*="aui-"],
+  [class*="aui-"]::before,
+  [class*="aui-"]::after {
+    box-sizing: border-box;
+  }
+
+  /* Every interactive component uses this one focus treatment. */
+  [class*="aui-"]:focus-visible {
+    outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
+    outline-offset: var(--aui-focus-ring-offset);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [class*="aui-"],
+    [class*="aui-"]::before,
+    [class*="aui-"]::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

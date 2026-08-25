@@ -1,0 +1,170 @@
+/* Layered so a consumer's own unlayered CSS always outranks ours. */
+@layer aui.components {
+  .root {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--aui-space-2);
+
+    font-family: var(--aui-font-sans);
+    font-weight: var(--aui-weight-medium);
+    line-height: var(--aui-leading-tight);
+    white-space: nowrap;
+    text-decoration: none;
+
+    border: 1px solid transparent;
+    border-radius: var(--aui-radius-md);
+    cursor: pointer;
+    user-select: none;
+
+    transition:
+      background-color var(--aui-duration-fast) var(--aui-ease-standard),
+      border-color var(--aui-duration-fast) var(--aui-ease-standard),
+      color var(--aui-duration-fast) var(--aui-ease-standard),
+      box-shadow var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .root[data-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .root[data-loading="true"] {
+    cursor: progress;
+  }
+
+  .root[data-full-width="true"] {
+    width: 100%;
+  }
+
+  /* ---------- sizes ---------- */
+  .sm {
+    height: var(--aui-space-8);
+    padding-inline: var(--aui-space-3);
+    font-size: var(--aui-text-sm);
+  }
+
+  .md {
+    height: var(--aui-space-10);
+    padding-inline: var(--aui-space-4);
+    font-size: var(--aui-text-sm);
+  }
+
+  .lg {
+    height: var(--aui-space-12);
+    padding-inline: var(--aui-space-6);
+    font-size: var(--aui-text-md);
+  }
+
+  /* ---------- variants ---------- */
+  .solid {
+    background-color: var(--aui-color-accent);
+    color: var(--aui-color-fg-on-accent);
+    box-shadow: var(--aui-shadow-sm);
+  }
+
+  .solid:hover:not([data-disabled="true"]) {
+    background-color: var(--aui-color-accent-hover);
+  }
+
+  .solid:active:not([data-disabled="true"]) {
+    background-color: var(--aui-color-accent-active);
+  }
+
+  .soft {
+    background-color: var(--aui-color-accent-subtle);
+    color: var(--aui-color-accent);
+  }
+
+  .soft:hover:not([data-disabled="true"]) {
+    background-color: var(--aui-color-bg-muted);
+  }
+
+  .outline {
+    background-color: transparent;
+    border-color: var(--aui-color-border-strong);
+    color: var(--aui-color-fg);
+  }
+
+  .outline:hover:not([data-disabled="true"]) {
+    background-color: var(--aui-color-bg-subtle);
+  }
+
+  .ghost {
+    background-color: transparent;
+    color: var(--aui-color-fg);
+  }
+
+  .ghost:hover:not([data-disabled="true"]) {
+    background-color: var(--aui-color-bg-subtle);
+  }
+
+  .danger {
+    background-color: var(--aui-color-danger);
+    color: var(--aui-color-fg-on-accent);
+    box-shadow: var(--aui-shadow-sm);
+  }
+
+  .danger:hover:not([data-disabled="true"]) {
+    background-color: var(--aui-color-danger-hover);
+  }
+
+  .link {
+    height: auto;
+    padding: 0;
+    background-color: transparent;
+    color: var(--aui-color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .link:hover:not([data-disabled="true"]) {
+    color: var(--aui-color-accent-hover);
+  }
+
+  /* ---------- icon-only ---------- */
+  .iconOnly {
+    padding-inline: 0;
+    aspect-ratio: 1;
+  }
+
+  /* ---------- slots ---------- */
+  .affix {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* While loading, the label stays laid out so the button does not resize. */
+  .root[data-loading="true"] .label,
+  .root[data-loading="true"] .affix {
+    visibility: hidden;
+  }
+
+  .spinner {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentcolor;
+    border-block-start-color: transparent;
+    border-radius: var(--aui-radius-full);
+    animation: aui-button-spin 600ms linear infinite;
+  }
+
+  .root[data-loading="true"] {
+    position: relative;
+  }
+}
+
+@keyframes aui-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
