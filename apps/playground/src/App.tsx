@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input, ThemeProvider, useTheme } from "@abek/awesome-ui";
+import { Button, Dialog, Input, Popover, ThemeProvider, Tooltip, useTheme } from "@abek/awesome-ui";
 
 function ThemeToggle() {
   const { colorScheme, toggle } = useTheme();
@@ -52,6 +52,84 @@ function Playground() {
               Renders a real anchor
             </a>
           </Button>
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>Dialog</h2>
+        <div className="row">
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <Button variant="danger">Delete project</Button>
+            </Dialog.Trigger>
+            <Dialog.Overlay />
+            <Dialog.Content size="sm">
+              <Dialog.Header>
+                <Dialog.Title>Delete project</Dialog.Title>
+                <Dialog.Description>
+                  This permanently removes the project and everything in it.
+                </Dialog.Description>
+              </Dialog.Header>
+              <Input label="Type the project name to confirm" placeholder="awesome-ui" />
+              <Dialog.Footer>
+                <Dialog.Close asChild>
+                  <Button variant="ghost">Cancel</Button>
+                </Dialog.Close>
+                <Button variant="danger">Delete</Button>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Root>
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>Popover</h2>
+        <div className="row">
+          {(["top", "right", "bottom", "left"] as const).map((placement) => (
+            <Popover.Root key={placement} placement={placement}>
+              <Popover.Trigger asChild>
+                <Button variant="outline" size="sm">
+                  {placement}
+                </Button>
+              </Popover.Trigger>
+              <Popover.Content aria-label={`${placement} popover`}>
+                <Popover.Arrow />
+                <strong>Placement: {placement}</strong>
+                <p style={{ margin: "var(--aui-space-2) 0 0" }}>
+                  Flips and shifts to stay on screen. Scroll or resize to see it.
+                </p>
+              </Popover.Content>
+            </Popover.Root>
+          ))}
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>Tooltip</h2>
+        <div className="row">
+          <Tooltip.Root>
+            <Tooltip.Trigger asChild>
+              <Button variant="ghost" size="sm">
+                Hover me
+              </Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content>
+              <Tooltip.Arrow />
+              Waits 500ms on hover, opens instantly on focus
+            </Tooltip.Content>
+          </Tooltip.Root>
+
+          <Tooltip.Root placement="right" openDelay={0}>
+            <Tooltip.Trigger asChild>
+              <Button variant="ghost" size="sm">
+                No delay
+              </Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content>
+              <Tooltip.Arrow />
+              Opens immediately
+            </Tooltip.Content>
+          </Tooltip.Root>
         </div>
       </section>
 
