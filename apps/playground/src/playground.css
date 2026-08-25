@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: var(--aui-space-8);
+  background-color: var(--aui-color-bg);
+  color: var(--aui-color-fg);
+  font-family: var(--aui-font-sans);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-space-6);
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--aui-space-3);
+}
+
+h2 {
+  margin: 0;
+  font-size: var(--aui-text-sm);
+  font-weight: var(--aui-weight-semibold);
+  color: var(--aui-color-fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
