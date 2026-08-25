@@ -13,3 +13,58 @@ export type {
   InputVariant,
   InputSize,
 } from "./Input";
+
+export {
+  Dialog,
+  DialogRoot,
+  DialogTrigger,
+  DialogOverlay,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "./Dialog";
+export type {
+  DialogSize,
+  DialogRootProps,
+  DialogTriggerProps,
+  DialogOverlayProps,
+  DialogContentProps,
+  DialogHeaderProps,
+  DialogTitleProps,
+  DialogDescriptionProps,
+  DialogFooterProps,
+  DialogCloseProps,
+} from "./Dialog";
+
+export {
+  Popover,
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverClose,
+} from "./Popover";
+export type {
+  PopoverRootProps,
+  PopoverTriggerProps,
+  PopoverContentProps,
+  PopoverArrowProps,
+  PopoverCloseProps,
+} from "./Popover";
+
+export {
+  Tooltip,
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from "./Tooltip";
+export type {
+  TooltipRootProps,
+  TooltipTriggerProps,
+  TooltipContentProps,
+  TooltipArrowProps,
+} from "./Tooltip";

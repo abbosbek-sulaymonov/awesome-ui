@@ -1,0 +1,145 @@
+@layer aui.components {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--aui-z-overlay);
+    background-color: var(--aui-color-overlay);
+  }
+
+  .overlay[data-state="open"] {
+    animation: aui-overlay-in var(--aui-duration-normal) var(--aui-ease-standard);
+  }
+
+  .overlay[data-state="closed"] {
+    animation: aui-overlay-out var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .positioner {
+    position: fixed;
+    inset: 0;
+    z-index: var(--aui-z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--aui-space-4);
+    /* The positioner covers the viewport but must not eat clicks meant for the
+       overlay underneath; the content re-enables them for itself. */
+    pointer-events: none;
+    overflow-y: auto;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--aui-space-4);
+    width: 100%;
+    max-height: calc(100vh - var(--aui-space-16));
+    padding: var(--aui-space-6);
+    overflow-y: auto;
+    pointer-events: auto;
+
+    background-color: var(--aui-color-surface);
+    border: 1px solid var(--aui-color-border);
+    border-radius: var(--aui-radius-lg);
+    box-shadow: var(--aui-shadow-lg);
+    color: var(--aui-color-fg);
+    font-family: var(--aui-font-sans);
+  }
+
+  .content:focus {
+    outline: none;
+  }
+
+  .content[data-state="open"] {
+    animation: aui-dialog-in var(--aui-duration-normal) var(--aui-ease-emphasized);
+  }
+
+  .content[data-state="closed"] {
+    animation: aui-dialog-out var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  /* ---------- sizes ---------- */
+  .sm { max-width: 24rem; }
+  .md { max-width: 32rem; }
+  .lg { max-width: 42rem; }
+  .xl { max-width: 56rem; }
+
+  .full {
+    max-width: none;
+    height: 100%;
+    max-height: none;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--aui-space-1);
+  }
+
+  .title {
+    margin: 0;
+    font-size: var(--aui-text-lg);
+    font-weight: var(--aui-weight-semibold);
+    line-height: var(--aui-leading-tight);
+  }
+
+  .description {
+    margin: 0;
+    font-size: var(--aui-text-sm);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg-muted);
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--aui-space-2);
+  }
+
+  .closeButton {
+    position: absolute;
+    inset-block-start: var(--aui-space-3);
+    inset-inline-end: var(--aui-space-3);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--aui-space-8);
+    height: var(--aui-space-8);
+    padding: 0;
+
+    background: none;
+    border: 0;
+    border-radius: var(--aui-radius-md);
+    color: var(--aui-color-fg-muted);
+    cursor: pointer;
+
+    transition: background-color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .closeButton:hover {
+    background-color: var(--aui-color-bg-subtle);
+    color: var(--aui-color-fg);
+  }
+}
+
+@keyframes aui-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes aui-overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes aui-dialog-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes aui-dialog-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(4px) scale(0.98); }
+}

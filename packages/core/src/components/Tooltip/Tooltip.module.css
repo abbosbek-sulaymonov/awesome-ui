@@ -1,0 +1,54 @@
+@layer aui.components {
+  .content {
+    z-index: var(--aui-z-tooltip);
+    max-width: 18rem;
+    padding: var(--aui-space-1) var(--aui-space-2);
+
+    background-color: var(--aui-neutral-900);
+    border-radius: var(--aui-radius-sm);
+    box-shadow: var(--aui-shadow-md);
+    color: var(--aui-neutral-50);
+    font-family: var(--aui-font-sans);
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    /* A tooltip must never swallow the pointer, or hovering it toggles itself. */
+    pointer-events: none;
+  }
+
+  .content[data-state="open"] {
+    animation: aui-tooltip-in var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .content[data-state="closed"] {
+    animation: aui-tooltip-out var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .arrow {
+    width: 8px;
+    height: 8px;
+    background-color: var(--aui-neutral-900);
+    transform: rotate(45deg);
+  }
+
+  .content[data-side="bottom"] .arrow { top: -4px; }
+  .content[data-side="top"] .arrow { bottom: -4px; }
+  .content[data-side="right"] .arrow { left: -4px; }
+  .content[data-side="left"] .arrow { right: -4px; }
+}
+
+/* The dark surface stays dark in both themes — a tooltip is meant to read as
+   an overlay, not as another panel. */
+[data-theme="dark"] .content {
+  background-color: var(--aui-neutral-800);
+  color: var(--aui-neutral-50);
+}
+
+@keyframes aui-tooltip-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes aui-tooltip-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
