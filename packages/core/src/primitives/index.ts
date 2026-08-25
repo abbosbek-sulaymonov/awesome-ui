@@ -1,5 +1,9 @@
+export { DismissableLayer, getLayerCount, isTopLayer, resetLayerStack } from "./DismissableLayer";
+export type { DismissableLayerProps, DismissReason } from "./DismissableLayer";
 export { Portal } from "./Portal";
 export type { PortalProps } from "./Portal";
+export { usePresence } from "./Presence";
+export type { UsePresenceReturn } from "./Presence";
 export { Slot, disabledAnchorProps } from "./Slot";
 export type { SlotProps } from "./Slot";
 export { VisuallyHidden } from "./VisuallyHidden";
