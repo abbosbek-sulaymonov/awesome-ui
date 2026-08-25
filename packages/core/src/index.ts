@@ -6,9 +6,26 @@ export * from "./components";
 export * from "./primitives";
 export * from "./hooks";
 export * from "./theme";
-export { cn, composeEventHandlers, composeRefs, useComposedRefs, createVariants } from "./utils";
+export {
+  cn,
+  composeEventHandlers,
+  composeRefs,
+  useComposedRefs,
+  computePosition,
+  createVariants,
+  getFirstTabbable,
+  getLastTabbable,
+  getTabbableElements,
+  isFocusable,
+  isTabbable,
+} from "./utils";
 export type {
+  Align,
   ClassValue,
+  ComputePositionOptions,
+  Placement,
+  Position,
+  Side,
   VariantProps,
   VariantShape,
   VariantConfig,
