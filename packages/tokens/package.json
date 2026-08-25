@@ -1,0 +1,26 @@
+{
+  "name": "@awesome-ui/tokens",
+  "version": "0.0.1",
+  "description": "Design tokens for awesome-ui — CSS custom properties plus a typed TS mirror",
+  "license": "MIT",
+  "author": "Abbosbek Sulaymonov",
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./tokens.css": "./dist/tokens.css",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && cp src/tokens.css dist/tokens.css",
+    "dev": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@awesome-ui/config": "workspace:*",
+    "typescript": "^5.9.3"
+  }
+}
