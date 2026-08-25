@@ -1,0 +1,218 @@
+/**
+ * awesome-ui design tokens.
+ *
+ * Two tiers:
+ *   1. Primitives  --aui-<scale>-<step>   raw, theme-independent values
+ *   2. Semantic    --aui-color-<role>     what a thing means; remapped per theme
+ *
+ * Components only ever reference tier 2. Theming = override tier 2.
+ */
+
+:root {
+  /* ---------- Tier 1: color primitives ---------- */
+  --aui-neutral-50: oklch(98.5% 0 0);
+  --aui-neutral-100: oklch(96.7% 0.002 265);
+  --aui-neutral-200: oklch(92.8% 0.005 265);
+  --aui-neutral-300: oklch(87% 0.008 265);
+  --aui-neutral-400: oklch(70.8% 0.012 265);
+  --aui-neutral-500: oklch(55.6% 0.014 265);
+  --aui-neutral-600: oklch(44% 0.013 265);
+  --aui-neutral-700: oklch(37% 0.012 265);
+  --aui-neutral-800: oklch(26.9% 0.01 265);
+  --aui-neutral-900: oklch(20.5% 0.008 265);
+  --aui-neutral-950: oklch(14.5% 0.006 265);
+
+  --aui-accent-50: oklch(97% 0.014 254);
+  --aui-accent-100: oklch(93.2% 0.032 255);
+  --aui-accent-200: oklch(88.2% 0.059 254);
+  --aui-accent-300: oklch(80.9% 0.105 252);
+  --aui-accent-400: oklch(70.7% 0.165 254);
+  --aui-accent-500: oklch(62.3% 0.214 259);
+  --aui-accent-600: oklch(54.6% 0.245 262);
+  --aui-accent-700: oklch(48.8% 0.243 264);
+  --aui-accent-800: oklch(42.4% 0.199 265);
+  --aui-accent-900: oklch(37.9% 0.146 265);
+
+  --aui-danger-100: oklch(93.6% 0.032 17);
+  --aui-danger-500: oklch(63.7% 0.237 25);
+  --aui-danger-600: oklch(57.7% 0.245 27);
+  --aui-danger-700: oklch(50.5% 0.213 27);
+
+  --aui-success-100: oklch(96.2% 0.044 157);
+  --aui-success-500: oklch(72.3% 0.19 150);
+  --aui-success-600: oklch(62.7% 0.194 149);
+
+  --aui-warning-100: oklch(97.3% 0.071 103);
+  --aui-warning-500: oklch(79.5% 0.184 86);
+  --aui-warning-600: oklch(68.1% 0.162 76);
+
+  /* ---------- Tier 1: dimensional primitives ---------- */
+  --aui-space-0: 0;
+  --aui-space-1: 0.25rem;
+  --aui-space-2: 0.5rem;
+  --aui-space-3: 0.75rem;
+  --aui-space-4: 1rem;
+  --aui-space-5: 1.25rem;
+  --aui-space-6: 1.5rem;
+  --aui-space-8: 2rem;
+  --aui-space-10: 2.5rem;
+  --aui-space-12: 3rem;
+  --aui-space-16: 4rem;
+
+  --aui-radius-none: 0;
+  --aui-radius-sm: 0.25rem;
+  --aui-radius-md: 0.375rem;
+  --aui-radius-lg: 0.5rem;
+  --aui-radius-xl: 0.75rem;
+  --aui-radius-full: 9999px;
+
+  --aui-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --aui-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --aui-text-xs: 0.75rem;
+  --aui-text-sm: 0.875rem;
+  --aui-text-md: 1rem;
+  --aui-text-lg: 1.125rem;
+  --aui-text-xl: 1.25rem;
+  --aui-text-2xl: 1.5rem;
+
+  --aui-leading-tight: 1.25;
+  --aui-leading-normal: 1.5;
+  --aui-leading-relaxed: 1.75;
+
+  --aui-weight-normal: 400;
+  --aui-weight-medium: 500;
+  --aui-weight-semibold: 600;
+  --aui-weight-bold: 700;
+
+  --aui-duration-fast: 120ms;
+  --aui-duration-normal: 200ms;
+  --aui-duration-slow: 320ms;
+  --aui-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --aui-ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+
+  --aui-z-dropdown: 1000;
+  --aui-z-sticky: 1100;
+  --aui-z-overlay: 1200;
+  --aui-z-modal: 1300;
+  --aui-z-popover: 1400;
+  --aui-z-toast: 1500;
+  --aui-z-tooltip: 1600;
+
+  /* ---------- Tier 2: semantic (light) ---------- */
+  --aui-color-bg: var(--aui-neutral-50);
+  --aui-color-bg-subtle: var(--aui-neutral-100);
+  --aui-color-bg-muted: var(--aui-neutral-200);
+  --aui-color-surface: oklch(100% 0 0);
+  --aui-color-surface-raised: oklch(100% 0 0);
+
+  --aui-color-fg: var(--aui-neutral-900);
+  --aui-color-fg-muted: var(--aui-neutral-600);
+  --aui-color-fg-subtle: var(--aui-neutral-500);
+  --aui-color-fg-on-accent: oklch(100% 0 0);
+
+  --aui-color-border: var(--aui-neutral-200);
+  --aui-color-border-strong: var(--aui-neutral-300);
+
+  --aui-color-accent: var(--aui-accent-600);
+  --aui-color-accent-hover: var(--aui-accent-700);
+  --aui-color-accent-active: var(--aui-accent-800);
+  --aui-color-accent-subtle: var(--aui-accent-50);
+
+  --aui-color-danger: var(--aui-danger-600);
+  --aui-color-danger-hover: var(--aui-danger-700);
+  --aui-color-danger-subtle: var(--aui-danger-100);
+  --aui-color-success: var(--aui-success-600);
+  --aui-color-warning: var(--aui-warning-600);
+
+  --aui-color-focus-ring: var(--aui-accent-500);
+  --aui-color-overlay: oklch(0% 0 0 / 0.45);
+
+  --aui-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06);
+  --aui-shadow-md: 0 2px 4px oklch(0% 0 0 / 0.06), 0 4px 12px oklch(0% 0 0 / 0.08);
+  --aui-shadow-lg: 0 8px 24px oklch(0% 0 0 / 0.12);
+
+  --aui-focus-ring-width: 2px;
+  --aui-focus-ring-offset: 2px;
+
+  color-scheme: light;
+}
+
+/* ---------- Tier 2: semantic (dark) ---------- */
+/* Applies when the user picked dark explicitly. */
+[data-theme="dark"] {
+  --aui-color-bg: var(--aui-neutral-950);
+  --aui-color-bg-subtle: var(--aui-neutral-900);
+  --aui-color-bg-muted: var(--aui-neutral-800);
+  --aui-color-surface: var(--aui-neutral-900);
+  --aui-color-surface-raised: var(--aui-neutral-800);
+
+  --aui-color-fg: var(--aui-neutral-50);
+  --aui-color-fg-muted: var(--aui-neutral-400);
+  --aui-color-fg-subtle: var(--aui-neutral-500);
+  --aui-color-fg-on-accent: oklch(100% 0 0);
+
+  --aui-color-border: var(--aui-neutral-800);
+  --aui-color-border-strong: var(--aui-neutral-700);
+
+  --aui-color-accent: var(--aui-accent-500);
+  --aui-color-accent-hover: var(--aui-accent-400);
+  --aui-color-accent-active: var(--aui-accent-300);
+  --aui-color-accent-subtle: oklch(37.9% 0.146 265 / 0.25);
+
+  --aui-color-danger: var(--aui-danger-500);
+  --aui-color-danger-hover: oklch(70.4% 0.191 22);
+  --aui-color-danger-subtle: oklch(50.5% 0.213 27 / 0.22);
+  --aui-color-success: var(--aui-success-500);
+  --aui-color-warning: var(--aui-warning-500);
+
+  --aui-color-focus-ring: var(--aui-accent-400);
+  --aui-color-overlay: oklch(0% 0 0 / 0.65);
+
+  --aui-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.4);
+  --aui-shadow-md: 0 2px 4px oklch(0% 0 0 / 0.4), 0 4px 12px oklch(0% 0 0 / 0.45);
+  --aui-shadow-lg: 0 8px 24px oklch(0% 0 0 / 0.55);
+
+  color-scheme: dark;
+}
+
+/* Applies when the app follows the OS and the OS says dark.
+   Guarded so an explicit [data-theme="light"] always wins. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --aui-color-bg: var(--aui-neutral-950);
+    --aui-color-bg-subtle: var(--aui-neutral-900);
+    --aui-color-bg-muted: var(--aui-neutral-800);
+    --aui-color-surface: var(--aui-neutral-900);
+    --aui-color-surface-raised: var(--aui-neutral-800);
+
+    --aui-color-fg: var(--aui-neutral-50);
+    --aui-color-fg-muted: var(--aui-neutral-400);
+    --aui-color-fg-subtle: var(--aui-neutral-500);
+
+    --aui-color-border: var(--aui-neutral-800);
+    --aui-color-border-strong: var(--aui-neutral-700);
+
+    --aui-color-accent: var(--aui-accent-500);
+    --aui-color-accent-hover: var(--aui-accent-400);
+    --aui-color-accent-active: var(--aui-accent-300);
+    --aui-color-accent-subtle: oklch(37.9% 0.146 265 / 0.25);
+
+    --aui-color-danger: var(--aui-danger-500);
+    --aui-color-danger-hover: oklch(70.4% 0.191 22);
+    --aui-color-danger-subtle: oklch(50.5% 0.213 27 / 0.22);
+    --aui-color-success: var(--aui-success-500);
+    --aui-color-warning: var(--aui-warning-500);
+
+    --aui-color-focus-ring: var(--aui-accent-400);
+    --aui-color-overlay: oklch(0% 0 0 / 0.65);
+
+    --aui-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.4);
+    --aui-shadow-md: 0 2px 4px oklch(0% 0 0 / 0.4), 0 4px 12px oklch(0% 0 0 / 0.45);
+    --aui-shadow-lg: 0 8px 24px oklch(0% 0 0 / 0.55);
+
+    color-scheme: dark;
+  }
+}
