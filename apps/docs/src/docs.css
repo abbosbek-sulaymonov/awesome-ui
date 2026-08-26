@@ -15,9 +15,19 @@
   /* Chrome surfaces, a step softer than the library's raw tokens. */
   --docs-bg: oklch(97.5% 0.003 265);
   --docs-surface: oklch(100% 0 0);
-  --docs-raised: oklch(99% 0.002 265);
+  /* A hover surface, so in a light theme it goes DOWN from the page, not up.
+     At 99% against a 97.5% page there was 1.5% of lightness between them and
+     the hover read as nothing at all. */
+  --docs-raised: oklch(94.5% 0.004 265);
   --docs-border: oklch(91% 0.004 265);
   --docs-border-soft: oklch(94% 0.003 265);
+
+  /* Navigation states need more separation than a generic surface gives.
+     The accent tint carries enough chroma to read as selected rather than as
+     a slightly grubby patch of background. */
+  --docs-nav-hover-bg: oklch(94% 0.005 265);
+  --docs-nav-active-bg: oklch(92% 0.045 255);
+  --docs-nav-active-fg: oklch(42% 0.19 262);
 
   /* Code: a light slate rather than a black slab. */
   --docs-code-bg: oklch(97% 0.005 265);
@@ -42,6 +52,10 @@
   --docs-border: oklch(28% 0.01 265);
   --docs-border-soft: oklch(24% 0.009 265);
 
+  --docs-nav-hover-bg: oklch(25% 0.01 265);
+  --docs-nav-active-bg: oklch(31% 0.075 262);
+  --docs-nav-active-fg: oklch(85% 0.1 255);
+
   --docs-code-bg: oklch(14% 0.008 265);
   --docs-code-fg: oklch(88% 0.006 265);
   --docs-code-border: oklch(26% 0.01 265);
@@ -64,6 +78,10 @@
     --docs-raised: oklch(22.5% 0.009 265);
     --docs-border: oklch(28% 0.01 265);
     --docs-border-soft: oklch(24% 0.009 265);
+
+    --docs-nav-hover-bg: oklch(25% 0.01 265);
+    --docs-nav-active-bg: oklch(31% 0.075 262);
+    --docs-nav-active-fg: oklch(85% 0.1 255);
 
     --docs-code-bg: oklch(14% 0.008 265);
     --docs-code-fg: oklch(88% 0.006 265);
@@ -261,13 +279,28 @@ a { color: var(--aui-color-accent); text-underline-offset: 3px; }
   transition: background-color 140ms ease, color 140ms ease;
 }
 
-.navLink:hover { background-color: var(--docs-raised); color: var(--aui-color-fg); }
+.navLink:hover { background-color: var(--docs-nav-hover-bg); color: var(--aui-color-fg); }
 
 .navLink[aria-current="page"] {
-  background-color: var(--aui-color-accent-subtle);
-  color: var(--aui-color-accent);
+  background-color: var(--docs-nav-active-bg);
+  color: var(--docs-nav-active-fg);
   font-weight: var(--aui-weight-medium);
 }
+
+/* A marker bar as well as a tint. Colour alone is a weak signal for anyone who
+   cannot separate these two hues, and it survives a forced-colours mode that
+   throws backgrounds away. */
+.navLink[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  inset-block: 20%;
+  inset-inline-start: calc(var(--aui-space-2) * -1);
+  width: 2px;
+  border-radius: var(--aui-radius-full);
+  background-color: currentcolor;
+}
+
+.navLink[aria-current="page"]:hover { background-color: var(--docs-nav-active-bg); }
 
 .scrim { display: none; }
 
