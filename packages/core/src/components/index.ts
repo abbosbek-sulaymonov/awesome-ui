@@ -137,3 +137,44 @@ export type {
   SelectLabelProps,
   SelectSeparatorProps,
 } from "./Select";
+
+export { RadioGroup, RadioGroupRoot, RadioGroupItem } from "./RadioGroup";
+export type {
+  RadioSize,
+  RadioOrientation,
+  RadioGroupRootProps,
+  RadioGroupItemProps,
+} from "./RadioGroup";
+
+export { Tabs, TabsRoot, TabsList, TabsTrigger, TabsPanel } from "./Tabs";
+export type {
+  TabsVariant,
+  TabsOrientation,
+  TabsActivation,
+  TabsRootProps,
+  TabsListProps,
+  TabsTriggerProps,
+  TabsPanelProps,
+} from "./Tabs";
+
+export {
+  Menu,
+  MenuRoot,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuCheckboxItem,
+  MenuGroup,
+  MenuLabel,
+  MenuSeparator,
+} from "./Menu";
+export type {
+  MenuRootProps,
+  MenuTriggerProps,
+  MenuContentProps,
+  MenuItemProps,
+  MenuCheckboxItemProps,
+  MenuGroupProps,
+  MenuLabelProps,
+  MenuSeparatorProps,
+} from "./Menu";

@@ -6,9 +6,12 @@ import {
   Checkbox,
   Dialog,
   Input,
+  Menu,
   Popover,
+  RadioGroup,
   Select,
   Spinner,
+  Tabs,
   Switch,
   ThemeProvider,
   Toaster,
@@ -28,6 +31,7 @@ function ThemeToggle() {
 
 function Playground() {
   const [email, setEmail] = useState("");
+  const [sidebar, setSidebar] = useState(true);
   const invalid = email.length > 0 && !email.includes("@");
 
   return (
@@ -126,6 +130,68 @@ function Playground() {
         <Switch label="Email alerts" description="Sent at most once a day." defaultChecked />
         <Switch label="Push notifications" labelFirst />
         <Switch label="Beta features" disabled />
+      </section>
+
+      <section className="stack">
+        <h2>Tabs</h2>
+        <Tabs.Root defaultValue="account">
+          <Tabs.List label="Settings">
+            <Tabs.Trigger value="account">Account</Tabs.Trigger>
+            <Tabs.Trigger value="billing">Billing</Tabs.Trigger>
+            <Tabs.Trigger value="team" disabled>Team</Tabs.Trigger>
+            <Tabs.Trigger value="advanced">Advanced</Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Panel value="account">Arrow keys switch tabs as focus lands.</Tabs.Panel>
+          <Tabs.Panel value="billing">Billing panel.</Tabs.Panel>
+          <Tabs.Panel value="team">Team panel.</Tabs.Panel>
+          <Tabs.Panel value="advanced">Advanced panel.</Tabs.Panel>
+        </Tabs.Root>
+
+        <Tabs.Root defaultValue="one" variant="enclosed" activation="manual">
+          <Tabs.List label="Manual activation">
+            <Tabs.Trigger value="one">Manual</Tabs.Trigger>
+            <Tabs.Trigger value="two">Activation</Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Panel value="one">Arrow moves focus; Enter commits.</Tabs.Panel>
+          <Tabs.Panel value="two">Second panel.</Tabs.Panel>
+        </Tabs.Root>
+      </section>
+
+      <section className="stack">
+        <h2>Menu</h2>
+        <div className="row">
+          <Menu.Root>
+            <Menu.Trigger asChild>
+              <Button variant="outline" size="sm">Actions</Button>
+            </Menu.Trigger>
+            <Menu.Content label="Actions">
+              <Menu.Group>
+                <Menu.Label>File</Menu.Label>
+                <Menu.Item shortcut="\u2318N">New file</Menu.Item>
+                <Menu.Item shortcut="\u2318D">Duplicate</Menu.Item>
+                <Menu.Item disabled>Archive</Menu.Item>
+              </Menu.Group>
+              <Menu.Separator />
+              <Menu.CheckboxItem
+                checked={sidebar}
+                onCheckedChange={setSidebar}
+              >
+                Show sidebar
+              </Menu.CheckboxItem>
+              <Menu.Separator />
+              <Menu.Item danger shortcut="\u2318\u232B">Delete</Menu.Item>
+            </Menu.Content>
+          </Menu.Root>
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>RadioGroup</h2>
+        <RadioGroup.Root label="Plan" name="plan" defaultValue="pro">
+          <RadioGroup.Item value="free" label="Free" description="No card needed." />
+          <RadioGroup.Item value="pro" label="Pro" description="Everything in Free, plus history." />
+          <RadioGroup.Item value="team" label="Team" disabled description="Contact sales." />
+        </RadioGroup.Root>
       </section>
 
       <section className="stack">
