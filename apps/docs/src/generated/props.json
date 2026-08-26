@@ -1727,5 +1727,695 @@
         }
       ]
     }
+  ],
+  "components/Separator/Separator.types.ts": [
+    {
+      "name": "SeparatorOwnProps",
+      "props": [
+        {
+          "name": "decorative",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Purely visual, with no structural meaning. Removes it from the\naccessibility tree rather than announcing a separator that divides nothing."
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Text set into a gap in the rule. Horizontal only."
+        },
+        {
+          "name": "orientation",
+          "type": "SeparatorOrientation",
+          "required": false,
+          "defaultValue": "\"horizontal\""
+        }
+      ]
+    },
+    {
+      "name": "SeparatorProps",
+      "props": [
+        {
+          "name": "decorative",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Purely visual, with no structural meaning. Removes it from the\naccessibility tree rather than announcing a separator that divides nothing."
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Text set into a gap in the rule. Horizontal only."
+        },
+        {
+          "name": "orientation",
+          "type": "SeparatorOrientation",
+          "required": false,
+          "defaultValue": "\"horizontal\""
+        }
+      ]
+    }
+  ],
+  "components/Skeleton/Skeleton.types.ts": [
+    {
+      "name": "SkeletonOwnProps",
+      "props": [
+        {
+          "name": "animation",
+          "type": "SkeletonAnimation",
+          "required": false,
+          "defaultValue": "\"pulse\""
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false
+        },
+        {
+          "name": "lines",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Render this many stacked lines. Text variant only."
+        },
+        {
+          "name": "variant",
+          "type": "SkeletonVariant",
+          "required": false,
+          "defaultValue": "\"rect\""
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "SkeletonProps",
+      "props": [
+        {
+          "name": "animation",
+          "type": "SkeletonAnimation",
+          "required": false,
+          "defaultValue": "\"pulse\""
+        },
+        {
+          "name": "height",
+          "type": "string | number",
+          "required": false
+        },
+        {
+          "name": "lines",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Render this many stacked lines. Text variant only."
+        },
+        {
+          "name": "variant",
+          "type": "SkeletonVariant",
+          "required": false,
+          "defaultValue": "\"rect\""
+        },
+        {
+          "name": "width",
+          "type": "string | number",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "components/Progress/Progress.types.ts": [
+    {
+      "name": "ProgressOwnProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Visible label above the track."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "100"
+        },
+        {
+          "name": "showValue",
+          "type": "boolean",
+          "required": false,
+          "description": "Show the percentage beside the label."
+        },
+        {
+          "name": "size",
+          "type": "ProgressSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "tone",
+          "type": "ProgressTone",
+          "required": false,
+          "defaultValue": "\"accent\""
+        },
+        {
+          "name": "value",
+          "type": "number | null",
+          "required": false,
+          "description": "Completed amount. Omit — or pass `null` — when the total is unknown, which\nswitches the bar to its indeterminate state."
+        },
+        {
+          "name": "valueLabel",
+          "type": "string",
+          "required": false,
+          "description": "Spoken description of the current value. Defaults to a percentage; supply\nyour own for units that mean more, such as \"3 of 8 files\"."
+        }
+      ]
+    },
+    {
+      "name": "ProgressProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Visible label above the track."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "100"
+        },
+        {
+          "name": "showValue",
+          "type": "boolean",
+          "required": false,
+          "description": "Show the percentage beside the label."
+        },
+        {
+          "name": "size",
+          "type": "ProgressSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "tone",
+          "type": "ProgressTone",
+          "required": false,
+          "defaultValue": "\"accent\""
+        },
+        {
+          "name": "value",
+          "type": "number | null",
+          "required": false,
+          "description": "Completed amount. Omit — or pass `null` — when the total is unknown, which\nswitches the bar to its indeterminate state."
+        },
+        {
+          "name": "valueLabel",
+          "type": "string",
+          "required": false,
+          "description": "Spoken description of the current value. Defaults to a percentage; supply\nyour own for units that mean more, such as \"3 of 8 files\"."
+        }
+      ]
+    }
+  ],
+  "components/Alert/Alert.types.ts": [
+    {
+      "name": "AlertOwnProps",
+      "props": [
+        {
+          "name": "actions",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Buttons rendered under the message."
+        },
+        {
+          "name": "dismissLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Dismiss\""
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Replaces the tone's default icon. Pass `null` for no icon."
+        },
+        {
+          "name": "live",
+          "type": "boolean",
+          "required": false,
+          "description": "Announce this alert when it appears.\n\nOff by default, deliberately. An alert rendered with the page is part of\nthe page, and `role=\"alert\"` on mount interrupts whatever a screen reader\nwas saying to read out something the user has not navigated to yet. Turn it\non for messages that appear in response to an action."
+        },
+        {
+          "name": "onDismiss",
+          "type": "(() => void)",
+          "required": false,
+          "description": "Show a close button and call this when it is pressed."
+        },
+        {
+          "name": "title",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "tone",
+          "type": "AlertTone",
+          "required": false,
+          "defaultValue": "\"info\""
+        },
+        {
+          "name": "variant",
+          "type": "AlertVariant",
+          "required": false,
+          "defaultValue": "\"soft\""
+        }
+      ]
+    },
+    {
+      "name": "AlertProps",
+      "props": [
+        {
+          "name": "actions",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Buttons rendered under the message."
+        },
+        {
+          "name": "dismissLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Dismiss\""
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Replaces the tone's default icon. Pass `null` for no icon."
+        },
+        {
+          "name": "live",
+          "type": "boolean",
+          "required": false,
+          "description": "Announce this alert when it appears.\n\nOff by default, deliberately. An alert rendered with the page is part of\nthe page, and `role=\"alert\"` on mount interrupts whatever a screen reader\nwas saying to read out something the user has not navigated to yet. Turn it\non for messages that appear in response to an action."
+        },
+        {
+          "name": "onDismiss",
+          "type": "(() => void)",
+          "required": false,
+          "description": "Show a close button and call this when it is pressed."
+        },
+        {
+          "name": "title",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "tone",
+          "type": "AlertTone",
+          "required": false,
+          "defaultValue": "\"info\""
+        },
+        {
+          "name": "variant",
+          "type": "AlertVariant",
+          "required": false,
+          "defaultValue": "\"soft\""
+        }
+      ]
+    }
+  ],
+  "components/Textarea/Textarea.types.ts": [
+    {
+      "name": "TextareaOwnProps",
+      "props": [
+        {
+          "name": "autoResize",
+          "type": "boolean",
+          "required": false,
+          "description": "Grow with the content instead of scrolling. Disables the drag handle."
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "disableResize",
+          "type": "boolean",
+          "required": false,
+          "description": "Remove the drag handle without auto-resizing."
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "maxRows",
+          "type": "number",
+          "required": false,
+          "description": "Largest height before scrolling resumes. Auto-resize only."
+        },
+        {
+          "name": "minRows",
+          "type": "number",
+          "required": false,
+          "defaultValue": "3",
+          "description": "Smallest height, in rows."
+        },
+        {
+          "name": "showCount",
+          "type": "boolean",
+          "required": false,
+          "description": "Show a character counter. Pair with `maxLength` for a limit."
+        },
+        {
+          "name": "size",
+          "type": "TextareaSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "variant",
+          "type": "TextareaVariant",
+          "required": false,
+          "defaultValue": "\"outline\""
+        },
+        {
+          "name": "wrapperClassName",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "TextareaProps",
+      "props": [
+        {
+          "name": "autoResize",
+          "type": "boolean",
+          "required": false,
+          "description": "Grow with the content instead of scrolling. Disables the drag handle."
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "disableResize",
+          "type": "boolean",
+          "required": false,
+          "description": "Remove the drag handle without auto-resizing."
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "maxRows",
+          "type": "number",
+          "required": false,
+          "description": "Largest height before scrolling resumes. Auto-resize only."
+        },
+        {
+          "name": "minRows",
+          "type": "number",
+          "required": false,
+          "defaultValue": "3",
+          "description": "Smallest height, in rows."
+        },
+        {
+          "name": "showCount",
+          "type": "boolean",
+          "required": false,
+          "description": "Show a character counter. Pair with `maxLength` for a limit."
+        },
+        {
+          "name": "size",
+          "type": "TextareaSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "variant",
+          "type": "TextareaVariant",
+          "required": false,
+          "defaultValue": "\"outline\""
+        },
+        {
+          "name": "wrapperClassName",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "components/Slider/Slider.types.ts": [
+    {
+      "name": "SliderOwnProps",
+      "props": [
+        {
+          "name": "defaultValue",
+          "type": "number | [number, number]",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "formatValue",
+          "type": "((value: number) => string)",
+          "required": false,
+          "description": "Spoken value. Use it for units — \"42 percent\" rather than \"42\"."
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "largeStep",
+          "type": "number",
+          "required": false,
+          "description": "Step used with PageUp and PageDown. Defaults to ten steps."
+        },
+        {
+          "name": "marks",
+          "type": "SliderMark[]",
+          "required": false,
+          "description": "Ticks with optional labels under the track."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "100"
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "minStepsBetweenThumbs",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "Smallest gap between the two thumbs of a range."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name for the hidden inputs, so a range submits with a form."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: number | [number, number]) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueCommit",
+          "type": "((value: number | [number, number]) => void)",
+          "required": false,
+          "description": "Fired once when a drag or key repeat settles, for expensive commits."
+        },
+        {
+          "name": "showValue",
+          "type": "boolean",
+          "required": false,
+          "description": "Show the current value beside the label."
+        },
+        {
+          "name": "size",
+          "type": "SliderSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1"
+        },
+        {
+          "name": "tone",
+          "type": "SliderTone",
+          "required": false,
+          "defaultValue": "\"accent\""
+        },
+        {
+          "name": "value",
+          "type": "number | [number, number]",
+          "required": false,
+          "description": "A single number, or a `[start, end]` pair for a range with two thumbs.\nThe shape of this value decides how many thumbs are rendered."
+        }
+      ]
+    },
+    {
+      "name": "SliderProps",
+      "props": [
+        {
+          "name": "defaultValue",
+          "type": "number | [number, number]",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "formatValue",
+          "type": "((value: number) => string)",
+          "required": false,
+          "description": "Spoken value. Use it for units — \"42 percent\" rather than \"42\"."
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "largeStep",
+          "type": "number",
+          "required": false,
+          "description": "Step used with PageUp and PageDown. Defaults to ten steps."
+        },
+        {
+          "name": "marks",
+          "type": "SliderMark[]",
+          "required": false,
+          "description": "Ticks with optional labels under the track."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "100"
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "minStepsBetweenThumbs",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "Smallest gap between the two thumbs of a range."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name for the hidden inputs, so a range submits with a form."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: number | [number, number]) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueCommit",
+          "type": "((value: number | [number, number]) => void)",
+          "required": false,
+          "description": "Fired once when a drag or key repeat settles, for expensive commits."
+        },
+        {
+          "name": "showValue",
+          "type": "boolean",
+          "required": false,
+          "description": "Show the current value beside the label."
+        },
+        {
+          "name": "size",
+          "type": "SliderSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1"
+        },
+        {
+          "name": "tone",
+          "type": "SliderTone",
+          "required": false,
+          "defaultValue": "\"accent\""
+        },
+        {
+          "name": "value",
+          "type": "number | [number, number]",
+          "required": false,
+          "description": "A single number, or a `[start, end]` pair for a range with two thumbs.\nThe shape of this value decides how many thumbs are rendered."
+        }
+      ]
+    }
   ]
 }

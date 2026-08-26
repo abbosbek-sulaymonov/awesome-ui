@@ -1,0 +1,69 @@
+@layer aui.components {
+  .field { display: flex; flex-direction: column; gap: var(--aui-space-1); font-family: var(--aui-font-sans); }
+
+  .label { font-size: var(--aui-text-sm); font-weight: var(--aui-weight-medium); color: var(--aui-color-fg); }
+  .required { margin-inline-start: var(--aui-space-1); color: var(--aui-color-danger); }
+
+  .wrapper {
+    display: flex;
+    background-color: var(--aui-color-surface);
+    border: 1px solid var(--aui-color-border-strong);
+    border-radius: var(--aui-radius-md);
+    transition: border-color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .wrapper:focus-within {
+    outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
+    outline-offset: var(--aui-focus-ring-offset);
+    border-color: var(--aui-color-accent);
+  }
+
+  .wrapper[data-invalid="true"] { border-color: var(--aui-color-danger); }
+  .wrapper[data-invalid="true"]:focus-within { outline-color: var(--aui-color-danger); }
+
+  .wrapper[data-disabled="true"] {
+    background-color: var(--aui-color-bg-subtle);
+    color: var(--aui-color-fg-subtle);
+    opacity: 0.7;
+  }
+
+  .filled { background-color: var(--aui-color-bg-subtle); border-color: transparent; }
+
+  .sm { padding: var(--aui-space-2); font-size: var(--aui-text-sm); }
+  .md { padding: var(--aui-space-3); font-size: var(--aui-text-sm); }
+  .lg { padding: var(--aui-space-4); font-size: var(--aui-text-md); }
+
+  .textarea {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: var(--aui-leading-normal);
+    outline: none;
+    resize: vertical;
+  }
+
+  .textarea::placeholder { color: var(--aui-color-fg-subtle); }
+  .textarea:disabled { cursor: not-allowed; }
+
+  /* Auto-resizing owns the height, so a drag handle would fight it. */
+  .autoResize { resize: none; overflow-y: hidden; }
+  .noResize { resize: none; }
+
+  .footer { display: flex; align-items: baseline; justify-content: space-between; gap: var(--aui-space-3); }
+  .description { margin: 0; font-size: var(--aui-text-xs); line-height: var(--aui-leading-normal); color: var(--aui-color-fg-muted); }
+  .error { margin: 0; font-size: var(--aui-text-xs); line-height: var(--aui-leading-normal); color: var(--aui-color-danger); }
+
+  .count {
+    flex-shrink: 0;
+    margin-inline-start: auto;
+    color: var(--aui-color-fg-subtle);
+    font-size: var(--aui-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .count[data-over="true"] { color: var(--aui-color-danger); font-weight: var(--aui-weight-medium); }
+}

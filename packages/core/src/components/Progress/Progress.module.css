@@ -1,0 +1,70 @@
+@layer aui.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--aui-space-2);
+    width: 100%;
+    font-family: var(--aui-font-sans);
+  }
+
+  .header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--aui-space-3);
+    font-size: var(--aui-text-sm);
+  }
+
+  .label { color: var(--aui-color-fg); font-weight: var(--aui-weight-medium); }
+  .value { color: var(--aui-color-fg-muted); font-size: var(--aui-text-xs); font-variant-numeric: tabular-nums; }
+
+  .track {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--aui-color-bg-muted);
+    border-radius: var(--aui-radius-full);
+  }
+
+  .sm { height: 0.25rem; }
+  .md { height: 0.5rem; }
+  .lg { height: 0.75rem; }
+
+  .indicator {
+    height: 100%;
+    background-color: var(--aui-color-accent);
+    border-radius: inherit;
+    transition: width var(--aui-duration-normal) var(--aui-ease-standard);
+  }
+
+  .root[data-tone="success"] .indicator { background-color: var(--aui-color-success); }
+  .root[data-tone="warning"] .indicator { background-color: var(--aui-color-warning); }
+  .root[data-tone="danger"] .indicator { background-color: var(--aui-color-danger); }
+
+  /* With no known total, a fixed-width sliver sweeps the track instead of
+     pretending to represent a fraction. */
+  .indeterminate .indicator {
+    width: 40%;
+    transition: none;
+    animation: aui-progress-slide 1.4s var(--aui-ease-standard) infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indeterminate .indicator {
+    /* A moving bar is the only signal here, so it cannot simply be removed —
+       it is slowed and softened to a pulse instead. */
+    animation: aui-progress-pulse 2s ease-in-out infinite;
+    width: 100%;
+  }
+}
+
+@keyframes aui-progress-slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}
+
+@keyframes aui-progress-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}

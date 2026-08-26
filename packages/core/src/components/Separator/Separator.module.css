@@ -1,0 +1,32 @@
+@layer aui.components {
+  .root { flex-shrink: 0; background-color: var(--aui-color-border); border: 0; }
+
+  .horizontal { width: 100%; height: 1px; }
+  .vertical { width: 1px; height: 100%; align-self: stretch; }
+
+  /* A labelled separator is a flex row with the rule split either side of the
+     text, so the label sits in a gap rather than on top of the line. */
+  .labelled {
+    display: flex;
+    align-items: center;
+    gap: var(--aui-space-3);
+    width: 100%;
+    height: auto;
+    background: none;
+  }
+
+  .labelled::before,
+  .labelled::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background-color: var(--aui-color-border);
+  }
+
+  .label {
+    flex-shrink: 0;
+    color: var(--aui-color-fg-subtle);
+    font-family: var(--aui-font-sans);
+    font-size: var(--aui-text-xs);
+  }
+}

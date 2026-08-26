@@ -260,10 +260,13 @@ one visit.
 
 ## Status
 
-In place: `Button`, `Input`, `Checkbox`, `Switch`, `RadioGroup`, `Select`,
-`Menu`, `Tabs`, `Accordion`, `Card`, `Badge`, `Avatar`, `Spinner`, `Dialog`,
-`Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the primitive and hook layers,
-and the positioning engine. 205 tests, 36 registry items.
+23 components: `Button`, `Input`, `Textarea`, `Checkbox`, `Switch`,
+`RadioGroup`, `Select`, `Slider`, `Menu`, `Tabs`, `Accordion`, `Card`, `Badge`,
+`Avatar`, `Spinner`, `Separator`, `Alert`, `Progress`, `Skeleton`, `Dialog`,
+`Popover`, `Tooltip`, `Toast` — plus `ThemeProvider`, the primitive and hook
+layers, and the positioning engine.
+
+362 tests, 42 registry items, 30 kB gzipped.
 
 255 tests in total: 205 in the library, 50 in the docs site.
 
