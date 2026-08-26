@@ -1,0 +1,54 @@
+@layer aui.components {
+  .root {
+    display: block;
+    background-color: var(--aui-color-bg-muted);
+    border-radius: var(--aui-radius-md);
+  }
+
+  .text {
+    height: 1em;
+    border-radius: var(--aui-radius-sm);
+    /* A run of text lines reads as text when the last one is short. */
+    margin-block: 0.25em;
+  }
+
+  .circle { border-radius: var(--aui-radius-full); aspect-ratio: 1; }
+
+  .pulse { animation: aui-skeleton-pulse 1.6s var(--aui-ease-standard) infinite; }
+
+  /* A sheen that sweeps across, for surfaces large enough to show it. */
+  .wave {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wave::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--aui-color-surface) 60%, transparent),
+      transparent
+    );
+    animation: aui-skeleton-wave 1.6s linear infinite;
+  }
+}
+
+/* Motion in a loading state is decorative; the busy announcement carries the
+   meaning, so removing it costs nothing. */
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; }
+  .wave::after { animation: none; content: none; }
+}
+
+@keyframes aui-skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes aui-skeleton-wave {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
