@@ -1,0 +1,105 @@
+@layer aui.components {
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--aui-space-1);
+    font-family: var(--aui-font-sans);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: var(--aui-space-3);
+  }
+
+  .reversed { flex-direction: row-reverse; justify-content: space-between; }
+
+  .input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .track {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 2px;
+
+    background-color: var(--aui-color-bg-muted);
+    border: 1px solid transparent;
+    border-radius: var(--aui-radius-full);
+    cursor: pointer;
+
+    transition: background-color var(--aui-duration-normal) var(--aui-ease-standard);
+  }
+
+  /* Travel is track width minus thumb width; since the thumb is square and
+     sized by the track's inner height, that reduces to width - height. */
+  .sm { width: 1.75rem; height: 1rem; --aui-switch-travel: 0.75rem; }
+  .md { width: 2.25rem; height: 1.25rem; --aui-switch-travel: 1rem; }
+  .lg { width: 2.75rem; height: 1.5rem; --aui-switch-travel: 1.25rem; }
+
+  .input:focus-visible + .track {
+    outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
+    outline-offset: var(--aui-focus-ring-offset);
+  }
+
+  .track[data-state="checked"] { background-color: var(--aui-color-accent); }
+  .track[data-invalid="true"] { border-color: var(--aui-color-danger); }
+
+  .track[data-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .thumb {
+    display: block;
+    height: 100%;
+    aspect-ratio: 1;
+
+    background-color: var(--aui-color-surface);
+    border-radius: var(--aui-radius-full);
+    box-shadow: var(--aui-shadow-sm);
+
+    transition: transform var(--aui-duration-normal) var(--aui-ease-emphasized);
+  }
+
+  .track[data-state="checked"] .thumb {
+    transform: translateX(var(--aui-switch-travel));
+  }
+
+  .labelGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .label {
+    font-size: var(--aui-text-sm);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg);
+    cursor: pointer;
+  }
+
+  .label[data-disabled="true"] { cursor: not-allowed; opacity: 0.7; }
+
+  .description {
+    margin: 0;
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg-muted);
+  }
+
+  .error {
+    margin: 0;
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-danger);
+  }
+}
