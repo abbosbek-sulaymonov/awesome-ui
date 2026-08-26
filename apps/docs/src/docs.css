@@ -326,7 +326,11 @@ a { color: var(--aui-color-accent); text-underline-offset: 3px; }
 .prose li { margin-block-end: var(--aui-space-2); }
 .prose strong { color: var(--aui-color-fg); font-weight: var(--aui-weight-semibold); }
 
-.prose code,
+/* Scoped to code that is NOT inside a <pre>. An inline <code> spanning
+   several lines paints its background and border once per line fragment, so
+   applying the inline-pill treatment to a code block draws a box around every
+   line of it. */
+.prose :not(pre) > code,
 .inlineCode {
   padding: 0.125em 0.375em;
   background-color: var(--docs-code-bg);
@@ -387,7 +391,16 @@ a { color: var(--aui-color-accent); text-underline-offset: 3px; }
   tab-size: 2;
 }
 
-.codeBlock code { font: inherit; }
+/* Belt and braces: whatever an ancestor tries to impose, the <code> inside a
+   block is a transparent span carrying only the font. */
+.codeBlock code {
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  font: inherit;
+}
 
 /* Standalone code blocks in prose need their own border, not just a top rule. */
 .prose > .codeBlock {
