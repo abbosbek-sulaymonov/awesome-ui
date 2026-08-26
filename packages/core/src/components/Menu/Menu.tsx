@@ -104,7 +104,7 @@ const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>(function Men
 MenuTrigger.displayName = "Menu.Trigger";
 
 const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(function MenuContent(
-  { label, className, style, children, ...rest },
+  { label, className, style, children, onKeyDown, ...rest },
   forwardedRef,
 ) {
   const { open, setOpen, contentId, triggerId, floating, triggerRef, closeAndRestore } =
@@ -172,6 +172,15 @@ const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(function MenuCo
         onDismiss={onDismiss}
         excludedElements={[triggerRef.current]}
         {...rest}
+        onKeyDown={composeEventHandlers(onKeyDown, (event) => {
+          if (event.key !== "Tab") return;
+
+          // Same as Select: the menu is portalled, so tabbing out of it strands
+          // focus at the end of <body> with the menu still open. Close and hand
+          // focus back to the trigger, leaving the default alone so the browser
+          // continues the tab from there.
+          closeAndRestore();
+        })}
       >
         {children}
       </DismissableLayer>
