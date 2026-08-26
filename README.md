@@ -70,12 +70,14 @@ packages/
   core/      the library (@abek/awesome-ui)
   config/    shared tsconfig
 apps/
+  docs/        documentation site
   playground/  Vite sandbox for fast iteration
 registry/
   manifest.ts       what the copy-paste registry ships
   __generated__/    shadcn-compatible JSON (build output)
 scripts/
   build-registry.ts
+  build-props.ts    extracts prop tables from the TS source
 ```
 
 ## Commands
@@ -86,15 +88,38 @@ pnpm dev          # watch builds across the workspace
 pnpm build        # build every package
 pnpm test         # vitest
 pnpm typecheck
+pnpm props        # regenerate the docs prop tables from the TS source
 pnpm registry     # regenerate registry/__generated__
 pnpm changeset    # record a version bump
 ```
 
-Run the sandbox:
+Run the docs site, or the bare sandbox:
 
 ```bash
+pnpm --filter @awesome-ui/docs dev
 pnpm --filter @awesome-ui/playground dev
 ```
+
+## Documentation
+
+`apps/docs` is a Vite site with a page per component. Two things in it are worth
+knowing about:
+
+**Examples are real files.** Each one lives at
+`src/examples/<component>/<order>-<name>.tsx` and is picked up by a glob, so
+adding a file adds an example with nothing to register. The rendered preview and
+the displayed source come from the *same* file, which is why the snippet can
+never disagree with the demo — the usual way component docs go stale.
+
+**Prop tables are generated from the types.** `pnpm props` walks the real
+`*.types.ts` declarations with the TypeScript compiler API and writes
+`apps/docs/src/generated/props.json`, pulling names, types, `@default` tags and
+JSDoc descriptions. Props inherited from `ComponentPropsWithoutRef` are excluded,
+since a few hundred native DOM props say nothing about a component. Rename a prop
+and the docs change on the next build rather than quietly going stale.
+
+The site's own test suite renders every page and every example, so a broken
+example fails the build instead of greeting a reader.
 
 ## Overlays
 
@@ -240,8 +265,10 @@ In place: `Button`, `Input`, `Checkbox`, `Switch`, `RadioGroup`, `Select`,
 `Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the primitive and hook layers,
 and the positioning engine. 205 tests, 36 registry items.
 
-Next: a documentation site. The component set is broad enough that the
-playground — one long scrolling page — has stopped being a good way to show it.
+255 tests in total: 205 in the library, 50 in the docs site.
+
+Next: publishing. The package has never been released, and the docs site is not
+deployed anywhere.
 
 ## License
 
