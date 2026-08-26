@@ -458,4 +458,38 @@ export const registry: RegistryItem[] = [
       "tokens",
     ],
   },
+  {
+    name: "accordion",
+    type: "registry:ui",
+    title: "Accordion",
+    description: "Accordion with single or multiple open panels and animated height.",
+    files: [
+      "components/Accordion/Accordion.tsx",
+      "components/Accordion/Accordion.module.css",
+      "components/Accordion/Accordion.types.ts",
+      "components/Accordion/AccordionContext.ts",
+      "components/Accordion/index.ts",
+    ],
+    registryDependencies: [
+      "utils",
+      "presence",
+      "use-controllable-state",
+      "use-id",
+      "use-roving-focus",
+      "tokens",
+    ],
+  },
+  {
+    name: "avatar",
+    type: "registry:ui",
+    title: "Avatar",
+    description: "Avatar with initials fallback, deterministic tint, status dot, and stacking.",
+    files: [
+      "components/Avatar/Avatar.tsx",
+      "components/Avatar/Avatar.module.css",
+      "components/Avatar/Avatar.types.ts",
+      "components/Avatar/index.ts",
+    ],
+    registryDependencies: ["utils", "visually-hidden", "tokens"],
+  },
 ];
