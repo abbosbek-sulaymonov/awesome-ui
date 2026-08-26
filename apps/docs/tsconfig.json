@@ -1,0 +1,16 @@
+{
+  "extends": "@awesome-ui/config/tsconfig.react-library.json",
+  "compilerOptions": {
+    "types": [
+      "vite/client",
+      "vitest/globals",
+      "@testing-library/jest-dom"
+    ],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src",
+    "vite.config.ts",
+    "vitest.setup.ts"
+  ]
+}

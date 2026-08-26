@@ -1,0 +1,1731 @@
+{
+  "components/Button/Button.types.ts": [
+    {
+      "name": "ButtonOwnProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        },
+        {
+          "name": "endIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered after the label."
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "required": false,
+          "description": "Stretch to the container's width."
+        },
+        {
+          "name": "iconOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Square button with no label — `aria-label` becomes required in practice."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Show a spinner and block interaction, without changing the button's width."
+        },
+        {
+          "name": "loadingLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Loading\"",
+          "description": "Announced while `loading` is true."
+        },
+        {
+          "name": "size",
+          "type": "ButtonSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "startIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered before the label."
+        },
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "required": false,
+          "defaultValue": "\"solid\"",
+          "description": "Visual weight."
+        }
+      ]
+    },
+    {
+      "name": "ButtonProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        },
+        {
+          "name": "endIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered after the label."
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "required": false,
+          "description": "Stretch to the container's width."
+        },
+        {
+          "name": "iconOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Square button with no label — `aria-label` becomes required in practice."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Show a spinner and block interaction, without changing the button's width."
+        },
+        {
+          "name": "loadingLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Loading\"",
+          "description": "Announced while `loading` is true."
+        },
+        {
+          "name": "size",
+          "type": "ButtonSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "startIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered before the label."
+        },
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "required": false,
+          "defaultValue": "\"solid\"",
+          "description": "Visual weight."
+        }
+      ]
+    }
+  ],
+  "components/Input/Input.types.ts": [
+    {
+      "name": "InputOwnProps",
+      "props": [
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Helper text under the control, wired via `aria-describedby`."
+        },
+        {
+          "name": "endIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered inside the box, after the input."
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Error text under the control. Its presence marks the field invalid and\nwires `aria-errormessage`, so you never set `invalid` separately."
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the outer field wrapper (label + control + messages)."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Force the invalid state without an error message."
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Visible label. Omit it only if you supply `aria-label` yourself."
+        },
+        {
+          "name": "size",
+          "type": "InputSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "startIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered inside the box, before the input."
+        },
+        {
+          "name": "variant",
+          "type": "InputVariant",
+          "required": false,
+          "defaultValue": "\"outline\""
+        },
+        {
+          "name": "wrapperClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the bordered box around the input."
+        }
+      ]
+    },
+    {
+      "name": "InputProps",
+      "props": [
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Helper text under the control, wired via `aria-describedby`."
+        },
+        {
+          "name": "endIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered inside the box, after the input."
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Error text under the control. Its presence marks the field invalid and\nwires `aria-errormessage`, so you never set `invalid` separately."
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the outer field wrapper (label + control + messages)."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Force the invalid state without an error message."
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Visible label. Omit it only if you supply `aria-label` yourself."
+        },
+        {
+          "name": "size",
+          "type": "InputSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "startIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Rendered inside the box, before the input."
+        },
+        {
+          "name": "variant",
+          "type": "InputVariant",
+          "required": false,
+          "defaultValue": "\"outline\""
+        },
+        {
+          "name": "wrapperClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the bordered box around the input."
+        }
+      ]
+    }
+  ],
+  "components/Dialog/Dialog.types.ts": [
+    {
+      "name": "DialogRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "disableScrollLock",
+          "type": "boolean",
+          "required": false,
+          "description": "Leave background scrolling alone."
+        },
+        {
+          "name": "dismissOnEscape",
+          "type": "boolean",
+          "required": false,
+          "description": "Ignore Escape. Pair with `dismissOnOutsideClick={false}` for a forced choice."
+        },
+        {
+          "name": "dismissOnOutsideClick",
+          "type": "boolean",
+          "required": false,
+          "description": "Ignore clicks on the overlay."
+        },
+        {
+          "name": "modal",
+          "type": "boolean",
+          "required": false,
+          "description": "A dialog with no `aria-modal` semantics — for non-blocking surfaces that\nstill need focus management."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "Controlled open state."
+        }
+      ]
+    },
+    {
+      "name": "DialogTriggerProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    },
+    {
+      "name": "DialogContentProps",
+      "props": [
+        {
+          "name": "closeButtonLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Close dialog\"",
+          "description": "Accessible name for the built-in close button."
+        },
+        {
+          "name": "initialFocusRef",
+          "type": "RefObject<HTMLElement | null>",
+          "required": false,
+          "description": "Focus this element on open instead of the first tabbable one."
+        },
+        {
+          "name": "positionerClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the fixed layer that centres the content."
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Render the built-in close button in the top corner."
+        },
+        {
+          "name": "size",
+          "type": "DialogSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    },
+    {
+      "name": "DialogCloseProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    }
+  ],
+  "components/Popover/Popover.types.ts": [
+    {
+      "name": "PopoverRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "modal",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Trap focus and treat the content as blocking."
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "required": false,
+          "defaultValue": "8",
+          "description": "Gap between trigger and content, in px."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"bottom\""
+        }
+      ]
+    },
+    {
+      "name": "PopoverTriggerProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    },
+    {
+      "name": "PopoverContentProps",
+      "props": [
+        {
+          "name": "autoFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Move focus into the content on open."
+        },
+        {
+          "name": "dismissOnEscape",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "dismissOnOutsideClick",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "initialFocusRef",
+          "type": "RefObject<HTMLElement | null>",
+          "required": false,
+          "description": "Focus this instead of the first tabbable element."
+        }
+      ]
+    },
+    {
+      "name": "PopoverCloseProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    }
+  ],
+  "components/Tooltip/Tooltip.types.ts": [
+    {
+      "name": "TooltipRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "closeDelay",
+          "type": "number",
+          "required": false,
+          "defaultValue": "100",
+          "description": "Grace period before hiding, in ms."
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Never open. Useful for conditionally-labelled controls."
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "required": false,
+          "defaultValue": "6"
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "openDelay",
+          "type": "number",
+          "required": false,
+          "defaultValue": "500",
+          "description": "Delay before showing on hover, in ms."
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"top\""
+        }
+      ]
+    },
+    {
+      "name": "TooltipTriggerProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    }
+  ],
+  "components/Toast/Toast.types.ts": [
+    {
+      "name": "ToasterProps",
+      "props": [
+        {
+          "name": "disableSwipe",
+          "type": "boolean",
+          "required": false,
+          "description": "Disable swipe-to-dismiss."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Notifications\"",
+          "description": "Accessible name for the live region."
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "required": false,
+          "defaultValue": "4",
+          "description": "Most toasts on screen at once; the rest wait their turn."
+        },
+        {
+          "name": "position",
+          "type": "ToastPosition",
+          "required": false,
+          "defaultValue": "\"bottom-right\""
+        },
+        {
+          "name": "renderToast",
+          "type": "((toast: ToastRecord) => ReactNode)",
+          "required": false,
+          "description": "Replace the default rendering of a toast."
+        },
+        {
+          "name": "swipeThreshold",
+          "type": "number",
+          "required": false,
+          "defaultValue": "60",
+          "description": "Distance in px a swipe must travel to dismiss."
+        }
+      ]
+    },
+    {
+      "name": "ToastItemProps",
+      "props": [
+        {
+          "name": "closeLabel",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "disableSwipe",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "name": "swipeThreshold",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "toast",
+          "type": "ToastRecord",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "components/Spinner/Spinner.types.ts": [
+    {
+      "name": "SpinnerOwnProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string | null",
+          "required": false,
+          "defaultValue": "\"Loading\"",
+          "description": "Announced to assistive tech. Pass `null` when a surrounding element already\ndescribes the busy state, so it is not announced twice."
+        },
+        {
+          "name": "size",
+          "type": "SpinnerSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "tone",
+          "type": "SpinnerTone",
+          "required": false,
+          "defaultValue": "\"current\"",
+          "description": "`current` inherits the parent's color — use it inside buttons."
+        }
+      ]
+    },
+    {
+      "name": "SpinnerProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string | null",
+          "required": false,
+          "defaultValue": "\"Loading\"",
+          "description": "Announced to assistive tech. Pass `null` when a surrounding element already\ndescribes the busy state, so it is not announced twice."
+        },
+        {
+          "name": "size",
+          "type": "SpinnerSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "tone",
+          "type": "SpinnerTone",
+          "required": false,
+          "defaultValue": "\"current\"",
+          "description": "`current` inherits the parent's color — use it inside buttons."
+        }
+      ]
+    }
+  ],
+  "components/Badge/Badge.types.ts": [
+    {
+      "name": "BadgeOwnProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        },
+        {
+          "name": "dot",
+          "type": "boolean",
+          "required": false,
+          "description": "Leading status dot."
+        },
+        {
+          "name": "size",
+          "type": "BadgeSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "square",
+          "type": "boolean",
+          "required": false,
+          "description": "Square corners instead of a pill."
+        },
+        {
+          "name": "srLabel",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Text announced in place of the visible content — for badges whose meaning\nis carried by color or an abbreviation (\"3\" meaning \"3 unread\")."
+        },
+        {
+          "name": "tone",
+          "type": "BadgeTone",
+          "required": false,
+          "defaultValue": "\"neutral\""
+        },
+        {
+          "name": "variant",
+          "type": "BadgeVariant",
+          "required": false,
+          "defaultValue": "\"soft\""
+        }
+      ]
+    },
+    {
+      "name": "BadgeProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        },
+        {
+          "name": "dot",
+          "type": "boolean",
+          "required": false,
+          "description": "Leading status dot."
+        },
+        {
+          "name": "size",
+          "type": "BadgeSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "square",
+          "type": "boolean",
+          "required": false,
+          "description": "Square corners instead of a pill."
+        },
+        {
+          "name": "srLabel",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Text announced in place of the visible content — for badges whose meaning\nis carried by color or an abbreviation (\"3\" meaning \"3 unread\")."
+        },
+        {
+          "name": "tone",
+          "type": "BadgeTone",
+          "required": false,
+          "defaultValue": "\"neutral\""
+        },
+        {
+          "name": "variant",
+          "type": "BadgeVariant",
+          "required": false,
+          "defaultValue": "\"soft\""
+        }
+      ]
+    }
+  ],
+  "components/Card/Card.types.ts": [
+    {
+      "name": "CardRootProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        },
+        {
+          "name": "interactive",
+          "type": "boolean",
+          "required": false,
+          "description": "Hover and press affordances. Pair with `asChild` and a real `<button>` or\n`<a>` — this prop styles, it does not make a div focusable."
+        },
+        {
+          "name": "padding",
+          "type": "CardPadding",
+          "required": false,
+          "defaultValue": "\"md\"",
+          "description": "Padding scale applied to every section."
+        },
+        {
+          "name": "variant",
+          "type": "CardVariant",
+          "required": false,
+          "defaultValue": "\"outline\""
+        }
+      ]
+    }
+  ],
+  "components/Checkbox/Checkbox.types.ts": [
+    {
+      "name": "CheckboxOwnProps",
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false,
+          "description": "Controlled checked state."
+        },
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the outer wrapper."
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "required": false,
+          "description": "Neither checked nor unchecked — a parent whose children disagree. Visual\nand ARIA only; the underlying value stays whatever `checked` says."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((checked: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "CheckboxSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    },
+    {
+      "name": "CheckboxProps",
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false,
+          "description": "Controlled checked state."
+        },
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the outer wrapper."
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "required": false,
+          "description": "Neither checked nor unchecked — a parent whose children disagree. Visual\nand ARIA only; the underlying value stays whatever `checked` says."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((checked: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "CheckboxSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    }
+  ],
+  "components/Switch/Switch.types.ts": [
+    {
+      "name": "SwitchOwnProps",
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "labelFirst",
+          "type": "boolean",
+          "required": false,
+          "description": "Put the label first and push the switch to the far end — settings-row layout."
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((checked: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "SwitchSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    },
+    {
+      "name": "SwitchProps",
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "labelFirst",
+          "type": "boolean",
+          "required": false,
+          "description": "Put the label first and push the switch to the far end — settings-row layout."
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((checked: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "SwitchSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    }
+  ],
+  "components/Select/Select.types.ts": [
+    {
+      "name": "SelectRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Submitted with the surrounding form via a hidden native input."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"bottom-start\""
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "Controlled value."
+        }
+      ]
+    },
+    {
+      "name": "SelectTriggerProps",
+      "props": [
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the outer wrapper holding label, trigger and messages."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "SelectSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    },
+    {
+      "name": "SelectValueProps",
+      "props": [
+        {
+          "name": "placeholder",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Shown when nothing is selected."
+        }
+      ]
+    },
+    {
+      "name": "SelectContentProps",
+      "props": [
+        {
+          "name": "emptyMessage",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Shown when the list has no items."
+        }
+      ]
+    },
+    {
+      "name": "SelectItemProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "textValue",
+          "type": "string",
+          "required": false,
+          "description": "Text used for typeahead and for the trigger's display. Defaults to the\nitem's text content, which is right unless the item renders extra chrome."
+        }
+      ]
+    }
+  ],
+  "components/RadioGroup/RadioGroup.types.ts": [
+    {
+      "name": "RadioGroupRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Visible group label, rendered as the fieldset's legend."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Shared across every radio, and what the form submits under."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "orientation",
+          "type": "RadioOrientation",
+          "required": false,
+          "defaultValue": "\"vertical\""
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "RadioSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "RadioGroupItemProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "components/Tabs/Tabs.types.ts": [
+    {
+      "name": "TabsRootProps",
+      "props": [
+        {
+          "name": "activation",
+          "type": "TabsActivation",
+          "required": false,
+          "defaultValue": "\"automatic\""
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "orientation",
+          "type": "TabsOrientation",
+          "required": false,
+          "defaultValue": "\"horizontal\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "TabsVariant",
+          "required": false,
+          "defaultValue": "\"line\""
+        }
+      ]
+    },
+    {
+      "name": "TabsListProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "Accessible name for the tab list."
+        }
+      ]
+    },
+    {
+      "name": "TabsTriggerProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "TabsPanelProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "keepMounted",
+          "type": "boolean",
+          "required": false,
+          "description": "Render the panel even while hidden, so its state survives tab switches."
+        }
+      ]
+    }
+  ],
+  "components/Menu/Menu.types.ts": [
+    {
+      "name": "MenuRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"bottom-start\""
+        }
+      ]
+    },
+    {
+      "name": "MenuTriggerProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    },
+    {
+      "name": "MenuContentProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "Accessible name for the menu."
+        }
+      ]
+    },
+    {
+      "name": "MenuItemProps",
+      "props": [
+        {
+          "name": "danger",
+          "type": "boolean",
+          "required": false,
+          "description": "Destructive styling. Does not change behaviour."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onSelect",
+          "type": "((event: { preventDefault: () => void; defaultPrevented: boolean; }) => void)",
+          "required": false,
+          "description": "Called on click or Enter/Space. Call `event.preventDefault()` to keep the\nmenu open — useful for items that toggle something."
+        },
+        {
+          "name": "shortcut",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Keyboard hint rendered on the trailing edge. Display only."
+        }
+      ]
+    },
+    {
+      "name": "MenuCheckboxItemProps",
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "danger",
+          "type": "boolean",
+          "required": false,
+          "description": "Destructive styling. Does not change behaviour."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((checked: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "shortcut",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Keyboard hint rendered on the trailing edge. Display only."
+        }
+      ]
+    }
+  ],
+  "components/Accordion/Accordion.types.ts": [
+    {
+      "name": "AccordionSingleProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow closing the only open item. Ignored when `type` is \"multiple\"."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "\"single\"",
+          "required": false,
+          "defaultValue": "\"single\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "AccordionVariant",
+          "required": false,
+          "defaultValue": "\"outline\""
+        }
+      ]
+    },
+    {
+      "name": "AccordionMultipleProps",
+      "props": [
+        {
+          "name": "type",
+          "type": "\"multiple\"",
+          "required": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow closing the only open item. Ignored when `type` is \"multiple\"."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string[]) => void)",
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "AccordionVariant",
+          "required": false,
+          "defaultValue": "\"outline\""
+        }
+      ]
+    },
+    {
+      "name": "AccordionItemProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "AccordionTriggerProps",
+      "props": [
+        {
+          "name": "headingLevel",
+          "type": "1 | 2 | 3 | 4 | 5 | 6",
+          "required": false,
+          "defaultValue": "3",
+          "description": "Heading level the trigger sits under."
+        }
+      ]
+    },
+    {
+      "name": "AccordionPanelProps",
+      "props": [
+        {
+          "name": "keepMounted",
+          "type": "boolean",
+          "required": false,
+          "description": "Keep the panel mounted while closed, so its state survives."
+        }
+      ]
+    }
+  ],
+  "components/Avatar/Avatar.types.ts": [
+    {
+      "name": "AvatarOwnProps",
+      "props": [
+        {
+          "name": "fallback",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Replaces the initials entirely — an icon, for instance."
+        },
+        {
+          "name": "initials",
+          "type": "string",
+          "required": false,
+          "description": "Overrides the initials derived from `name`."
+        },
+        {
+          "name": "monochrome",
+          "type": "boolean",
+          "required": false,
+          "description": "Skip the deterministic tint and use the neutral surface."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The person or thing depicted. Used as the image's alt text and to derive\ninitials, so it should be a name rather than a description."
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "square",
+          "type": "boolean",
+          "required": false,
+          "description": "Rounded square instead of a circle."
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "AvatarStatus",
+          "required": false,
+          "description": "Presence dot in the corner."
+        },
+        {
+          "name": "statusLabel",
+          "type": "string",
+          "required": false,
+          "description": "Announced for the status dot. Defaults to the status word."
+        }
+      ]
+    },
+    {
+      "name": "AvatarProps",
+      "props": [
+        {
+          "name": "fallback",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Replaces the initials entirely — an icon, for instance."
+        },
+        {
+          "name": "initials",
+          "type": "string",
+          "required": false,
+          "description": "Overrides the initials derived from `name`."
+        },
+        {
+          "name": "monochrome",
+          "type": "boolean",
+          "required": false,
+          "description": "Skip the deterministic tint and use the neutral surface."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The person or thing depicted. Used as the image's alt text and to derive\ninitials, so it should be a name rather than a description."
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "square",
+          "type": "boolean",
+          "required": false,
+          "description": "Rounded square instead of a circle."
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "AvatarStatus",
+          "required": false,
+          "description": "Presence dot in the corner."
+        },
+        {
+          "name": "statusLabel",
+          "type": "string",
+          "required": false,
+          "description": "Announced for the status dot. Defaults to the status word."
+        }
+      ]
+    },
+    {
+      "name": "AvatarGroupProps",
+      "props": [
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "description": "Show at most this many, then a +N counter."
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    }
+  ]
+}

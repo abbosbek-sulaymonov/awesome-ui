@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>awesome-ui</title>
+    <meta name="description" content="A personal React component library — accessible primitives, CSS Modules, zero runtime dependencies." />
+    <script>
+      // Apply the stored theme before first paint so a dark-mode reader never
+      // sees a white flash. Mirrors getThemeScript() from the library.
+      (function () {
+        try {
+          var m = localStorage.getItem("aui-theme");
+          if (m === "light" || m === "dark") document.documentElement.setAttribute("data-theme", m);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
