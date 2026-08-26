@@ -7,6 +7,7 @@ import {
   Dialog,
   Input,
   Popover,
+  Select,
   Spinner,
   Switch,
   ThemeProvider,
@@ -125,6 +126,32 @@ function Playground() {
         <Switch label="Email alerts" description="Sent at most once a day." defaultChecked />
         <Switch label="Push notifications" labelFirst />
         <Switch label="Beta features" disabled />
+      </section>
+
+      <section className="stack">
+        <h2>Select</h2>
+        <Select.Root defaultValue="react" name="framework">
+          <Select.Trigger label="Framework" description="Arrow keys, Home/End, and type to jump.">
+            <Select.Value placeholder="Pick one" />
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Group>
+              <Select.Label>Signals</Select.Label>
+              <Select.Item value="solid">Solid</Select.Item>
+              <Select.Item value="svelte">Svelte</Select.Item>
+              <Select.Item value="qwik" disabled>
+                Qwik (unavailable)
+              </Select.Item>
+            </Select.Group>
+            <Select.Separator />
+            <Select.Group>
+              <Select.Label>Virtual DOM</Select.Label>
+              <Select.Item value="react">React</Select.Item>
+              <Select.Item value="vue">Vue</Select.Item>
+              <Select.Item value="preact">Preact</Select.Item>
+            </Select.Group>
+          </Select.Content>
+        </Select.Root>
       </section>
 
       <section className="stack">
