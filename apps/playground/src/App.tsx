@@ -1,9 +1,15 @@
 import { useState } from "react";
 import {
+  Badge,
   Button,
+  Card,
+  Checkbox,
   Dialog,
   Input,
   Popover,
+  Select,
+  Spinner,
+  Switch,
   ThemeProvider,
   Toaster,
   Tooltip,
@@ -63,6 +69,89 @@ function Playground() {
             </a>
           </Button>
         </div>
+      </section>
+
+      <section className="stack">
+        <h2>Badge</h2>
+        <div className="row">
+          <Badge>Neutral</Badge>
+          <Badge tone="accent">Accent</Badge>
+          <Badge tone="success" dot>Live</Badge>
+          <Badge tone="warning" variant="outline">Deprecated</Badge>
+          <Badge tone="danger" variant="solid">Failed</Badge>
+          <Badge tone="accent" square srLabel="3 unread messages">3</Badge>
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>Spinner</h2>
+        <div className="row">
+          <Spinner size="xs" />
+          <Spinner size="sm" />
+          <Spinner size="md" tone="accent" />
+          <Spinner size="lg" tone="muted" />
+          <Button loading>Inside a button</Button>
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>Card</h2>
+        <div className="row" style={{ alignItems: "stretch" }}>
+          <Card.Root style={{ flex: "1 1 16rem" }}>
+            <Card.Header>
+              <Card.Title>Deploy to production</Card.Title>
+              <Card.Description>Runs the full test suite first.</Card.Description>
+            </Card.Header>
+            <Card.Footer>
+              <Button size="sm">Deploy</Button>
+              <Button size="sm" variant="ghost">Cancel</Button>
+            </Card.Footer>
+          </Card.Root>
+
+          <Card.Root variant="elevated" style={{ flex: "1 1 16rem" }}>
+            <Card.Header>
+              <Card.Title>Elevated</Card.Title>
+              <Card.Description>Shadow instead of a border.</Card.Description>
+            </Card.Header>
+            <Card.Body>Body content sits between header and footer.</Card.Body>
+          </Card.Root>
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>Checkbox &amp; Switch</h2>
+        <Checkbox label="Select all" indeterminate description="Some children are selected." />
+        <Checkbox label="Accept terms" description="You can revoke this later." />
+        <Checkbox label="Unavailable" disabled />
+        <Switch label="Email alerts" description="Sent at most once a day." defaultChecked />
+        <Switch label="Push notifications" labelFirst />
+        <Switch label="Beta features" disabled />
+      </section>
+
+      <section className="stack">
+        <h2>Select</h2>
+        <Select.Root defaultValue="react" name="framework">
+          <Select.Trigger label="Framework" description="Arrow keys, Home/End, and type to jump.">
+            <Select.Value placeholder="Pick one" />
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Group>
+              <Select.Label>Signals</Select.Label>
+              <Select.Item value="solid">Solid</Select.Item>
+              <Select.Item value="svelte">Svelte</Select.Item>
+              <Select.Item value="qwik" disabled>
+                Qwik (unavailable)
+              </Select.Item>
+            </Select.Group>
+            <Select.Separator />
+            <Select.Group>
+              <Select.Label>Virtual DOM</Select.Label>
+              <Select.Item value="react">React</Select.Item>
+              <Select.Item value="vue">Vue</Select.Item>
+              <Select.Item value="preact">Preact</Select.Item>
+            </Select.Group>
+          </Select.Content>
+        </Select.Root>
       </section>
 
       <section className="stack">

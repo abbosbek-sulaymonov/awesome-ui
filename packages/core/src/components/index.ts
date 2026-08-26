@@ -80,3 +80,60 @@ export type {
   ToasterProps,
   UseToastReturn,
 } from "./Toast";
+
+export { Spinner } from "./Spinner";
+export type { SpinnerProps, SpinnerOwnProps, SpinnerSize, SpinnerTone } from "./Spinner";
+
+export { Badge, badgeVariants } from "./Badge";
+export type { BadgeProps, BadgeOwnProps, BadgeVariant, BadgeTone, BadgeSize } from "./Badge";
+
+export {
+  Card,
+  CardRoot,
+  CardMedia,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardBody,
+  CardFooter,
+} from "./Card";
+export type {
+  CardVariant,
+  CardPadding,
+  CardRootProps,
+  CardHeaderProps,
+  CardTitleProps,
+  CardDescriptionProps,
+  CardBodyProps,
+  CardFooterProps,
+  CardMediaProps,
+} from "./Card";
+
+export { Checkbox } from "./Checkbox";
+export type { CheckboxProps, CheckboxOwnProps, CheckboxSize } from "./Checkbox";
+
+export { Switch } from "./Switch";
+export type { SwitchProps, SwitchOwnProps, SwitchSize } from "./Switch";
+
+export {
+  Select,
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+} from "./Select";
+export type {
+  SelectSize,
+  SelectRootProps,
+  SelectTriggerProps,
+  SelectValueProps,
+  SelectContentProps,
+  SelectItemProps,
+  SelectGroupProps,
+  SelectLabelProps,
+  SelectSeparatorProps,
+} from "./Select";

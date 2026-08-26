@@ -1,0 +1,112 @@
+@layer aui.components {
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--aui-space-1);
+    font-family: var(--aui-font-sans);
+  }
+
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--aui-space-2);
+  }
+
+  /* The real input stays in the layout and keeps every native behaviour —
+     form participation, validation, autofill. It is only made invisible. */
+  .input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .control {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--aui-color-surface);
+    border: 1px solid var(--aui-color-border-strong);
+    border-radius: var(--aui-radius-sm);
+    color: var(--aui-color-fg-on-accent);
+    cursor: pointer;
+
+    transition:
+      background-color var(--aui-duration-fast) var(--aui-ease-standard),
+      border-color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .sm { width: 1rem; height: 1rem; margin-block-start: 0.0625rem; }
+  .md { width: 1.125rem; height: 1.125rem; }
+  .lg { width: 1.375rem; height: 1.375rem; }
+
+  /* Focus is driven by the hidden input, so the ring has to be forwarded. */
+  .input:focus-visible + .control {
+    outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
+    outline-offset: var(--aui-focus-ring-offset);
+  }
+
+  .control[data-state="checked"],
+  .control[data-state="indeterminate"] {
+    background-color: var(--aui-color-accent);
+    border-color: var(--aui-color-accent);
+  }
+
+  .control[data-invalid="true"] { border-color: var(--aui-color-danger); }
+
+  .control[data-state="checked"][data-invalid="true"],
+  .control[data-state="indeterminate"][data-invalid="true"] {
+    background-color: var(--aui-color-danger);
+    border-color: var(--aui-color-danger);
+  }
+
+  .control[data-disabled="true"] {
+    background-color: var(--aui-color-bg-muted);
+    border-color: var(--aui-color-border);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .icon {
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+  }
+
+  .labelGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .label {
+    font-size: var(--aui-text-sm);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg);
+    cursor: pointer;
+  }
+
+  .label[data-disabled="true"] { cursor: not-allowed; opacity: 0.7; }
+
+  .required { margin-inline-start: var(--aui-space-1); color: var(--aui-color-danger); }
+
+  .description {
+    margin: 0;
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg-muted);
+  }
+
+  .error {
+    margin: 0;
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-danger);
+  }
+}

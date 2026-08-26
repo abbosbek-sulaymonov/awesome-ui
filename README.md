@@ -157,13 +157,73 @@ The viewport renders even when empty, because a live region has to exist in the
 accessibility tree before content is inserted into it. Errors switch it to
 `assertive`; everything else waits for a pause in speech.
 
+## Form controls
+
+`Checkbox` and `Switch` render a real `<input>` — visually hidden, but still in
+the layout and still doing everything a native control does: form participation,
+validation, autofill, and the keyboard behaviour you get for free. The visible
+box or track is a sibling that reacts to `:focus-visible` and `data-state`.
+
+`Switch` uses `role="switch"`, so assistive tech says on/off rather than
+checked/unchecked. `Checkbox` supports `indeterminate`, which exists only as a
+DOM property — there is no attribute for it, so React cannot set it
+declaratively and the component does it in an effect.
+
+All three form controls (`Input` included) share `useField`, which generates the
+ids and assembles `aria-describedby`. Its one job is to never reference an id
+for an element that was not rendered: a dangling `aria-describedby` is worse
+than none, because screen readers announce nothing and can drop the rest of the
+list with it.
+
+## Select
+
+A select-only combobox following the ARIA 1.2 pattern: the trigger is the
+`combobox`, the popup is the `listbox` it controls.
+
+```tsx
+<Select.Root defaultValue="react" name="framework">
+  <Select.Trigger label="Framework">
+    <Select.Value placeholder="Pick one" />
+  </Select.Trigger>
+  <Select.Content>
+    <Select.Group>
+      <Select.Label>Virtual DOM</Select.Label>
+      <Select.Item value="react">React</Select.Item>
+      <Select.Item value="vue">Vue</Select.Item>
+    </Select.Group>
+  </Select.Content>
+</Select.Root>
+```
+
+It rests on two new hooks, both reusable by `Menu`, `Tabs` and `RadioGroup`:
+
+| Hook | Job |
+| --- | --- |
+| `useRovingFocus` | Arrow keys, Home/End, wrapping, disabled-item skipping |
+| `useTypeahead` | Type-to-jump, with repeat-key cycling |
+
+`useRovingFocus` moves **real DOM focus** rather than tracking
+`aria-activedescendant`. Real focus is what makes `:focus-visible`,
+scroll-into-view and screen-reader cursors behave without reimplementing each —
+the cost is that items carry `tabindex="-1"`.
+
+`useTypeahead` copies two behaviours native `<select>` has and hand-rolled
+versions usually miss: repeating a character cycles through everything starting
+with it rather than searching for `"sss"`, and the search begins *after* the
+current item so a repeated key advances instead of re-selecting.
+
+A custom listbox submits nothing on its own, so `Select.Root` renders a hidden
+input when given a `name`.
+
 ## Status
 
-In place: `Button`, `Input`, `Dialog`, `Popover`, `Tooltip`, `Toast`,
-`ThemeProvider`, the primitive and hook layers, and the positioning engine.
-81 tests.
+In place: `Button`, `Input`, `Checkbox`, `Switch`, `Select`, `Card`, `Badge`,
+`Spinner`, `Dialog`, `Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the
+primitive and hook layers, and the positioning engine. 142 tests, 31 registry
+items.
 
-Next: the simple set — `Card`, `Badge`, `Spinner`, `Checkbox`, `Switch`, `Select`.
+Next: `Menu`, `Tabs` and `RadioGroup` — all three are mostly assembly now that
+roving focus and typeahead exist.
 
 ## License
 

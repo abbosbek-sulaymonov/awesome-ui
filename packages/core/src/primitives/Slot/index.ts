@@ -1,2 +1,2 @@
-export { Slot, disabledAnchorProps } from "./Slot";
+export { Slot, disabledAnchorProps, renderAsChild } from "./Slot";
 export type { SlotProps } from "./Slot";
