@@ -263,4 +263,22 @@ export const registry: RegistryItem[] = [
       "tokens",
     ],
   },
+  {
+    name: "toast",
+    type: "registry:ui",
+    title: "Toast",
+    description:
+      "Notification queue with an imperative API, pausing timers, and swipe-to-dismiss.",
+    files: [
+      "components/Toast/Toaster.tsx",
+      "components/Toast/Toast.module.css",
+      "components/Toast/Toast.types.ts",
+      "components/Toast/ToastIcon.tsx",
+      "components/Toast/toast.ts",
+      "components/Toast/toastStore.ts",
+      "components/Toast/useToast.ts",
+      "components/Toast/index.ts",
+    ],
+    registryDependencies: ["utils", "portal", "presence", "tokens"],
+  },
 ];

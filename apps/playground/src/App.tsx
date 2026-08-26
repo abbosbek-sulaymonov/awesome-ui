@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { Button, Dialog, Input, Popover, ThemeProvider, Tooltip, useTheme } from "@abek/awesome-ui";
+import {
+  Button,
+  Dialog,
+  Input,
+  Popover,
+  ThemeProvider,
+  Toaster,
+  Tooltip,
+  toast,
+  useTheme,
+} from "@abek/awesome-ui";
 
 function ThemeToggle() {
   const { colorScheme, toggle } = useTheme();
@@ -134,6 +144,51 @@ function Playground() {
       </section>
 
       <section className="stack">
+        <h2>Toast</h2>
+        <div className="row">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => toast.success("Project saved")}
+          >
+            Success
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              toast.error("Could not save", { description: "Network unreachable." })
+            }
+          >
+            Error
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              toast("Project deleted", {
+                action: { label: "Undo", onClick: () => toast.success("Restored") },
+              })
+            }
+          >
+            With action
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              toast.promise(
+                new Promise((resolve) => setTimeout(resolve, 1800)),
+                { loading: "Saving\u2026", success: "Saved", error: "Failed" },
+              )
+            }
+          >
+            Promise
+          </Button>
+        </div>
+      </section>
+
+      <section className="stack">
         <h2>Input</h2>
         <Input
           label="Email"
@@ -157,6 +212,7 @@ export function App() {
   return (
     <ThemeProvider>
       <Playground />
+      <Toaster />
     </ThemeProvider>
   );
 }
