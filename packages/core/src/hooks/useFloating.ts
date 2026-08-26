@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 import { computePosition } from "../utils/position";
 import type { ComputePositionOptions, Position } from "../utils/position";
 
@@ -69,10 +70,16 @@ export function useFloating({
     );
   }, [anchor, floating, arrow, placement, offset, flip, shift, padding, arrowSize]);
 
+  // Measured in a layout effect, not an effect: a plain effect runs after
+  // paint, so the browser shows one frame of the element at its unpositioned
+  // origin — the top-left corner — before the transform lands.
+  useIsomorphicLayoutEffect(() => {
+    if (!open || !anchor || !floating) return;
+    update();
+  }, [open, anchor, floating, update]);
+
   useEffect(() => {
     if (!open || !anchor || !floating) return;
-
-    update();
 
     const schedule = () => {
       if (frame.current !== null) return;
@@ -106,8 +113,23 @@ export function useFloating({
     position: "fixed",
     top: 0,
     left: 0,
-    // Keep it out of sight until measured, rather than flashing at 0,0.
-    transform: position ? `translate3d(${position.x}px, ${position.y}px, 0)` : undefined,
+    /**
+     * `translate`, not `transform`.
+     *
+     * They are separate CSS properties, and the used transform composes
+     * translate, then rotate, then scale, then transform. Writing the position
+     * into `transform` puts it in direct conflict with entrance animations,
+     * which animate `transform: scale(...)` — and a running animation outranks
+     * an inline style, so the element would sit at its unpositioned origin for
+     * the whole animation and only jump into place when it finished.
+     *
+     * Keeping them on separate properties lets a component animate scale and
+     * opacity freely without ever disturbing where it is anchored.
+     */
+    translate: position ? `${position.x}px ${position.y}px` : undefined,
+    // Belt and braces for the frame before measurement. The layout effect above
+    // means there should not be one, but a floating element that flashes across
+    // the viewport is a bad enough failure to guard twice.
     visibility: position ? undefined : "hidden",
   };
 
