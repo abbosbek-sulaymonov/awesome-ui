@@ -300,6 +300,135 @@ export function App() {
     ),
   },
   {
+    slug: "textarea",
+    title: "Textarea",
+    group: "Forms",
+    lead: "Multi-line input with auto-resize and a character count.",
+    propsFile: "components/Textarea/Textarea.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          Auto-resize resets the height to <code>auto</code> before reading{" "}
+          <code>scrollHeight</code>. That reset is the whole trick:{" "}
+          <code>scrollHeight</code> never reports less than the element&rsquo;s current
+          height, so measuring without it makes the box grow-only — delete a paragraph and
+          it keeps the space.
+        </p>
+        <p>
+          It measures in a layout effect, so the box never renders at the wrong height for
+          a frame, and hands scrolling back once <code>maxRows</code> is reached.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "slider",
+    title: "Slider",
+    group: "Forms",
+    lead: "Single and range slider with pointer, keyboard and step snapping.",
+    propsFile: "components/Slider/Slider.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <strong>Steps are measured from <code>min</code>, not from zero.</strong> With a
+          minimum of 5 and a step of 10, the reachable values are 5, 15, 25 — measuring
+          from zero would offer 10, 20, 30 and leave the minimum unreachable.
+        </p>
+        <p>
+          Values are rounded to the step&rsquo;s own precision, because repeated float
+          arithmetic otherwise produces <code>0.30000000000000004</code> and puts it in
+          the label.
+        </p>
+        <p>
+          Range thumbs <strong>clamp against each other rather than swapping</strong>.
+          Swapping changes which thumb is under the pointer mid-drag, which loses keyboard
+          focus and makes the gesture jump.
+        </p>
+        <p>
+          The <code>slider</code> role is on the thumb, not the track — the thumb is what
+          takes focus and what the value belongs to. A drag uses pointer capture, so it
+          keeps tracking after the pointer leaves the control.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "alert",
+    title: "Alert",
+    group: "Feedback",
+    lead: "Inline status message with four tones.",
+    propsFile: "components/Alert/Alert.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <strong>Not a live region by default.</strong> An alert rendered with the page is
+          part of the page, and <code>role=&quot;alert&quot;</code> on mount interrupts
+          whatever a screen reader was saying to read out something the user has not
+          navigated to yet. Pass <code>live</code> for messages that appear in response to
+          an action — danger tones then interrupt, everything else waits for a pause.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "progress",
+    title: "Progress",
+    group: "Feedback",
+    lead: "Determinate and indeterminate progress.",
+    propsFile: "components/Progress/Progress.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          An indeterminate bar omits <code>aria-valuenow</code> entirely. Sending{" "}
+          <code>0</code> instead announces &ldquo;0 percent&rdquo;, which is a claim about
+          progress rather than an admission that the total is unknown.
+        </p>
+        <p>
+          Under reduced motion the indeterminate bar pulses rather than sweeping — the
+          movement is the only signal it has, so it is softened rather than removed.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "skeleton",
+    title: "Skeleton",
+    group: "Feedback",
+    lead: "Placeholder for content that has not arrived.",
+    propsFile: "components/Skeleton/Skeleton.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          Always hidden from assistive tech. A screen reader announcing a row of empty
+          boxes tells nobody anything; the busy state belongs on the region that is
+          loading, as <code>aria-busy</code>, where it is announced once instead of once
+          per placeholder.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "separator",
+    title: "Separator",
+    group: "Data display",
+    lead: "A rule, with or without a label.",
+    propsFile: "components/Separator/Separator.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <code>decorative</code> removes it from the accessibility tree. A rule that
+          divides nothing should not be announced as dividing something.
+        </p>
+      </div>
+    ),
+  },
+  {
     slug: "dialog",
     title: "Dialog",
     group: "Overlays",
@@ -441,7 +570,15 @@ export function App() {
   },
 ];
 
-export const groups = ["Getting started", "Actions", "Forms", "Data display", "Overlays", "Navigation"];
+export const groups = [
+  "Getting started",
+  "Actions",
+  "Forms",
+  "Data display",
+  "Feedback",
+  "Overlays",
+  "Navigation",
+];
 
 export function PageBody({ page }: { page: DocPage }) {
   const pageExamples = examplesFor(page.slug);
