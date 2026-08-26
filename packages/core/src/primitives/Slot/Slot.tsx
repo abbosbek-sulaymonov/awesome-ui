@@ -98,3 +98,36 @@ export function disabledAnchorProps(
   if (!disabled) return undefined;
   return { href: undefined, role: "link", "aria-disabled": true, tabIndex: -1 };
 }
+
+/**
+ * Wraps a component's own scaffolding (icons, spinners, screen-reader text)
+ * around the child of an `asChild` component.
+ *
+ * The trap this closes: passing that scaffolding to `<Slot>` directly gives
+ * Slot a fragment to merge props onto instead of the consumer's element, and
+ * it renders nothing at all. The scaffolding has to go *inside* the child's
+ * children, which means cloning the child.
+ *
+ *   const content = renderAsChild(children, withAffixes, "Button");
+ *   if (!content) return null;
+ *   return <Slot ref={ref} {...rootProps}>{content}</Slot>;
+ */
+export function renderAsChild(
+  children: ReactNode,
+  wrap: (content: ReactNode) => ReactNode,
+  componentName: string,
+): ReactElement | null {
+  const child = Children.only(children);
+
+  if (!isValidElement(child)) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(
+        `[awesome-ui] <${componentName} asChild> expects a single React element child.`,
+      );
+    }
+    return null;
+  }
+
+  const element = child as ReactElement<{ children?: ReactNode }>;
+  return cloneElement(element, undefined, wrap(element.props.children));
+}

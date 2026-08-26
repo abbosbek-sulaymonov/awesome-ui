@@ -1,6 +1,6 @@
-import { Children, cloneElement, forwardRef, isValidElement } from "react";
-import type { ReactElement, ReactNode } from "react";
-import { Slot } from "../../primitives/Slot";
+import { forwardRef } from "react";
+import type { ReactNode } from "react";
+import { Slot, renderAsChild } from "../../primitives/Slot";
 import { VisuallyHidden } from "../../primitives/VisuallyHidden";
 import { cn } from "../../utils/cn";
 import styles from "./Button.module.css";
@@ -43,12 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     ...rest,
   };
 
-  /**
-   * Wraps whatever the label is in the spinner/icon scaffolding. Under
-   * `asChild` this has to be applied to the *child's* children, not to the
-   * child itself — otherwise Slot receives our wrapper markup instead of the
-   * consumer's element and has nothing to merge onto.
-   */
+  /** Wraps the label in the spinner/icon scaffolding. */
   const withAffixes = (label: ReactNode) => (
     <>
       {loading ? (
@@ -75,20 +70,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   );
 
   if (asChild) {
-    const child = Children.only(children);
-
-    if (!isValidElement(child)) {
-      if (process.env.NODE_ENV !== "production") {
-        console.warn("[awesome-ui] <Button asChild> expects a single React element child.");
-      }
-      return null;
-    }
-
-    const element = child as ReactElement<{ children?: ReactNode }>;
+    const content = renderAsChild(children, withAffixes, "Button");
+    if (!content) return null;
 
     return (
       <Slot ref={ref} {...rootProps}>
-        {cloneElement(element, undefined, withAffixes(element.props.children))}
+        {content}
       </Slot>
     );
   }
