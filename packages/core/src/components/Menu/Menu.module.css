@@ -1,0 +1,84 @@
+@layer aui.components {
+  .content {
+    z-index: var(--aui-z-dropdown);
+    min-width: 11rem;
+    max-height: min(24rem, 80vh);
+    overflow-y: auto;
+    padding: var(--aui-space-1);
+
+    background-color: var(--aui-color-surface-raised);
+    border: 1px solid var(--aui-color-border);
+    border-radius: var(--aui-radius-lg);
+    box-shadow: var(--aui-shadow-lg);
+    color: var(--aui-color-fg);
+    font-family: var(--aui-font-sans);
+    font-size: var(--aui-text-sm);
+  }
+
+  .content:focus { outline: none; }
+  .content[data-state="open"] { animation: aui-menu-in var(--aui-duration-fast) var(--aui-ease-standard); }
+  .content[data-state="closed"] { animation: aui-menu-out var(--aui-duration-fast) var(--aui-ease-standard); }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--aui-space-2);
+    padding: var(--aui-space-2);
+
+    border-radius: var(--aui-radius-md);
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+  }
+
+  /* Roving focus is the highlight, so :focus alone drives it. */
+  .item:focus,
+  .item:hover:not([data-disabled]) { background-color: var(--aui-color-bg-subtle); }
+
+  .item[data-disabled] { color: var(--aui-color-fg-subtle); cursor: not-allowed; pointer-events: none; }
+
+  .danger { color: var(--aui-color-danger); }
+  .danger:focus,
+  .danger:hover:not([data-disabled]) { background-color: var(--aui-color-danger-subtle); }
+
+  .indicator {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    color: var(--aui-color-accent);
+  }
+
+  .itemText { flex: 1 1 auto; min-width: 0; }
+
+  .shortcut {
+    flex-shrink: 0;
+    margin-inline-start: var(--aui-space-4);
+    color: var(--aui-color-fg-subtle);
+    font-family: var(--aui-font-mono);
+    font-size: var(--aui-text-xs);
+  }
+
+  .groupLabel {
+    padding: var(--aui-space-2) var(--aui-space-2) var(--aui-space-1);
+    font-size: var(--aui-text-xs);
+    font-weight: var(--aui-weight-semibold);
+    color: var(--aui-color-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .separator { height: 1px; margin: var(--aui-space-1) 0; background-color: var(--aui-color-border); }
+}
+
+@keyframes aui-menu-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes aui-menu-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
