@@ -1,21 +1,43 @@
 import { useState } from "react";
-import { Button, toast } from "@abek/awesome-ui";
+import { toast } from "@abek/awesome-ui";
+import { tokenize } from "../highlight";
+import type { Language } from "../highlight";
+import { CheckIcon, CopyIcon } from "./Icons";
 
-export function CodeBlock({ code, language = "tsx" }: { code: string; language?: string }) {
+export function CodeBlock({
+  code,
+  language = "tsx",
+}: {
+  code: string;
+  language?: Language;
+}) {
+  const tokens = tokenize(code, language);
+
   return (
     <pre className="codeBlock" tabIndex={0} aria-label={`${language} code`}>
-      <code>{code}</code>
+      <code>
+        {tokens.map((token, index) =>
+          token.type === "plain" ? (
+            token.value
+          ) : (
+            <span key={index} className={`tok-${token.type}`}>
+              {token.value}
+            </span>
+          ),
+        )}
+      </code>
     </pre>
   );
 }
 
-export function CopyButton({ value }: { value: string }) {
+export function CopyButton({ value, label = "Copy code" }: { value: string; label?: string }) {
   const [copied, setCopied] = useState(false);
 
   return (
-    <Button
-      size="sm"
-      variant="ghost"
+    <button
+      type="button"
+      className="iconButton"
+      aria-label={copied ? "Copied" : label}
       onClick={async () => {
         try {
           await navigator.clipboard.writeText(value);
@@ -23,12 +45,12 @@ export function CopyButton({ value }: { value: string }) {
           setTimeout(() => setCopied(false), 1500);
         } catch {
           // Clipboard access is denied in some contexts; say so rather than
-          // leaving the button looking broken.
+          // leaving the button looking inert.
           toast.error("Could not copy to clipboard");
         }
       }}
     >
-      {copied ? "Copied" : "Copy"}
-    </Button>
+      {copied ? <CheckIcon /> : <CopyIcon />}
+    </button>
   );
 }
