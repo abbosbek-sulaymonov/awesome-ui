@@ -97,7 +97,21 @@ body {
 
 a { color: var(--aui-color-accent); text-underline-offset: 3px; }
 
-:focus-visible {
+/**
+ * Focus ring for the docs' own chrome only.
+ *
+ * Library components are excluded deliberately. Several of them put the ring
+ * somewhere other than the focused element — Input focuses a bare <input> and
+ * draws the ring on the wrapper around it, so the affixes sit inside the ring —
+ * and they do that by setting `outline: none` on the element itself.
+ *
+ * Library rules live in `@layer aui.components`; this stylesheet is unlayered,
+ * and unlayered declarations beat layered ones regardless of specificity. So an
+ * unscoped `:focus-visible` here overrides that `outline: none` and paints a
+ * second ring inside the component's own. Excluding `aui-` classes hands focus
+ * styling back to the layer that actually knows where the ring belongs.
+ */
+:focus-visible:not([class*="aui-"]) {
   outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
   outline-offset: 2px;
   border-radius: var(--aui-radius-sm);

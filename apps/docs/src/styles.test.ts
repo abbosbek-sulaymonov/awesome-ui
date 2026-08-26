@@ -76,6 +76,30 @@ describe("docs.css", () => {
     expect(rule!.body).toMatch(/background-color/);
   });
 
+  it("never paints a focus ring onto a library component", () => {
+    // Library rules live in `@layer aui.components`; this stylesheet is
+    // unlayered, and unlayered declarations beat layered ones regardless of
+    // specificity. An unscoped `:focus-visible` here therefore overrides the
+    // `outline: none` that Input sets on its own <input> — which draws a second
+    // ring inside the one the component already draws on its wrapper.
+    const offenders = rules
+      .filter((rule) => rule.selectors.some((selector) => selector.includes(":focus-visible")))
+      .filter((rule) => /outline\s*:/.test(rule.body))
+      .filter((rule) =>
+        rule.selectors.some((selector) => {
+          const scopedOut = selector.includes(':not([class*="aui-"])');
+          // A selector naming a docs class cannot reach a library element.
+          const docsScoped = /\.(iconButton|navLink|brand|codeBlock|scrim|example|sidebar|topbar)/.test(
+            selector,
+          );
+          return !scopedOut && !docsScoped;
+        }),
+      )
+      .flatMap((rule) => rule.selectors);
+
+    expect(offenders).toEqual([]);
+  });
+
   it("gives a standalone code block its own outer border", () => {
     const rule = rules.find((entry) => entry.selectors.includes(".prose > .codeBlock"));
 
