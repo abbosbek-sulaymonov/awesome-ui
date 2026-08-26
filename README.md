@@ -236,12 +236,12 @@ one visit.
 ## Status
 
 In place: `Button`, `Input`, `Checkbox`, `Switch`, `RadioGroup`, `Select`,
-`Menu`, `Tabs`, `Card`, `Badge`, `Spinner`, `Dialog`, `Popover`, `Tooltip`,
-`Toast`, `ThemeProvider`, the primitive and hook layers, and the positioning
-engine. 175 tests, 34 registry items.
+`Menu`, `Tabs`, `Accordion`, `Card`, `Badge`, `Avatar`, `Spinner`, `Dialog`,
+`Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the primitive and hook layers,
+and the positioning engine. 205 tests, 36 registry items.
 
-Next: `Accordion` and `Avatar`, then a documentation site — the component set is
-broad enough now that the playground has stopped being enough to show it.
+Next: a documentation site. The component set is broad enough that the
+playground — one long scrolling page — has stopped being a good way to show it.
 
 ## License
 

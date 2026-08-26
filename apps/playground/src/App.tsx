@@ -1,5 +1,8 @@
 import { useState } from "react";
 import {
+  Accordion,
+  Avatar,
+  AvatarGroup,
   Badge,
   Button,
   Card,
@@ -130,6 +133,49 @@ function Playground() {
         <Switch label="Email alerts" description="Sent at most once a day." defaultChecked />
         <Switch label="Push notifications" labelFirst />
         <Switch label="Beta features" disabled />
+      </section>
+
+      <section className="stack">
+        <h2>Avatar</h2>
+        <div className="row">
+          <Avatar name="Ada Lovelace" size="xs" />
+          <Avatar name="Grace Hopper" size="sm" />
+          <Avatar name="Alan Turing" size="md" status="online" />
+          <Avatar name="Katherine Johnson" size="lg" status="busy" />
+          <Avatar name="Barbara Liskov" size="xl" square />
+        </div>
+        <div className="row">
+          <AvatarGroup max={3}>
+            <Avatar name="Ada Lovelace" />
+            <Avatar name="Grace Hopper" />
+            <Avatar name="Alan Turing" />
+            <Avatar name="Katherine Johnson" />
+            <Avatar name="Barbara Liskov" />
+          </AvatarGroup>
+        </div>
+      </section>
+
+      <section className="stack">
+        <h2>Accordion</h2>
+        <Accordion.Root defaultValue="what">
+          <Accordion.Item value="what">
+            <Accordion.Trigger>What is awesome-ui?</Accordion.Trigger>
+            <Accordion.Panel>
+              A personal React component library: accessible primitives, CSS Modules,
+              zero runtime dependencies.
+            </Accordion.Panel>
+          </Accordion.Item>
+          <Accordion.Item value="how">
+            <Accordion.Trigger>How is it distributed?</Accordion.Trigger>
+            <Accordion.Panel>
+              As an npm package, and as source you copy through the shadcn CLI.
+            </Accordion.Panel>
+          </Accordion.Item>
+          <Accordion.Item value="soon" disabled>
+            <Accordion.Trigger>Coming soon</Accordion.Trigger>
+            <Accordion.Panel>Not yet.</Accordion.Panel>
+          </Accordion.Item>
+        </Accordion.Root>
       </section>
 
       <section className="stack">
