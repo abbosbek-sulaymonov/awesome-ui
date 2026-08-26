@@ -175,15 +175,55 @@ for an element that was not rendered: a dangling `aria-describedby` is worse
 than none, because screen readers announce nothing and can drop the rest of the
 list with it.
 
+## Select
+
+A select-only combobox following the ARIA 1.2 pattern: the trigger is the
+`combobox`, the popup is the `listbox` it controls.
+
+```tsx
+<Select.Root defaultValue="react" name="framework">
+  <Select.Trigger label="Framework">
+    <Select.Value placeholder="Pick one" />
+  </Select.Trigger>
+  <Select.Content>
+    <Select.Group>
+      <Select.Label>Virtual DOM</Select.Label>
+      <Select.Item value="react">React</Select.Item>
+      <Select.Item value="vue">Vue</Select.Item>
+    </Select.Group>
+  </Select.Content>
+</Select.Root>
+```
+
+It rests on two new hooks, both reusable by `Menu`, `Tabs` and `RadioGroup`:
+
+| Hook | Job |
+| --- | --- |
+| `useRovingFocus` | Arrow keys, Home/End, wrapping, disabled-item skipping |
+| `useTypeahead` | Type-to-jump, with repeat-key cycling |
+
+`useRovingFocus` moves **real DOM focus** rather than tracking
+`aria-activedescendant`. Real focus is what makes `:focus-visible`,
+scroll-into-view and screen-reader cursors behave without reimplementing each —
+the cost is that items carry `tabindex="-1"`.
+
+`useTypeahead` copies two behaviours native `<select>` has and hand-rolled
+versions usually miss: repeating a character cycles through everything starting
+with it rather than searching for `"sss"`, and the search begins *after* the
+current item so a repeated key advances instead of re-selecting.
+
+A custom listbox submits nothing on its own, so `Select.Root` renders a hidden
+input when given a `name`.
+
 ## Status
 
-In place: `Button`, `Input`, `Checkbox`, `Switch`, `Card`, `Badge`, `Spinner`,
-`Dialog`, `Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the primitive and hook
-layers, and the positioning engine. 114 tests, 28 registry items.
+In place: `Button`, `Input`, `Checkbox`, `Switch`, `Select`, `Card`, `Badge`,
+`Spinner`, `Dialog`, `Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the
+primitive and hook layers, and the positioning engine. 142 tests, 31 registry
+items.
 
-Next: `Select` — the one that is not cheap. It needs roving tabindex and
-typeahead, neither of which exists yet, and both are reusable by `Menu`,
-`Tabs` and `RadioGroup` afterwards.
+Next: `Menu`, `Tabs` and `RadioGroup` — all three are mostly assembly now that
+roving focus and typeahead exist.
 
 ## License
 
