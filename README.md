@@ -157,13 +157,33 @@ The viewport renders even when empty, because a live region has to exist in the
 accessibility tree before content is inserted into it. Errors switch it to
 `assertive`; everything else waits for a pause in speech.
 
+## Form controls
+
+`Checkbox` and `Switch` render a real `<input>` — visually hidden, but still in
+the layout and still doing everything a native control does: form participation,
+validation, autofill, and the keyboard behaviour you get for free. The visible
+box or track is a sibling that reacts to `:focus-visible` and `data-state`.
+
+`Switch` uses `role="switch"`, so assistive tech says on/off rather than
+checked/unchecked. `Checkbox` supports `indeterminate`, which exists only as a
+DOM property — there is no attribute for it, so React cannot set it
+declaratively and the component does it in an effect.
+
+All three form controls (`Input` included) share `useField`, which generates the
+ids and assembles `aria-describedby`. Its one job is to never reference an id
+for an element that was not rendered: a dangling `aria-describedby` is worse
+than none, because screen readers announce nothing and can drop the rest of the
+list with it.
+
 ## Status
 
-In place: `Button`, `Input`, `Dialog`, `Popover`, `Tooltip`, `Toast`,
-`ThemeProvider`, the primitive and hook layers, and the positioning engine.
-81 tests.
+In place: `Button`, `Input`, `Checkbox`, `Switch`, `Card`, `Badge`, `Spinner`,
+`Dialog`, `Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the primitive and hook
+layers, and the positioning engine. 114 tests, 28 registry items.
 
-Next: the simple set — `Card`, `Badge`, `Spinner`, `Checkbox`, `Switch`, `Select`.
+Next: `Select` — the one that is not cheap. It needs roving tabindex and
+typeahead, neither of which exists yet, and both are reusable by `Menu`,
+`Tabs` and `RadioGroup` afterwards.
 
 ## License
 
