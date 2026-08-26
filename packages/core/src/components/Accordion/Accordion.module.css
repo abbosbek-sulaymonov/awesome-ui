@@ -1,0 +1,71 @@
+@layer aui.components {
+  .root { display: flex; flex-direction: column; font-family: var(--aui-font-sans); }
+
+  .outline { border: 1px solid var(--aui-color-border); border-radius: var(--aui-radius-lg); }
+  .outline .item + .item { border-block-start: 1px solid var(--aui-color-border); }
+
+  .separated { gap: var(--aui-space-2); }
+  .separated .item { border: 1px solid var(--aui-color-border); border-radius: var(--aui-radius-lg); }
+
+  .plain .item + .item { border-block-start: 1px solid var(--aui-color-border); }
+
+  .item { overflow: hidden; }
+  .item:first-child { border-start-start-radius: inherit; border-start-end-radius: inherit; }
+  .item:last-child { border-end-start-radius: inherit; border-end-end-radius: inherit; }
+
+  .header { margin: 0; display: flex; }
+
+  .trigger {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--aui-space-3);
+    padding: var(--aui-space-4);
+
+    background: none;
+    border: 0;
+    color: var(--aui-color-fg);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--aui-text-sm);
+    font-weight: var(--aui-weight-medium);
+    text-align: start;
+
+    transition: background-color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .trigger:hover:not(:disabled) { background-color: var(--aui-color-bg-subtle); }
+  .trigger:disabled { color: var(--aui-color-fg-subtle); cursor: not-allowed; opacity: 0.6; }
+
+  .indicator {
+    flex-shrink: 0;
+    color: var(--aui-color-fg-muted);
+    transition: transform var(--aui-duration-normal) var(--aui-ease-standard);
+  }
+
+  .trigger[data-state="open"] .indicator { transform: rotate(180deg); }
+
+  /* Height is animated from a CSS variable the component measures, because
+     `height: auto` is not an animatable value. */
+  .panel { overflow: hidden; }
+  .panel[data-state="open"] { animation: aui-accordion-open var(--aui-duration-normal) var(--aui-ease-standard); }
+  .panel[data-state="closed"] { animation: aui-accordion-close var(--aui-duration-fast) var(--aui-ease-standard); }
+
+  .panelInner {
+    padding: 0 var(--aui-space-4) var(--aui-space-4);
+    font-size: var(--aui-text-sm);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg-muted);
+  }
+}
+
+@keyframes aui-accordion-open {
+  from { height: 0; }
+  to { height: var(--aui-accordion-height); }
+}
+
+@keyframes aui-accordion-close {
+  from { height: var(--aui-accordion-height); }
+  to { height: 0; }
+}
