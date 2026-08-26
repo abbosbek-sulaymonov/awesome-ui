@@ -204,3 +204,21 @@ export type {
   AvatarStatus,
   AvatarGroupProps,
 } from "./Avatar";
+
+export { Separator } from "./Separator";
+export type { SeparatorProps, SeparatorOwnProps, SeparatorOrientation } from "./Separator";
+
+export { Skeleton } from "./Skeleton";
+export type { SkeletonProps, SkeletonOwnProps, SkeletonVariant, SkeletonAnimation } from "./Skeleton";
+
+export { Progress } from "./Progress";
+export type { ProgressProps, ProgressOwnProps, ProgressSize, ProgressTone } from "./Progress";
+
+export { Alert } from "./Alert";
+export type { AlertProps, AlertOwnProps, AlertVariant, AlertTone } from "./Alert";
+
+export { Textarea } from "./Textarea";
+export type { TextareaProps, TextareaOwnProps, TextareaVariant, TextareaSize } from "./Textarea";
+
+export { Slider } from "./Slider";
+export type { SliderProps, SliderOwnProps, SliderSize, SliderTone, SliderMark } from "./Slider";
