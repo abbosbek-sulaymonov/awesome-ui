@@ -178,3 +178,29 @@ export type {
   MenuLabelProps,
   MenuSeparatorProps,
 } from "./Menu";
+
+export {
+  Accordion,
+  AccordionRoot,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionPanel,
+} from "./Accordion";
+export type {
+  AccordionVariant,
+  AccordionRootProps,
+  AccordionSingleProps,
+  AccordionMultipleProps,
+  AccordionItemProps,
+  AccordionTriggerProps,
+  AccordionPanelProps,
+} from "./Accordion";
+
+export { Avatar, AvatarGroup } from "./Avatar";
+export type {
+  AvatarProps,
+  AvatarOwnProps,
+  AvatarSize,
+  AvatarStatus,
+  AvatarGroupProps,
+} from "./Avatar";
