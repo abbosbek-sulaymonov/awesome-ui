@@ -15,7 +15,8 @@
     "registry": "tsx scripts/build-registry.ts",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "release": "turbo run build && changeset publish",
+    "props": "tsx scripts/build-props.ts"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7",
