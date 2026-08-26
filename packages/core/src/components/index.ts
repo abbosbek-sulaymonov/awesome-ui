@@ -114,3 +114,26 @@ export type { CheckboxProps, CheckboxOwnProps, CheckboxSize } from "./Checkbox";
 
 export { Switch } from "./Switch";
 export type { SwitchProps, SwitchOwnProps, SwitchSize } from "./Switch";
+
+export {
+  Select,
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+} from "./Select";
+export type {
+  SelectSize,
+  SelectRootProps,
+  SelectTriggerProps,
+  SelectValueProps,
+  SelectContentProps,
+  SelectItemProps,
+  SelectGroupProps,
+  SelectLabelProps,
+  SelectSeparatorProps,
+} from "./Select";
