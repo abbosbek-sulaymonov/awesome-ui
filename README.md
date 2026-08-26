@@ -215,15 +215,33 @@ current item so a repeated key advances instead of re-selecting.
 A custom listbox submits nothing on its own, so `Select.Root` renders a hidden
 input when given a `name`.
 
+## Collections
+
+`Menu` and `Tabs` are assembled from `useRovingFocus` and `useTypeahead`.
+`RadioGroup` deliberately is **not**: radios sharing a `name` already get
+arrow-key navigation, wrapping and roving tabindex from the browser, and they
+announce group position ("2 of 5") on top of it. Reimplementing that would
+replace working platform behaviour with a worse copy. The roving hook exists for
+collections the platform does not cover.
+
+`Tabs` supports both activation modes. `automatic` selects a tab as focus
+reaches it, which is right for cheap panels. `manual` requires Enter or Space —
+the accessible choice when a panel costs a network request, since arrowing past
+three tabs should not fire three fetches.
+
+`Menu.Item` receives an `onSelect` whose default can be prevented to keep the
+menu open. `Menu.CheckboxItem` uses that, so several options can be toggled in
+one visit.
+
 ## Status
 
-In place: `Button`, `Input`, `Checkbox`, `Switch`, `Select`, `Card`, `Badge`,
-`Spinner`, `Dialog`, `Popover`, `Tooltip`, `Toast`, `ThemeProvider`, the
-primitive and hook layers, and the positioning engine. 142 tests, 31 registry
-items.
+In place: `Button`, `Input`, `Checkbox`, `Switch`, `RadioGroup`, `Select`,
+`Menu`, `Tabs`, `Card`, `Badge`, `Spinner`, `Dialog`, `Popover`, `Tooltip`,
+`Toast`, `ThemeProvider`, the primitive and hook layers, and the positioning
+engine. 175 tests, 34 registry items.
 
-Next: `Menu`, `Tabs` and `RadioGroup` — all three are mostly assembly now that
-roving focus and typeahead exist.
+Next: `Accordion` and `Avatar`, then a documentation site — the component set is
+broad enough now that the playground has stopped being enough to show it.
 
 ## License
 
