@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
 import { App } from "./App";
 import { examples } from "./examples";
@@ -15,6 +16,7 @@ import { pages } from "./pages";
 
 afterEach(() => {
   window.location.hash = "";
+  window.localStorage.clear();
 });
 
 describe("docs pages", () => {
@@ -42,6 +44,59 @@ describe("docs pages", () => {
     );
 
     expect(withoutExamples.map((page) => page.slug)).toEqual([]);
+  });
+});
+
+describe("docs shell", () => {
+  it("renders a topbar with the theme toggle in it", () => {
+    render(<App />);
+    const topbar = screen.getByRole("banner");
+
+    expect(topbar).toBeInTheDocument();
+    // The label names the outcome of pressing, not the current state — that is
+    // what a screen-reader user needs before they press.
+    expect(
+      within(topbar).getByRole("button", { name: /Switch to (dark|light) mode/ }),
+    ).toBeInTheDocument();
+  });
+
+  it("collapses and expands the sidebar", async () => {
+    const { container } = render(<App />);
+    const shell = container.querySelector(".shell")!;
+    const toggle = screen.getByRole("button", { name: /(Collapse|Expand) sidebar/ });
+
+    expect(shell).toHaveAttribute("data-sidebar", "open");
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+
+    await userEvent.click(toggle);
+
+    expect(shell).toHaveAttribute("data-sidebar", "collapsed");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("remembers the collapsed sidebar across mounts", async () => {
+    const first = render(<App />);
+    await userEvent.click(screen.getByRole("button", { name: /Collapse sidebar/ }));
+    first.unmount();
+
+    const { container } = render(<App />);
+    expect(container.querySelector(".shell")).toHaveAttribute("data-sidebar", "collapsed");
+  });
+
+  it("points the sidebar toggle at the sidebar it controls", () => {
+    render(<App />);
+    const toggle = screen.getByRole("button", { name: /(Collapse|Expand) sidebar/ });
+    const sidebar = screen.getByRole("navigation", { name: "Documentation" });
+
+    expect(toggle).toHaveAttribute("aria-controls", sidebar.id);
+  });
+
+  it("marks the current page in the sidebar", () => {
+    window.location.hash = "/button";
+    render(<App />);
+
+    const current = screen.getByRole("link", { current: "page" });
+    expect(current).toHaveTextContent("Button");
   });
 });
 

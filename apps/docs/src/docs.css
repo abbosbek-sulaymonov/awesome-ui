@@ -1,4 +1,85 @@
-/* Docs chrome only. Component styling comes from the library's own stylesheet. */
+/**
+ * Docs chrome. Component styling comes from the library's own stylesheet;
+ * everything here is the surrounding shell.
+ *
+ * Light mode deliberately does not use pure white. A near-white page next to a
+ * near-black code block is the pairing that reads as glare, so the page sits a
+ * step down from white, surfaces sit at white, and code blocks get a light
+ * theme of their own rather than a dark slab punched into the layout.
+ */
+
+:root {
+  --docs-sidebar-width: 15rem;
+  --docs-topbar-height: 3.5rem;
+
+  /* Chrome surfaces, a step softer than the library's raw tokens. */
+  --docs-bg: oklch(97.5% 0.003 265);
+  --docs-surface: oklch(100% 0 0);
+  --docs-raised: oklch(99% 0.002 265);
+  --docs-border: oklch(91% 0.004 265);
+  --docs-border-soft: oklch(94% 0.003 265);
+
+  /* Code: a light slate rather than a black slab. */
+  --docs-code-bg: oklch(97% 0.005 265);
+  --docs-code-fg: oklch(32% 0.015 265);
+  --docs-code-border: oklch(92% 0.005 265);
+
+  --tok-comment: oklch(58% 0.015 265);
+  --tok-string: oklch(50% 0.13 150);
+  --tok-keyword: oklch(50% 0.19 300);
+  --tok-number: oklch(52% 0.15 55);
+  --tok-tag: oklch(50% 0.16 250);
+  --tok-property: oklch(48% 0.12 210);
+  --tok-function: oklch(48% 0.17 265);
+  --tok-type: oklch(50% 0.13 85);
+  --tok-punctuation: oklch(55% 0.02 265);
+}
+
+:root[data-theme="dark"] {
+  --docs-bg: oklch(16% 0.008 265);
+  --docs-surface: oklch(19.5% 0.008 265);
+  --docs-raised: oklch(22.5% 0.009 265);
+  --docs-border: oklch(28% 0.01 265);
+  --docs-border-soft: oklch(24% 0.009 265);
+
+  --docs-code-bg: oklch(14% 0.008 265);
+  --docs-code-fg: oklch(88% 0.006 265);
+  --docs-code-border: oklch(26% 0.01 265);
+
+  --tok-comment: oklch(58% 0.015 265);
+  --tok-string: oklch(78% 0.13 150);
+  --tok-keyword: oklch(76% 0.14 300);
+  --tok-number: oklch(80% 0.12 60);
+  --tok-tag: oklch(76% 0.12 245);
+  --tok-property: oklch(80% 0.1 200);
+  --tok-function: oklch(78% 0.13 265);
+  --tok-type: oklch(83% 0.11 90);
+  --tok-punctuation: oklch(65% 0.015 265);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --docs-bg: oklch(16% 0.008 265);
+    --docs-surface: oklch(19.5% 0.008 265);
+    --docs-raised: oklch(22.5% 0.009 265);
+    --docs-border: oklch(28% 0.01 265);
+    --docs-border-soft: oklch(24% 0.009 265);
+
+    --docs-code-bg: oklch(14% 0.008 265);
+    --docs-code-fg: oklch(88% 0.006 265);
+    --docs-code-border: oklch(26% 0.01 265);
+
+    --tok-comment: oklch(58% 0.015 265);
+    --tok-string: oklch(78% 0.13 150);
+    --tok-keyword: oklch(76% 0.14 300);
+    --tok-number: oklch(80% 0.12 60);
+    --tok-tag: oklch(76% 0.12 245);
+    --tok-property: oklch(80% 0.1 200);
+    --tok-function: oklch(78% 0.13 265);
+    --tok-type: oklch(83% 0.11 90);
+    --tok-punctuation: oklch(65% 0.015 265);
+  }
+}
 
 *,
 *::before,
@@ -6,74 +87,167 @@
 
 body {
   margin: 0;
-  background-color: var(--aui-color-bg);
+  background-color: var(--docs-bg);
   color: var(--aui-color-fg);
   font-family: var(--aui-font-sans);
   line-height: var(--aui-leading-normal);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-a { color: var(--aui-color-accent); }
+a { color: var(--aui-color-accent); text-underline-offset: 3px; }
 
-.layout {
-  display: grid;
-  grid-template-columns: 16rem minmax(0, 1fr);
-  min-height: 100vh;
+:focus-visible {
+  outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--aui-radius-sm);
 }
 
-@media (max-width: 60rem) {
-  .layout { grid-template-columns: minmax(0, 1fr); }
-  .sidebar { display: none; }
-  .sidebar[data-open="true"] { display: flex; position: fixed; inset: 0; z-index: 50; }
-}
+/* ---------------- shell ---------------- */
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--aui-space-4);
-  padding: var(--aui-space-5);
-  border-inline-end: 1px solid var(--aui-color-border);
-  background-color: var(--aui-color-bg);
+.shell { min-height: 100vh; }
+
+.topbar {
   position: sticky;
   top: 0;
-  height: 100vh;
-  overflow-y: auto;
+  z-index: 40;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--aui-space-3);
+  height: var(--docs-topbar-height);
+  padding-inline: var(--aui-space-4);
+
+  background-color: color-mix(in oklab, var(--docs-bg) 80%, transparent);
+  backdrop-filter: blur(12px);
+  border-block-end: 1px solid var(--docs-border-soft);
 }
+
+.topbarLeft,
+.topbarRight { display: flex; align-items: center; gap: var(--aui-space-2); }
 
 .brand {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--aui-space-2);
+  color: var(--aui-color-fg);
+  text-decoration: none;
+}
+
+.brandMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--aui-color-accent);
+  border-radius: var(--aui-radius-md);
+  color: var(--aui-color-fg-on-accent);
+  font-size: 0.625rem;
+  font-weight: var(--aui-weight-bold);
+  letter-spacing: -0.02em;
 }
 
 .brandName {
-  font-size: var(--aui-text-md);
+  font-size: var(--aui-text-sm);
   font-weight: var(--aui-weight-semibold);
   letter-spacing: -0.01em;
 }
 
-.navGroup { display: flex; flex-direction: column; gap: 2px; }
+.iconButton {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--aui-radius-md);
+  color: var(--aui-color-fg-muted);
+  cursor: pointer;
+
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+.iconButton:hover {
+  background-color: var(--docs-raised);
+  border-color: var(--docs-border);
+  color: var(--aui-color-fg);
+}
+
+.iconButton[data-active] {
+  background-color: var(--aui-color-accent-subtle);
+  color: var(--aui-color-accent);
+}
+
+/* The body is the animated grid: collapsing the sidebar animates a track
+   width, which keeps the main column reflowing in step with it. */
+.body {
+  display: grid;
+  grid-template-columns: var(--docs-sidebar-width) minmax(0, 1fr);
+  transition: grid-template-columns 260ms var(--aui-ease-emphasized);
+}
+
+.shell[data-sidebar="collapsed"] .body { grid-template-columns: 0rem minmax(0, 1fr); }
+
+@media (prefers-reduced-motion: reduce) {
+  .body { transition: none; }
+}
+
+/* ---------------- sidebar ---------------- */
+
+.sidebar {
+  position: sticky;
+  top: var(--docs-topbar-height);
+  height: calc(100vh - var(--docs-topbar-height));
+  /* Clips the contents while the track width animates to zero. */
+  overflow: hidden;
+  border-inline-end: 1px solid var(--docs-border-soft);
+}
+
+.shell[data-sidebar="collapsed"] .sidebar { border-inline-end-color: transparent; }
+
+.sidebarInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-space-1);
+  width: var(--docs-sidebar-width);
+  height: 100%;
+  padding: var(--aui-space-4) var(--aui-space-3) var(--aui-space-8);
+  overflow-y: auto;
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+
+.shell[data-sidebar="collapsed"] .sidebarInner { opacity: 0; }
+
+.navGroup { display: flex; flex-direction: column; gap: 1px; }
 
 .navHeading {
-  padding: var(--aui-space-3) var(--aui-space-2) var(--aui-space-1);
-  font-size: var(--aui-text-xs);
-  font-weight: var(--aui-weight-semibold);
+  padding: var(--aui-space-4) var(--aui-space-2) var(--aui-space-1);
   color: var(--aui-color-fg-subtle);
+  font-size: 0.6875rem;
+  font-weight: var(--aui-weight-semibold);
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
 }
 
 .navLink {
-  padding: var(--aui-space-2);
+  position: relative;
+  padding: 0.4375rem var(--aui-space-2);
   border-radius: var(--aui-radius-md);
   color: var(--aui-color-fg-muted);
   font-size: var(--aui-text-sm);
   text-decoration: none;
-  transition: background-color 120ms, color 120ms;
+  white-space: nowrap;
+  transition: background-color 140ms ease, color 140ms ease;
 }
 
-.navLink:hover { background-color: var(--aui-color-bg-subtle); color: var(--aui-color-fg); }
+.navLink:hover { background-color: var(--docs-raised); color: var(--aui-color-fg); }
 
 .navLink[aria-current="page"] {
   background-color: var(--aui-color-accent-subtle);
@@ -81,45 +255,73 @@ a { color: var(--aui-color-accent); }
   font-weight: var(--aui-weight-medium);
 }
 
-.main { min-width: 0; padding: var(--aui-space-8) var(--aui-space-6) var(--aui-space-16); }
-.content { max-width: 48rem; margin-inline: auto; }
+.scrim { display: none; }
 
-.topbar {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--aui-space-2);
-  margin-block-end: var(--aui-space-6);
+@media (max-width: 60rem) {
+  /* Below this width the sidebar overlays rather than displacing the page —
+     a 15rem track would leave nothing readable beside it. */
+  .body { grid-template-columns: minmax(0, 1fr); }
+  .shell[data-sidebar="collapsed"] .body { grid-template-columns: minmax(0, 1fr); }
+
+  .sidebar {
+    position: fixed;
+    top: var(--docs-topbar-height);
+    inset-inline-start: 0;
+    z-index: 30;
+    width: var(--docs-sidebar-width);
+    background-color: var(--docs-surface);
+    border-inline-end: 1px solid var(--docs-border);
+    transform: translateX(0);
+    transition: transform 260ms var(--aui-ease-emphasized);
+  }
+
+  .shell[data-sidebar="collapsed"] .sidebar { transform: translateX(-100%); }
+  .shell[data-sidebar="collapsed"] .sidebarInner { opacity: 1; }
+
+  .shell[data-sidebar="open"] .scrim {
+    display: block;
+    position: fixed;
+    inset: var(--docs-topbar-height) 0 0;
+    z-index: 20;
+    padding: 0;
+    background-color: var(--aui-color-overlay);
+    border: 0;
+  }
 }
 
-@media (max-width: 60rem) { .topbar { display: flex; } }
+/* ---------------- content ---------------- */
+
+.main { min-width: 0; padding: var(--aui-space-10) var(--aui-space-6) var(--aui-space-16); }
+.content { max-width: 46rem; margin-inline: auto; }
 
 .pageTitle {
-  margin: 0 0 var(--aui-space-2);
-  font-size: var(--aui-text-2xl);
+  margin: 0 0 var(--aui-space-3);
+  font-size: 2rem;
   font-weight: var(--aui-weight-bold);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .pageLead {
-  margin: 0 0 var(--aui-space-8);
+  margin: 0 0 var(--aui-space-10);
   color: var(--aui-color-fg-muted);
   font-size: var(--aui-text-lg);
   line-height: var(--aui-leading-relaxed);
+  text-wrap: pretty;
 }
 
 .section { margin-block-end: var(--aui-space-12); }
 
 .sectionTitle {
-  margin: 0 0 var(--aui-space-3);
+  margin: var(--aui-space-10) 0 var(--aui-space-4);
   font-size: var(--aui-text-xl);
   font-weight: var(--aui-weight-semibold);
-  letter-spacing: -0.01em;
-  scroll-margin-top: var(--aui-space-4);
+  letter-spacing: -0.02em;
+  scroll-margin-top: calc(var(--docs-topbar-height) + var(--aui-space-4));
 }
 
-.prose { color: var(--aui-color-fg-muted); font-size: var(--aui-text-sm); }
-.prose p { margin: 0 0 var(--aui-space-4); }
+.prose { color: var(--aui-color-fg-muted); font-size: var(--aui-text-sm); line-height: var(--aui-leading-relaxed); }
+.prose p { margin: 0 0 var(--aui-space-4); text-wrap: pretty; }
 .prose ul { margin: 0 0 var(--aui-space-4); padding-inline-start: var(--aui-space-5); }
 .prose li { margin-block-end: var(--aui-space-2); }
 .prose strong { color: var(--aui-color-fg); font-weight: var(--aui-weight-semibold); }
@@ -127,18 +329,21 @@ a { color: var(--aui-color-accent); }
 .prose code,
 .inlineCode {
   padding: 0.125em 0.375em;
-  background-color: var(--aui-color-bg-muted);
+  background-color: var(--docs-code-bg);
+  border: 1px solid var(--docs-code-border);
   border-radius: var(--aui-radius-sm);
   color: var(--aui-color-fg);
   font-family: var(--aui-font-mono);
-  font-size: 0.875em;
+  font-size: 0.8125em;
 }
 
-/* ---------- example ---------- */
+/* ---------------- example ---------------- */
+
 .example {
-  margin-block-end: var(--aui-space-6);
-  border: 1px solid var(--aui-color-border);
-  border-radius: var(--aui-radius-lg);
+  margin-block-end: var(--aui-space-5);
+  background-color: var(--docs-surface);
+  border: 1px solid var(--docs-border);
+  border-radius: var(--aui-radius-xl);
   overflow: hidden;
 }
 
@@ -147,21 +352,24 @@ a { color: var(--aui-color-accent); }
   align-items: center;
   justify-content: space-between;
   gap: var(--aui-space-2);
-  padding: var(--aui-space-2) var(--aui-space-3);
-  border-block-end: 1px solid var(--aui-color-border);
-  background-color: var(--aui-color-bg-subtle);
+  padding: var(--aui-space-2) var(--aui-space-2) var(--aui-space-2) var(--aui-space-4);
+  border-block-end: 1px solid var(--docs-border-soft);
 }
 
-.exampleTitle { font-size: var(--aui-text-xs); font-weight: var(--aui-weight-medium); color: var(--aui-color-fg-muted); }
-.exampleActions { display: flex; gap: var(--aui-space-1); }
+.exampleTitle {
+  color: var(--aui-color-fg-muted);
+  font-size: var(--aui-text-xs);
+  font-weight: var(--aui-weight-medium);
+}
+
+.exampleActions { display: flex; gap: 2px; }
 
 .preview {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--aui-space-3);
-  padding: var(--aui-space-6);
-  background-color: var(--aui-color-surface);
+  padding: var(--aui-space-8) var(--aui-space-6);
 }
 
 .preview[data-layout="block"] { display: block; }
@@ -170,63 +378,84 @@ a { color: var(--aui-color-accent); }
   margin: 0;
   padding: var(--aui-space-4);
   overflow-x: auto;
-  background-color: var(--aui-neutral-950);
-  color: var(--aui-neutral-100);
+  background-color: var(--docs-code-bg);
+  border-block-start: 1px solid var(--docs-code-border);
+  color: var(--docs-code-fg);
   font-family: var(--aui-font-mono);
-  font-size: var(--aui-text-xs);
-  line-height: 1.7;
+  font-size: 0.75rem;
+  line-height: 1.75;
   tab-size: 2;
 }
 
 .codeBlock code { font: inherit; }
 
-/* ---------- props table ---------- */
-.tableWrap {
-  margin-block-end: var(--aui-space-6);
-  border: 1px solid var(--aui-color-border);
+/* Standalone code blocks in prose need their own border, not just a top rule. */
+.prose > .codeBlock {
+  margin-block-end: var(--aui-space-5);
+  border: 1px solid var(--docs-code-border);
   border-radius: var(--aui-radius-lg);
+}
+
+.tok-comment { color: var(--tok-comment); font-style: italic; }
+.tok-string { color: var(--tok-string); }
+.tok-keyword { color: var(--tok-keyword); }
+.tok-number { color: var(--tok-number); }
+.tok-tag { color: var(--tok-tag); }
+.tok-property { color: var(--tok-property); }
+.tok-function { color: var(--tok-function); }
+.tok-type { color: var(--tok-type); }
+.tok-punctuation { color: var(--tok-punctuation); }
+
+/* ---------------- props table ---------------- */
+
+.tableWrap {
+  margin-block-end: var(--aui-space-5);
+  background-color: var(--docs-surface);
+  border: 1px solid var(--docs-border);
+  border-radius: var(--aui-radius-xl);
   overflow-x: auto;
 }
 
 table { width: 100%; border-collapse: collapse; font-size: var(--aui-text-sm); }
 
 th {
-  padding: var(--aui-space-2) var(--aui-space-3);
-  background-color: var(--aui-color-bg-subtle);
-  border-block-end: 1px solid var(--aui-color-border);
-  color: var(--aui-color-fg-muted);
-  font-size: var(--aui-text-xs);
+  padding: var(--aui-space-3) var(--aui-space-4);
+  border-block-end: 1px solid var(--docs-border-soft);
+  color: var(--aui-color-fg-subtle);
+  font-size: 0.6875rem;
   font-weight: var(--aui-weight-semibold);
+  letter-spacing: 0.06em;
   text-align: start;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
   white-space: nowrap;
 }
 
-td { padding: var(--aui-space-3); border-block-end: 1px solid var(--aui-color-border); vertical-align: top; }
+td {
+  padding: var(--aui-space-3) var(--aui-space-4);
+  border-block-end: 1px solid var(--docs-border-soft);
+  vertical-align: top;
+}
+
 tr:last-child td { border-block-end: 0; }
 
-.propName { font-family: var(--aui-font-mono); font-size: var(--aui-text-xs); color: var(--aui-color-fg); white-space: nowrap; }
-.propType { font-family: var(--aui-font-mono); font-size: var(--aui-text-xs); color: var(--aui-color-accent); }
-.propDefault { font-family: var(--aui-font-mono); font-size: var(--aui-text-xs); color: var(--aui-color-fg-muted); white-space: nowrap; }
-.propDescription { color: var(--aui-color-fg-muted); font-size: var(--aui-text-xs); min-width: 14rem; }
+.propName {
+  color: var(--aui-color-fg);
+  font-family: var(--aui-font-mono);
+  font-size: 0.75rem;
+  font-weight: var(--aui-weight-medium);
+  white-space: nowrap;
+}
+
+.propType { color: var(--tok-type); font-family: var(--aui-font-mono); font-size: 0.75rem; }
+.propDefault { color: var(--aui-color-fg-subtle); font-family: var(--aui-font-mono); font-size: 0.75rem; white-space: nowrap; }
+.propDescription { min-width: 14rem; color: var(--aui-color-fg-muted); font-size: var(--aui-text-xs); line-height: var(--aui-leading-normal); }
 .propRequired { color: var(--aui-color-danger); }
 
 .interfaceName {
-  margin: var(--aui-space-6) 0 var(--aui-space-2);
+  margin: var(--aui-space-8) 0 var(--aui-space-3);
   font-family: var(--aui-font-mono);
   font-size: var(--aui-text-sm);
   font-weight: var(--aui-weight-semibold);
 }
 
-.note {
-  padding: var(--aui-space-3) var(--aui-space-4);
-  border-inline-start: 3px solid var(--aui-color-accent);
-  background-color: var(--aui-color-bg-subtle);
-  border-radius: var(--aui-radius-md);
-  color: var(--aui-color-fg-muted);
-  font-size: var(--aui-text-sm);
-  margin-block-end: var(--aui-space-6);
-}
-
-.footerNote { margin-block-start: var(--aui-space-4); color: var(--aui-color-fg-subtle); font-size: var(--aui-text-xs); }
+.footerNote { margin-block-start: var(--aui-space-3); color: var(--aui-color-fg-subtle); font-size: var(--aui-text-xs); }

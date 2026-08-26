@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Button } from "@abek/awesome-ui";
 import { CodeBlock, CopyButton } from "./CodeBlock";
+import { CodeIcon } from "./Icons";
 import type { Example as ExampleData } from "../examples";
 
 /**
- * Renders one example: the live component above, its real source below.
+ * One example: the live component above, its real source below.
  *
  * Both come from the same file, so the snippet can never disagree with the
  * demo — the usual way component docs go stale.
@@ -23,14 +23,17 @@ export function Example({
       <div className="exampleHeader">
         <span className="exampleTitle">{example.title}</span>
         <div className="exampleActions">
-          <Button
-            size="sm"
-            variant="ghost"
+          <button
+            type="button"
+            className="iconButton"
             onClick={() => setShowCode((open) => !open)}
             aria-expanded={showCode}
+            aria-label={showCode ? "Hide code" : "Show code"}
+            title={showCode ? "Hide code" : "Show code"}
+            data-active={showCode || undefined}
           >
-            {showCode ? "Hide code" : "Show code"}
-          </Button>
+            <CodeIcon />
+          </button>
           <CopyButton value={example.source} />
         </div>
       </div>
