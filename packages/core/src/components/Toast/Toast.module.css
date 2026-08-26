@@ -1,0 +1,154 @@
+@layer aui.components {
+  .viewport {
+    position: fixed;
+    z-index: var(--aui-z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--aui-space-2);
+    width: min(24rem, calc(100vw - var(--aui-space-8)));
+    margin: 0;
+    padding: var(--aui-space-4);
+    list-style: none;
+    /* The viewport spans a corner but must not block the page behind it;
+       each toast re-enables pointer events for itself. */
+    pointer-events: none;
+  }
+
+  .viewport[data-position^="bottom"] {
+    flex-direction: column-reverse;
+    bottom: 0;
+  }
+
+  .viewport[data-position^="top"] { top: 0; }
+  .viewport[data-position$="right"] { right: 0; align-items: flex-end; }
+  .viewport[data-position$="left"] { left: 0; align-items: flex-start; }
+
+  .viewport[data-position$="center"] {
+    left: 50%;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+
+  .toast {
+    position: relative;
+    display: flex;
+    gap: var(--aui-space-3);
+    width: 100%;
+    padding: var(--aui-space-3) var(--aui-space-4);
+    pointer-events: auto;
+    touch-action: pan-y;
+
+    background-color: var(--aui-color-surface-raised);
+    border: 1px solid var(--aui-color-border);
+    border-radius: var(--aui-radius-lg);
+    box-shadow: var(--aui-shadow-lg);
+    color: var(--aui-color-fg);
+    font-family: var(--aui-font-sans);
+  }
+
+  .toast[data-state="open"] {
+    animation: aui-toast-in var(--aui-duration-normal) var(--aui-ease-emphasized);
+  }
+
+  .toast[data-state="closed"] {
+    animation: aui-toast-out var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .viewport[data-position^="bottom"] .toast[data-state="open"] {
+    animation-name: aui-toast-in-bottom;
+  }
+
+  /* While a swipe is in progress the pointer drives the transform, so the
+     entrance animation must not fight it. */
+  .toast[data-swiping="true"] {
+    animation: none;
+    transition: none;
+    user-select: none;
+  }
+
+  .indicator {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    margin-block-start: 2px;
+  }
+
+  .toast[data-variant="success"] .indicator { color: var(--aui-color-success); }
+  .toast[data-variant="warning"] .indicator { color: var(--aui-color-warning); }
+  .toast[data-variant="error"] .indicator { color: var(--aui-color-danger); }
+  .toast[data-variant="info"] .indicator { color: var(--aui-color-accent); }
+
+  .body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: var(--aui-space-1);
+    min-width: 0;
+  }
+
+  .title {
+    font-size: var(--aui-text-sm);
+    font-weight: var(--aui-weight-medium);
+    line-height: var(--aui-leading-tight);
+  }
+
+  .description {
+    font-size: var(--aui-text-xs);
+    line-height: var(--aui-leading-normal);
+    color: var(--aui-color-fg-muted);
+    overflow-wrap: anywhere;
+  }
+
+  .action {
+    align-self: flex-start;
+    margin-block-start: var(--aui-space-1);
+    padding: 0;
+
+    background: none;
+    border: 0;
+    color: var(--aui-color-accent);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--aui-text-xs);
+    font-weight: var(--aui-weight-medium);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .close {
+    flex-shrink: 0;
+    align-self: flex-start;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--aui-space-6);
+    height: var(--aui-space-6);
+    padding: 0;
+
+    background: none;
+    border: 0;
+    border-radius: var(--aui-radius-sm);
+    color: var(--aui-color-fg-subtle);
+    cursor: pointer;
+
+    transition: color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .close:hover { color: var(--aui-color-fg); }
+}
+
+@keyframes aui-toast-in {
+  from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes aui-toast-in-bottom {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes aui-toast-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: scale(0.96); }
+}
