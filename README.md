@@ -96,14 +96,51 @@ Run the sandbox:
 pnpm --filter @awesome-ui/playground dev
 ```
 
+## Overlays
+
+`Dialog`, `Popover` and `Tooltip` are compound components — you assemble the
+parts, so nothing is locked behind a props API:
+
+```tsx
+<Dialog.Root>
+  <Dialog.Trigger asChild>
+    <Button variant="danger">Delete</Button>
+  </Dialog.Trigger>
+  <Dialog.Overlay />
+  <Dialog.Content size="sm">
+    <Dialog.Header>
+      <Dialog.Title>Delete project</Dialog.Title>
+      <Dialog.Description>This cannot be undone.</Dialog.Description>
+    </Dialog.Header>
+    <Dialog.Footer>
+      <Dialog.Close asChild><Button variant="ghost">Cancel</Button></Dialog.Close>
+      <Button variant="danger">Delete</Button>
+    </Dialog.Footer>
+  </Dialog.Content>
+</Dialog.Root>
+```
+
+They sit on four hand-built primitives, each usable on its own:
+
+| Primitive | Job |
+| --- | --- |
+| `useFocusTrap` | Cycles Tab inside a container and restores focus on close |
+| `DismissableLayer` | Escape and outside-press dismissal, stacked so only the top layer reacts |
+| `usePresence` | Defers unmount until the exit animation finishes |
+| `useFloating` | Anchored positioning with flip, shift, and an arrow that tracks the anchor |
+
+`Dialog.Title` and `Dialog.Description` register themselves, so `aria-labelledby`
+and `aria-describedby` are only set when those nodes actually exist. Tooltips use
+`aria-describedby` rather than `aria-labelledby`, because a tooltip supplements a
+control's name instead of replacing it.
+
 ## Status
 
-Foundation and first components are in place: `Button`, `Input`, `ThemeProvider`,
-`Slot`, `Portal`, `VisuallyHidden`, plus the hook and utility layer.
+In place: `Button`, `Input`, `Dialog`, `Popover`, `Tooltip`, `ThemeProvider`,
+the primitive and hook layers, and the positioning engine. 56 tests.
 
-Next: Card, Badge, Spinner, Checkbox, Switch — then the overlay set (Dialog,
-Popover, Tooltip, Toast), which needs a focus trap, a dismissable-layer stack,
-and positioning built first.
+Next: `Toast` — a different shape, needing a queue and a provider rather than an
+anchor — then the simple set (`Card`, `Badge`, `Spinner`, `Checkbox`, `Switch`).
 
 ## License
 
