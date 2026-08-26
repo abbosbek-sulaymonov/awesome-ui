@@ -6,6 +6,8 @@ export { useFloating } from "./useFloating";
 export type { UseFloatingParams, UseFloatingReturn } from "./useFloating";
 export { useFocusTrap } from "./useFocusTrap";
 export type { UseFocusTrapParams } from "./useFocusTrap";
+export { useField } from "./useField";
+export type { UseFieldParams, UseFieldReturn } from "./useField";
 export { useId } from "./useId";
 export { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 export { useScrollLock } from "./useScrollLock";

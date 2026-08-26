@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { useId } from "../../hooks/useId";
+import { useField } from "../../hooks/useField";
 import { cn } from "../../utils/cn";
 import styles from "./Input.module.css";
 import { inputWrapperVariants } from "./Input.variants";
@@ -26,18 +26,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   },
   ref,
 ) {
-  const id = useId(providedId, "aui-input");
-  const descriptionId = `${id}-description`;
-  const errorId = `${id}-error`;
-
-  const isInvalid = Boolean(invalid) || errorMessage != null;
-
-  // Only reference ids for elements we actually render, or screen readers
-  // announce nothing and swallow the rest of the list.
-  const describedBy =
-    [providedDescribedBy, description != null ? descriptionId : null]
-      .filter(Boolean)
-      .join(" ") || undefined;
+  const { id, descriptionId, errorId, isInvalid, describedBy, errorMessageId } = useField({
+    id: providedId,
+    hasDescription: description != null,
+    hasError: errorMessage != null,
+    invalid,
+    describedBy: providedDescribedBy,
+    prefix: "aui-input",
+  });
 
   return (
     <div className={cn(styles.field, fieldClassName)} data-invalid={isInvalid || undefined}>
@@ -71,7 +67,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           required={required}
           aria-invalid={isInvalid || undefined}
           aria-describedby={describedBy}
-          aria-errormessage={errorMessage != null ? errorId : undefined}
+          aria-errormessage={errorMessageId}
           {...rest}
         />
 
