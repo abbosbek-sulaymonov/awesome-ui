@@ -179,6 +179,18 @@ describe("Menu", () => {
     await waitFor(() => expect(screen.queryByRole("menu")).not.toBeInTheDocument());
   });
 
+  it("closes on Tab and hands focus back to the trigger", async () => {
+    render(<Basic />);
+
+    await userEvent.click(trigger());
+    await waitFor(() => expect(screen.getByRole("menuitem", { name: /New file/ })).toHaveFocus());
+
+    // Portalled to the end of <body>, so tabbing out would otherwise strand
+    // focus there with the menu still open.
+    await userEvent.tab();
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+  });
+
   it("renders its trigger as a child element under asChild", async () => {
     render(
       <Menu.Root>

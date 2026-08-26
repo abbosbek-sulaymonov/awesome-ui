@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
+import { useRef } from "react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { resetLayerStack } from "../../../src/primitives/DismissableLayer";
@@ -90,6 +91,28 @@ describe("Dialog", () => {
       await userEvent.tab();
       expect(dialog).toContainElement(document.activeElement as HTMLElement);
     }
+  });
+
+  it("honours initialFocusRef over the first tabbable element", async () => {
+    function Harness() {
+      const ref = useRef<HTMLInputElement>(null);
+      return (
+        <Dialog.Root>
+          <Dialog.Trigger>Open</Dialog.Trigger>
+          <Dialog.Content initialFocusRef={ref} aria-label="D">
+            <button type="button">First</button>
+            <input aria-label="Second" ref={ref} />
+          </Dialog.Content>
+        </Dialog.Root>
+      );
+    }
+
+    render(<Harness />);
+    await userEvent.click(screen.getByRole("button", { name: "Open" }));
+
+    // Load-bearing detail: the ref is only populated after the content mounts,
+    // so this depends on the portal's own mount causing a second render.
+    await waitFor(() => expect(screen.getByLabelText("Second")).toHaveFocus());
   });
 
   it("closes on Escape", async () => {

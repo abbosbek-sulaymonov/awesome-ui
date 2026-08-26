@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A new push to the same branch makes the previous run irrelevant.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Generated before the build, since the docs import the props it writes.
+      - run: pnpm props
+
+      - run: pnpm build
+      - run: pnpm typecheck
+      - run: pnpm test
+
+      # `pnpm registry` is a validation step as much as a build one: it fails if
+      # an item declares a registry dependency that is not in the manifest. Its
+      # output is gitignored, so only the prop tables are checked for drift —
+      # those are committed, and they are generated from the TypeScript source,
+      # so a stale file means the docs disagree with the types.
+      - run: pnpm registry
+
+      - name: Check the generated prop tables are current
+        run: |
+          if [ -n "$(git status --porcelain apps/docs/src/generated)" ]; then
+            echo "Prop tables are out of date. Run 'pnpm props' and commit the result."
+            git --no-pager diff --stat apps/docs/src/generated
+            exit 1
+          fi

@@ -248,6 +248,23 @@ describe("Select", () => {
     expect(onSubmit).toHaveBeenCalledOnce();
   });
 
+  it("closes on Tab and hands focus back to the trigger", async () => {
+    render(
+      <div>
+        <Basic />
+        <button type="button">After</button>
+      </div>,
+    );
+
+    await userEvent.click(trigger());
+    await waitFor(() => expect(screen.getByRole("option", { name: "React" })).toHaveFocus());
+
+    // The list is portalled to the end of <body>, so tabbing out of it would
+    // otherwise strand focus there with the list still open.
+    await userEvent.tab();
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+  });
+
   it("wires description and error onto the trigger", () => {
     render(
       <Select.Root>

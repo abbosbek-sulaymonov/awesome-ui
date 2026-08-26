@@ -266,12 +266,12 @@ one visit.
 `Popover`, `Tooltip`, `Toast` — plus `ThemeProvider`, the primitive and hook
 layers, and the positioning engine.
 
-362 tests, 42 registry items, 30 kB gzipped.
+365 tests, 42 registry items, 30 kB gzipped.
 
-255 tests in total: 205 in the library, 50 in the docs site.
+365 tests in total: 273 in the library, 92 in the docs site.
 
-Next: publishing. The package has never been released, and the docs site is not
-deployed anywhere.
+The package is ready to publish and the docs site is ready to deploy; neither
+has happened yet.
 
 ## License
 

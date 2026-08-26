@@ -4,6 +4,15 @@
   "description": "Personalized React UI library \u2014 accessible primitives, CSS Modules, zero runtime dependencies",
   "license": "MIT",
   "author": "Abbosbek Sulaymonov",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abbosbek-sulaymonov/awesome-ui.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/abbosbek-sulaymonov/awesome-ui#readme",
+  "bugs": {
+    "url": "https://github.com/abbosbek-sulaymonov/awesome-ui/issues"
+  },
   "keywords": [
     "react",
     "ui",
@@ -31,7 +40,8 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "vite build && cp ../tokens/dist/tokens.css dist/tokens.css",

@@ -272,7 +272,7 @@ SelectValue.displayName = "Select.Value";
 
 const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(
   function SelectContent(
-    { emptyMessage = "No options", className, style, children, ...rest },
+    { emptyMessage = "No options", className, style, children, onKeyDown, ...rest },
     forwardedRef,
   ) {
     const { open, setOpen, value, contentId, triggerId, floating, triggerRef } =
@@ -286,6 +286,28 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(
       floating.setFloating,
       setNode,
     );
+
+    /**
+     * The list matches the trigger's width, the way a native select does.
+     *
+     * Measured in a layout effect rather than read from the ref during render:
+     * a render-time DOM read is unsafe under concurrent rendering, and it never
+     * updated if the trigger resized while the list was open.
+     */
+    const [triggerWidth, setTriggerWidth] = useState<number | undefined>(undefined);
+
+    useIsomorphicLayoutEffect(() => {
+      const trigger = triggerRef.current;
+      if (!open || !trigger) return;
+
+      const measure = () => setTriggerWidth(trigger.offsetWidth);
+      measure();
+
+      const observer =
+        typeof ResizeObserver !== "undefined" ? new ResizeObserver(measure) : null;
+      observer?.observe(trigger);
+      return () => observer?.disconnect();
+    }, [open, triggerRef]);
 
     const itemSelector = '[role="option"]:not([data-disabled])';
 
@@ -347,15 +369,21 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(
           data-state={state}
           data-side={floating.position?.side ?? "bottom"}
           className={cn(styles.content, className)}
-          style={{
-            ...floating.floatingStyles,
-            // Match the trigger's width, the way a native select does.
-            minWidth: triggerRef.current?.offsetWidth,
-            ...style,
-          }}
+          style={{ ...floating.floatingStyles, minWidth: triggerWidth, ...style }}
           onDismiss={onDismiss}
           excludedElements={[triggerRef.current]}
           {...rest}
+          onKeyDown={composeEventHandlers(onKeyDown, (event) => {
+            if (event.key !== "Tab") return;
+
+            // The list lives in a portal at the end of <body>, so tabbing out of
+            // it lands nowhere useful and leaves the list open behind. Closing
+            // and handing focus back to the trigger — without preventing the
+            // default — lets the browser continue the tab from where the list
+            // visually was.
+            setOpen(false);
+            triggerRef.current?.focus({ preventScroll: true });
+          })}
         >
           {children}
           {isEmpty ? <div className={styles.empty}>{emptyMessage}</div> : null}
