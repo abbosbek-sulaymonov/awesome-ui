@@ -7,8 +7,10 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
+      // Tests live outside src now, so nothing test-shaped can reach the
+      // published types in the first place.
       include: ["src"],
-      exclude: ["src/**/*.test.tsx", "src/**/*.test.ts", "src/**/*.stories.tsx"],
+      exclude: ["src/**/*.stories.tsx"],
       rollupTypes: true,
       tsconfigPath: "./tsconfig.json",
     }),

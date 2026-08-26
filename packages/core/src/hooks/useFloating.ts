@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 import { computePosition } from "../utils/position";
 import type { ComputePositionOptions, Position } from "../utils/position";
@@ -70,9 +70,25 @@ export function useFloating({
     );
   }, [anchor, floating, arrow, placement, offset, flip, shift, padding, arrowSize]);
 
+  /**
+   * Position belongs to a specific floating element, so it is discarded the
+   * moment that element goes away.
+   *
+   * Keeping it meant the next open rendered at wherever the *previous* one had
+   * been — and because `position` was non-null, nothing was hidden while that
+   * happened. The element appeared at the old spot, then jumped to the new one,
+   * which reads as the panel showing twice.
+   *
+   * Clearing on unmount rather than on close matters: the exit animation still
+   * needs the element to hold its place while it plays.
+   */
+  useIsomorphicLayoutEffect(() => {
+    if (!floating) setPosition(null);
+  }, [floating]);
+
   // Measured in a layout effect, not an effect: a plain effect runs after
   // paint, so the browser shows one frame of the element at its unpositioned
-  // origin — the top-left corner — before the transform lands.
+  // origin — the top-left corner — before the position lands.
   useIsomorphicLayoutEffect(() => {
     if (!open || !anchor || !floating) return;
     update();
@@ -109,7 +125,7 @@ export function useFloating({
     };
   }, [open, anchor, floating, update]);
 
-  const floatingStyles: React.CSSProperties = {
+  const floatingStyles: React.CSSProperties = useMemo(() => ({
     position: "fixed",
     top: 0,
     left: 0,
@@ -131,23 +147,36 @@ export function useFloating({
     // means there should not be one, but a floating element that flashes across
     // the viewport is a bad enough failure to guard twice.
     visibility: position ? undefined : "hidden",
-  };
+  }), [position]);
 
-  const arrowStyles: React.CSSProperties | undefined = position
-    ? {
-        position: "absolute",
-        left: position.arrowX === null ? undefined : `${position.arrowX}px`,
-        top: position.arrowY === null ? undefined : `${position.arrowY}px`,
-      }
-    : undefined;
+  const arrowStyles: React.CSSProperties | undefined = useMemo(
+    () =>
+      position
+        ? {
+            position: "absolute",
+            left: position.arrowX === null ? undefined : `${position.arrowX}px`,
+            top: position.arrowY === null ? undefined : `${position.arrowY}px`,
+          }
+        : undefined,
+    [position],
+  );
 
-  return {
-    setAnchor,
-    setFloating,
-    setArrow,
-    position,
-    floatingStyles,
-    arrowStyles,
-    update,
-  };
+  /**
+   * Memoised because callers put this object straight into a context value.
+   * Returning a fresh one each render defeated their `useMemo`, so every
+   * consumer — every option in a Select, every item in a Menu — re-rendered on
+   * every render of the root, and again on every scroll frame while open.
+   */
+  return useMemo(
+    () => ({
+      setAnchor,
+      setFloating,
+      setArrow,
+      position,
+      floatingStyles,
+      arrowStyles,
+      update,
+    }),
+    [position, floatingStyles, arrowStyles, update],
+  );
 }
