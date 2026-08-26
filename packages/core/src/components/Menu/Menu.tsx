@@ -1,8 +1,7 @@
-import { forwardRef, useCallback, useMemo, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDisclosure } from "../../hooks/useDisclosure";
 import { useFloating } from "../../hooks/useFloating";
 import { useId } from "../../hooks/useId";
-import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import { useRovingFocus } from "../../hooks/useRovingFocus";
 import { useTypeahead } from "../../hooks/useTypeahead";
 import { DismissableLayer } from "../../primitives/DismissableLayer";
@@ -134,9 +133,16 @@ const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(function MenuCo
     onMatch: focusItem,
   });
 
-  // A menu opens with its first item focused; leaving focus on the trigger
-  // would make the arrow keys do nothing.
-  useIsomorphicLayoutEffect(() => {
+  /**
+   * A menu opens with its first item focused; leaving focus on the trigger
+   * would make the arrow keys do nothing.
+   *
+   * A plain effect for the same reason as Select: the content is
+   * `visibility: hidden` until useFloating has measured, and a hidden element
+   * cannot take focus. Effects run after layout effects, so the position has
+   * landed by the time this runs.
+   */
+  useEffect(() => {
     if (open && node) focusFirst();
   }, [open, node, focusFirst]);
 

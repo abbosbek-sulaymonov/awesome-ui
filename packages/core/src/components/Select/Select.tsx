@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useMemo, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { useControllableState } from "../../hooks/useControllableState";
 import { useDisclosure } from "../../hooks/useDisclosure";
@@ -303,9 +303,18 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(
       onMatch: focusItem,
     });
 
-    // Open with focus on the selected item, or the first one — a native select
-    // never opens with nothing highlighted.
-    useIsomorphicLayoutEffect(() => {
+    /**
+     * Open with focus on the selected item, or the first one — a native select
+     * never opens with nothing highlighted.
+     *
+     * A plain effect, deliberately. Until useFloating has measured, the content
+     * is `visibility: hidden`, and a hidden element cannot take focus — the call
+     * would silently do nothing and leave focus on the trigger, where every
+     * arrow press just reopens the list instead of moving through it. Effects
+     * run after layout effects, so by this point the position has landed and the
+     * element is focusable.
+     */
+    useEffect(() => {
       if (!open || !node) return;
 
       const selectedItem = value
