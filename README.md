@@ -134,13 +134,36 @@ and `aria-describedby` are only set when those nodes actually exist. Tooltips us
 `aria-describedby` rather than `aria-labelledby`, because a tooltip supplements a
 control's name instead of replacing it.
 
+## Toast
+
+Mount `<Toaster />` once near the root, then call `toast()` from anywhere:
+
+```tsx
+import { Toaster, toast } from "@abek/awesome-ui";
+
+toast.success("Project saved");
+toast.error("Could not save", { description: err.message });
+toast("Project deleted", { action: { label: "Undo", onClick: restore } });
+toast.promise(save(), { loading: "Saving…", success: "Saved", error: "Failed" });
+```
+
+The queue lives in a module-level store read through `useSyncExternalStore`, so
+`toast()` works in an API client or an event listener, not only inside a
+component. Countdowns pause while the pointer is over the viewport, while
+anything in it has focus, and while the tab is in the background — a toast that
+expired while the user was elsewhere was never seen.
+
+The viewport renders even when empty, because a live region has to exist in the
+accessibility tree before content is inserted into it. Errors switch it to
+`assertive`; everything else waits for a pause in speech.
+
 ## Status
 
-In place: `Button`, `Input`, `Dialog`, `Popover`, `Tooltip`, `ThemeProvider`,
-the primitive and hook layers, and the positioning engine. 56 tests.
+In place: `Button`, `Input`, `Dialog`, `Popover`, `Tooltip`, `Toast`,
+`ThemeProvider`, the primitive and hook layers, and the positioning engine.
+81 tests.
 
-Next: `Toast` — a different shape, needing a queue and a provider rather than an
-anchor — then the simple set (`Card`, `Badge`, `Spinner`, `Checkbox`, `Switch`).
+Next: the simple set — `Card`, `Badge`, `Spinner`, `Checkbox`, `Switch`, `Select`.
 
 ## License
 
