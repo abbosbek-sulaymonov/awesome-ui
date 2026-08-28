@@ -17,6 +17,8 @@ export {
   isFocusable,
   isTabbable,
 } from "./tabbable";
+export { getPaginationRange } from "./pagination";
+export type { PaginationItem, PaginationRangeOptions } from "./pagination";
 export { createVariants } from "./variants";
 export type {
   VariantProps,
