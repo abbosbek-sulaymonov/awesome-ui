@@ -1,0 +1,72 @@
+@layer aui.components {
+  .root {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--aui-space-2);
+
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--aui-radius-md);
+    color: var(--aui-color-fg-muted);
+    cursor: pointer;
+    font: inherit;
+    font-family: var(--aui-font-sans);
+    font-size: var(--aui-text-sm);
+    font-weight: var(--aui-weight-medium);
+
+    transition:
+      background-color var(--aui-duration-fast) var(--aui-ease-standard),
+      color var(--aui-duration-fast) var(--aui-ease-standard),
+      border-color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .sm { min-height: var(--aui-space-8); padding-inline: var(--aui-space-2); }
+  .md { min-height: var(--aui-space-10); padding-inline: var(--aui-space-3); }
+  .lg { min-height: var(--aui-space-12); padding-inline: var(--aui-space-4); }
+
+  .outline { border-color: var(--aui-color-border-strong); }
+
+  .root:hover:not(:disabled) { background-color: var(--aui-color-bg-subtle); color: var(--aui-color-fg); }
+
+  .root[data-state="on"] {
+    background-color: var(--aui-color-accent-subtle);
+    border-color: transparent;
+    color: var(--aui-color-accent);
+  }
+
+  .outline[data-state="on"] { border-color: var(--aui-color-accent); }
+
+  .root:disabled { cursor: not-allowed; opacity: 0.55; }
+
+  /* ---------- group ---------- */
+  .group { display: inline-flex; font-family: var(--aui-font-sans); }
+
+  .group[data-orientation="vertical"] { flex-direction: column; }
+
+  /* Joined: the shared edges collapse into one rule rather than doubling up. */
+  .joined .root { border-radius: 0; border-color: var(--aui-color-border-strong); }
+  .joined .root + .root { margin-inline-start: -1px; }
+  .joined[data-orientation="vertical"] .root + .root { margin-inline-start: 0; margin-block-start: -1px; }
+
+  .joined .root:first-child {
+    border-start-start-radius: var(--aui-radius-md);
+    border-end-start-radius: var(--aui-radius-md);
+  }
+  .joined .root:last-child {
+    border-start-end-radius: var(--aui-radius-md);
+    border-end-end-radius: var(--aui-radius-md);
+  }
+  .joined[data-orientation="vertical"] .root:first-child {
+    border-radius: var(--aui-radius-md) var(--aui-radius-md) 0 0;
+  }
+  .joined[data-orientation="vertical"] .root:last-child {
+    border-radius: 0 0 var(--aui-radius-md) var(--aui-radius-md);
+  }
+
+  /* A pressed button has to sit above its neighbours or its accent border is
+     hidden under theirs. */
+  .joined .root[data-state="on"] { position: relative; z-index: 1; }
+
+  .spaced { gap: var(--aui-space-1); }
+}
