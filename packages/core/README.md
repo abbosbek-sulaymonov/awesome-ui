@@ -2,7 +2,7 @@
 
 A React component library. Accessible primitives, CSS Modules, zero runtime dependencies.
 
-23 components, ~30 kB gzipped. Ships two ways from one source: as this package, or as
+30 components, ~35 kB gzipped. Ships two ways from one source: as this package, or as
 source you copy into your own tree.
 
 ## Install
@@ -31,12 +31,12 @@ Requires React 18 or 19. Both are peer dependencies, so nothing is bundled.
 
 | Group | Components |
 | --- | --- |
-| Actions | `Button` |
+| Actions | `Button`, `Toggle`, `ToggleGroup` |
 | Forms | `Input`, `Textarea`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Slider` |
-| Navigation | `Menu`, `Tabs`, `Accordion` |
+| Navigation | `Menu`, `Tabs`, `Accordion`, `Collapsible`, `Breadcrumb`, `Pagination` |
 | Data display | `Card`, `Badge`, `Avatar`, `Spinner`, `Separator` |
 | Feedback | `Alert`, `Progress`, `Skeleton`, `Toast` |
-| Overlays | `Dialog`, `Popover`, `Tooltip` |
+| Overlays | `Dialog`, `AlertDialog`, `Drawer`, `Popover`, `Tooltip` |
 
 Plus the primitives they are built on — `Slot`, `Portal`, `DismissableLayer`,
 `usePresence` — and the hooks: `useFloating`, `useFocusTrap`, `useRovingFocus`,
