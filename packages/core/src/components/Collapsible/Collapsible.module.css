@@ -1,0 +1,43 @@
+@layer aui.components {
+  .root { display: flex; flex-direction: column; font-family: var(--aui-font-sans); }
+
+  .trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--aui-space-2);
+    width: 100%;
+    padding: 0;
+
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-align: start;
+  }
+
+  .trigger:disabled { cursor: not-allowed; opacity: 0.6; }
+
+  .indicator {
+    flex-shrink: 0;
+    transition: transform var(--aui-duration-normal) var(--aui-ease-standard);
+  }
+
+  .trigger[data-state="open"] .indicator { transform: rotate(180deg); }
+
+  /* Height animates from a measured variable, since `auto` is not animatable. */
+  .panel { overflow: hidden; }
+  .panel[data-state="open"] { animation: aui-collapsible-open var(--aui-duration-normal) var(--aui-ease-standard); }
+  .panel[data-state="closed"] { animation: aui-collapsible-close var(--aui-duration-fast) var(--aui-ease-standard); }
+}
+
+@keyframes aui-collapsible-open {
+  from { height: 0; }
+  to { height: var(--aui-collapsible-height); }
+}
+
+@keyframes aui-collapsible-close {
+  from { height: var(--aui-collapsible-height); }
+  to { height: 0; }
+}
