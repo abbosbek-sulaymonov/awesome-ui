@@ -2417,5 +2417,640 @@
         }
       ]
     }
+  ],
+  "components/Collapsible/Collapsible.types.ts": [
+    {
+      "name": "CollapsibleRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "CollapsibleTriggerProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        },
+        {
+          "name": "hideIndicator",
+          "type": "boolean",
+          "required": false,
+          "description": "Hide the built-in chevron."
+        }
+      ]
+    },
+    {
+      "name": "CollapsiblePanelProps",
+      "props": [
+        {
+          "name": "keepMounted",
+          "type": "boolean",
+          "required": false,
+          "description": "Keep the panel mounted while closed, so its state survives."
+        }
+      ]
+    }
+  ],
+  "components/Toggle/Toggle.types.ts": [
+    {
+      "name": "ToggleOwnProps",
+      "props": [
+        {
+          "name": "defaultPressed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onPressedChange",
+          "type": "((pressed: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "pressed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "ToggleSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "Identifies this toggle within a ToggleGroup."
+        },
+        {
+          "name": "variant",
+          "type": "ToggleVariant",
+          "required": false,
+          "defaultValue": "\"ghost\""
+        }
+      ]
+    },
+    {
+      "name": "ToggleProps",
+      "props": [
+        {
+          "name": "defaultPressed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onPressedChange",
+          "type": "((pressed: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "pressed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "ToggleSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "Identifies this toggle within a ToggleGroup."
+        },
+        {
+          "name": "variant",
+          "type": "ToggleVariant",
+          "required": false,
+          "defaultValue": "\"ghost\""
+        }
+      ]
+    }
+  ],
+  "components/ToggleGroup/ToggleGroup.types.ts": [
+    {
+      "name": "ToggleGroupSingleProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Allow clearing the selection by pressing the active button."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "joined",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Join the buttons into one control instead of spacing them."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "Accessible name for the group."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "orientation",
+          "type": "ToggleGroupOrientation",
+          "required": false,
+          "defaultValue": "\"horizontal\""
+        },
+        {
+          "name": "type",
+          "type": "\"single\"",
+          "required": false,
+          "defaultValue": "\"single\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "ToggleGroupMultipleProps",
+      "props": [
+        {
+          "name": "type",
+          "type": "\"multiple\"",
+          "required": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "joined",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Join the buttons into one control instead of spacing them."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "Accessible name for the group."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string[]) => void)",
+          "required": false
+        },
+        {
+          "name": "orientation",
+          "type": "ToggleGroupOrientation",
+          "required": false,
+          "defaultValue": "\"horizontal\""
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "components/Breadcrumb/Breadcrumb.types.ts": [
+    {
+      "name": "BreadcrumbRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Breadcrumb\"",
+          "description": "Accessible name for the trail."
+        },
+        {
+          "name": "separator",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": "\"/\"",
+          "description": "Character or node placed between items."
+        }
+      ]
+    },
+    {
+      "name": "BreadcrumbLinkProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        },
+        {
+          "name": "current",
+          "type": "boolean",
+          "required": false,
+          "description": "The page you are on. Renders as text and marks itself current."
+        }
+      ]
+    }
+  ],
+  "components/Pagination/Pagination.types.ts": [
+    {
+      "name": "PaginationOwnProps",
+      "props": [
+        {
+          "name": "count",
+          "type": "number",
+          "required": true,
+          "description": "Total number of pages."
+        },
+        {
+          "name": "boundaries",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Pages pinned at each end."
+        },
+        {
+          "name": "defaultPage",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "getPageLabel",
+          "type": "((page: number) => string)",
+          "required": false,
+          "description": "Spoken name for a page button. Defaults to \"Page N\" — override it when the\npages are something more specific than numbers."
+        },
+        {
+          "name": "hideArrows",
+          "type": "boolean",
+          "required": false,
+          "description": "Hide the previous and next arrows."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Pagination\"",
+          "description": "Accessible name for the navigation."
+        },
+        {
+          "name": "onPageChange",
+          "type": "((page: number) => void)",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "number",
+          "required": false,
+          "description": "Current page, 1-based."
+        },
+        {
+          "name": "renderPage",
+          "type": "((page: number, props: { \"aria-current\"?: \"page\"; }) => ReactNode)",
+          "required": false,
+          "description": "Render each page as a link rather than a button."
+        },
+        {
+          "name": "siblings",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Pages either side of the current one."
+        },
+        {
+          "name": "size",
+          "type": "PaginationSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "variant",
+          "type": "PaginationVariant",
+          "required": false,
+          "defaultValue": "\"ghost\""
+        }
+      ]
+    },
+    {
+      "name": "PaginationProps",
+      "props": [
+        {
+          "name": "count",
+          "type": "number",
+          "required": true,
+          "description": "Total number of pages."
+        },
+        {
+          "name": "boundaries",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Pages pinned at each end."
+        },
+        {
+          "name": "defaultPage",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "getPageLabel",
+          "type": "((page: number) => string)",
+          "required": false,
+          "description": "Spoken name for a page button. Defaults to \"Page N\" — override it when the\npages are something more specific than numbers."
+        },
+        {
+          "name": "hideArrows",
+          "type": "boolean",
+          "required": false,
+          "description": "Hide the previous and next arrows."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Pagination\"",
+          "description": "Accessible name for the navigation."
+        },
+        {
+          "name": "onPageChange",
+          "type": "((page: number) => void)",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "number",
+          "required": false,
+          "description": "Current page, 1-based."
+        },
+        {
+          "name": "renderPage",
+          "type": "((page: number, props: { \"aria-current\"?: \"page\"; }) => ReactNode)",
+          "required": false,
+          "description": "Render each page as a link rather than a button."
+        },
+        {
+          "name": "siblings",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Pages either side of the current one."
+        },
+        {
+          "name": "size",
+          "type": "PaginationSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "variant",
+          "type": "PaginationVariant",
+          "required": false,
+          "defaultValue": "\"ghost\""
+        }
+      ]
+    }
+  ],
+  "components/Drawer/Drawer.types.ts": [
+    {
+      "name": "DrawerRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "disableScrollLock",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "dismissOnEscape",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "dismissOnOutsideClick",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "side",
+          "type": "DrawerSide",
+          "required": false,
+          "defaultValue": "\"right\"",
+          "description": "Edge it slides in from."
+        }
+      ]
+    },
+    {
+      "name": "DrawerTriggerProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    },
+    {
+      "name": "DrawerContentProps",
+      "props": [
+        {
+          "name": "closeButtonLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "initialFocusRef",
+          "type": "RefObject<HTMLElement | null>",
+          "required": false
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "DrawerSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        }
+      ]
+    },
+    {
+      "name": "DrawerCloseProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    }
+  ],
+  "components/AlertDialog/AlertDialog.types.ts": [
+    {
+      "name": "AlertDialogRootProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "dismissOnEscape",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow Escape to dismiss.\n\nOn by default because trapping someone in a dialog with no keyboard exit is\nworse than an accidental cancel — Escape maps to the cancel action, which is\nthe safe one."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "AlertDialogTriggerProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    },
+    {
+      "name": "AlertDialogContentProps",
+      "props": [
+        {
+          "name": "initialFocusRef",
+          "type": "RefObject<HTMLElement | null>",
+          "required": false,
+          "description": "Focused on open. Point it at the cancelling control: a destructive dialog\nshould not open with the destructive button under the return key."
+        },
+        {
+          "name": "size",
+          "type": "\"sm\" | \"md\" | \"lg\"",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "AlertDialogActionProps",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Merge this component's props and behavior onto its only child instead of\nrendering the default element.\n\n  <Button asChild><a href=\"/docs\">Docs</a></Button>"
+        }
+      ]
+    }
   ]
 }
