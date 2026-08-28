@@ -11,8 +11,12 @@ export interface DocPage {
   lead: string;
   /** Prose that sits above the examples. */
   intro?: ReactNode;
-  /** Key into the generated props data. */
-  propsFile?: string;
+  /**
+   * Key(s) into the generated props data. A list where one page documents more
+   * than one component — Toggle and ToggleGroup are one story to a reader, but
+   * two interfaces to the generator.
+   */
+  propsFile?: string | string[];
   /** Examples that need vertical space rather than the inline row. */
   blockLayout?: boolean;
   /** Prose that sits between examples and the props table. */
@@ -429,6 +433,158 @@ export function App() {
     ),
   },
   {
+    slug: "toggle",
+    title: "Toggle",
+    group: "Actions",
+    lead: "A button that stays pressed, alone or in a group.",
+    propsFile: [
+      "components/Toggle/Toggle.types.ts",
+      "components/ToggleGroup/ToggleGroup.types.ts",
+    ],
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          Uses <code>aria-pressed</code> rather than <code>role=&quot;switch&quot;</code>.
+          A toggle applies a state to something else — bold on the selection, a filter on
+          a list — whereas a switch <em>is</em> the setting. Screen readers say
+          &ldquo;pressed&rdquo; for one and &ldquo;on&rdquo; for the other, and they are
+          not interchangeable.
+        </p>
+        <p>
+          Inside a <code>ToggleGroup</code> the group owns selection; standalone, the
+          toggle owns its own. Arrow keys move between buttons in a group.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "collapsible",
+    title: "Collapsible",
+    group: "Navigation",
+    lead: "A single disclosure, with animated height.",
+    propsFile: "components/Collapsible/Collapsible.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          The same height trick as <code>Accordion</code>: <code>height: auto</code> is
+          not an animatable value, so the content is measured and handed to the keyframes
+          as a variable.
+        </p>
+        <p>
+          Reach for this when there is one thing to open. <code>Accordion</code> is for a
+          set where opening one may close another.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "breadcrumb",
+    title: "Breadcrumb",
+    group: "Navigation",
+    lead: "A trail back up the hierarchy.",
+    propsFile: "components/Breadcrumb/Breadcrumb.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <strong>The current page is not a link.</strong> It goes nowhere, and rendering
+          it as one gives a keyboard user a stop that does nothing when activated. It
+          renders as text carrying <code>aria-current=&quot;page&quot;</code>.
+        </p>
+        <p>
+          Separators are hidden from assistive tech, so a screen reader does not read
+          &ldquo;slash&rdquo; between every step of the trail.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "pagination",
+    title: "Pagination",
+    group: "Navigation",
+    lead: "Page controls that keep a constant width.",
+    propsFile: "components/Pagination/Pagination.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <strong>The row is the same width on every page</strong> once there are enough
+          pages to truncate. A list that grows and shrinks as you page through it makes
+          the controls move under the pointer, so the button you are about to click is not
+          the one you land on.
+        </p>
+        <p>
+          A gap of exactly one page is rendered as that page rather than an ellipsis —
+          hiding a single number behind a &ldquo;…&rdquo; wastes the slot.
+        </p>
+        <p>
+          Arrows are disabled at the ends rather than hidden, for the same reason: a
+          control that vanishes shifts everything beside it.
+        </p>
+        <p>
+          The range logic is exported on its own as <code>getPaginationRange</code>.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "drawer",
+    title: "Drawer",
+    group: "Overlays",
+    lead: "A dialog anchored to an edge of the viewport.",
+    propsFile: "components/Drawer/Drawer.types.ts",
+    notes: (
+      <div className="prose">
+        <p>
+          Shares every behaviour with <code>Dialog</code> — focus trap, scroll lock,
+          layered dismissal — but keeps its own API, because a drawer is sized along one
+          axis and slides from the edge it lives on rather than being centred.
+        </p>
+        <p>
+          Scroll stays locked for as long as it is on screen, exit animation included:
+          releasing early makes the page jump underneath it as it slides away.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "alert-dialog",
+    title: "AlertDialog",
+    group: "Overlays",
+    lead: "A confirmation that demands an explicit choice.",
+    propsFile: "components/AlertDialog/AlertDialog.types.ts",
+    notes: (
+      <div className="prose">
+        <p>
+          Built on <code>Dialog</code>, since the machinery is identical and only the
+          semantics differ:
+        </p>
+        <ul>
+          <li>
+            <code>role=&quot;alertdialog&quot;</code>, which tells assistive tech this is
+            urgent and makes it announce the description immediately.
+          </li>
+          <li>
+            <strong>Clicking outside never dismisses.</strong> A confirmation is a
+            question, and clicking away is an ambiguous answer to it.
+          </li>
+          <li>No close button in the corner — cancelling is one of the actions.</li>
+        </ul>
+        <p>
+          Escape still dismisses by default. Trapping someone with no keyboard exit is
+          worse than an accidental cancel, and Escape maps to cancel, which is the safe
+          choice.
+        </p>
+        <p>
+          Point <code>initialFocusRef</code> at the cancelling control: a destructive
+          dialog should not open with the destructive button under the return key.
+        </p>
+      </div>
+    ),
+  },
+  {
     slug: "dialog",
     title: "Dialog",
     group: "Overlays",
@@ -619,7 +775,9 @@ export function PageBody({ page }: { page: DocPage }) {
           <h2 className="sectionTitle" id="props">
             Props
           </h2>
-          <PropsTable file={page.propsFile} />
+          {(Array.isArray(page.propsFile) ? page.propsFile : [page.propsFile]).map((file) => (
+            <PropsTable key={file} file={file} />
+          ))}
         </section>
       ) : null}
     </>

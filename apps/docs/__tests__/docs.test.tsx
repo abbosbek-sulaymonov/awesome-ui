@@ -37,6 +37,31 @@ describe("docs pages", () => {
     expect(screen.getByRole("heading", { level: 1, name: "Not found" })).toBeInTheDocument();
   });
 
+  it("documents every props interface the generator produced", async () => {
+    const propsData = (await import("../src/generated/props.json")).default as Record<
+      string,
+      unknown
+    >;
+
+    const documented = new Set(
+      pages.flatMap((page) =>
+        page.propsFile === undefined
+          ? []
+          : Array.isArray(page.propsFile)
+            ? page.propsFile
+            : [page.propsFile],
+      ),
+    );
+
+    // A component whose props were extracted but never rendered has a page that
+    // silently omits half its API — which is how ToggleGroup shipped at first.
+    const undocumented = Object.keys(propsData).filter(
+      (file) => file.startsWith("components/") && !documented.has(file),
+    );
+
+    expect(undocumented).toEqual([]);
+  });
+
   it("gives every component page at least one example", () => {
     const componentPages = pages.filter((page) => page.propsFile);
     const withoutExamples = componentPages.filter(
