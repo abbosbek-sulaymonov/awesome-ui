@@ -1,0 +1,35 @@
+@layer aui.components {
+  .root { font-family: var(--aui-font-sans); font-size: var(--aui-text-sm); }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--aui-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .item { display: flex; align-items: center; gap: var(--aui-space-2); }
+
+  .link {
+    color: var(--aui-color-fg-muted);
+    text-decoration: none;
+    border-radius: var(--aui-radius-sm);
+    transition: color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .link:hover { color: var(--aui-color-fg); text-decoration: underline; text-underline-offset: 3px; }
+
+  .current { color: var(--aui-color-fg); font-weight: var(--aui-weight-medium); }
+
+  .separator { flex-shrink: 0; color: var(--aui-color-fg-subtle); }
+
+  .ellipsis {
+    display: inline-flex;
+    align-items: center;
+    color: var(--aui-color-fg-subtle);
+    letter-spacing: 0.1em;
+  }
+}
