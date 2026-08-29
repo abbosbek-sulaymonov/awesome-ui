@@ -260,22 +260,22 @@ one visit.
 
 ## Status
 
-30 components:
+33 components:
 
 | Group | Components |
 | --- | --- |
 | Actions | `Button`, `Toggle`, `ToggleGroup` |
-| Forms | `Input`, `Textarea`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Slider` |
+| Forms | `Input`, `Textarea`, `NumberInput`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Combobox`, `Slider` |
 | Navigation | `Menu`, `Tabs`, `Accordion`, `Collapsible`, `Breadcrumb`, `Pagination` |
-| Data display | `Card`, `Badge`, `Avatar`, `Spinner`, `Separator` |
+| Data display | `Table`, `Card`, `Badge`, `Avatar`, `Spinner`, `Separator` |
 | Feedback | `Alert`, `Progress`, `Skeleton`, `Toast` |
 | Overlays | `Dialog`, `AlertDialog`, `Drawer`, `Popover`, `Tooltip` |
 
 Plus `ThemeProvider`, the primitive and hook layers, and the positioning engine.
 
-450 tests, 50 registry items, 35 kB gzipped.
+505 tests, 53 registry items, 40 kB gzipped.
 
-450 tests in total: 345 in the library, 105 in the docs site.
+505 tests in total: 394 in the library, 111 in the docs site.
 
 The package is ready to publish and the docs site is ready to deploy; neither
 has happened yet.
