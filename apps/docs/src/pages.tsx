@@ -585,6 +585,101 @@ export function App() {
     ),
   },
   {
+    slug: "combobox",
+    title: "Combobox",
+    group: "Forms",
+    lead: "Type to filter, then pick.",
+    propsFile: "components/Combobox/Combobox.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <strong>The focus model is different from <code>Select</code>&rsquo;s.</strong>{" "}
+          Select moves real DOM focus into the listbox and rows it around with the arrow
+          keys. A combobox cannot do that — focus has to stay in the text field so typing
+          keeps working — so the highlighted option is tracked with{" "}
+          <code>aria-activedescendant</code> instead.
+        </p>
+        <p>
+          That is the trade the pattern forces: the browser no longer scrolls the
+          highlight into view or paints <code>:focus</code>, so both are done by hand.
+        </p>
+        <p>
+          Options commit on <code>pointerdown</code>, not <code>click</code>. A click
+          fires after blur, and blur closes the list out from under the pointer.
+        </p>
+        <p>
+          Losing focus abandons an unconfirmed query rather than leaving the field showing
+          text that matches nothing selected. Pass your own <code>filter</code> — returning
+          the list unchanged — when the searching happens on a server.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "number-input",
+    title: "NumberInput",
+    group: "Forms",
+    lead: "A numeric field with steppers.",
+    propsFile: "components/NumberInput/NumberInput.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <strong>While the field has focus its text is held separately from the
+          number.</strong> Parsing on every keystroke makes intermediate states impossible
+          to type: <code>-</code> is not a number, and <code>1.</code> parses to{" "}
+          <code>1</code> and immediately erases the dot that was just typed.
+        </p>
+        <p>
+          Clamping happens on blur for the same reason. Typing <code>15</code> into a field
+          capped at 20 would otherwise be truncated to <code>1</code> at the moment only
+          the first digit exists.
+        </p>
+        <p>
+          Empty is <code>null</code>, not <code>0</code> — a blank field has no value, and
+          reporting zero would be a number the user never entered.
+        </p>
+        <p>
+          It renders <code>type=&quot;text&quot;</code> with an <code>inputMode</code>, not{" "}
+          <code>type=&quot;number&quot;</code>: a number input reports an empty string for
+          anything it considers invalid, so the draft text could not be read back.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "table",
+    title: "Table",
+    group: "Data display",
+    lead: "Table primitives with density, striping and sortable headers.",
+    propsFile: "components/Table/Table.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          Only the column actually being sorted carries <code>aria-sort</code>. Marking
+          every sortable column <code>none</code> is legal but noisy, and screen readers
+          read it out.
+        </p>
+        <p>
+          A sortable header is a <strong>button inside the cell</strong>, not a clickable
+          cell. The cell is a table header; the thing that sorts it is a button, and it
+          says what activating it will do.
+        </p>
+        <p>
+          Selected rows are marked with a data attribute rather than{" "}
+          <code>aria-selected</code>, which belongs to grid and listbox roles and would be
+          a lie on a plain table row.
+        </p>
+        <p>
+          The table sits in its own scroll container, so a wide one scrolls inside its box
+          instead of pushing the page sideways.
+        </p>
+      </div>
+    ),
+  },
+  {
     slug: "dialog",
     title: "Dialog",
     group: "Overlays",

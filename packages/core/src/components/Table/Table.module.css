@@ -1,0 +1,91 @@
+@layer aui.components {
+  /* The scroll container is separate from the table so a wide table scrolls
+     inside its own box rather than pushing the page sideways. */
+  .container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--aui-color-border);
+    border-radius: var(--aui-radius-lg);
+  }
+
+  .plain { border: 0; border-radius: 0; }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--aui-color-fg);
+    font-family: var(--aui-font-sans);
+    font-size: var(--aui-text-sm);
+    text-align: start;
+  }
+
+  .caption {
+    padding: var(--aui-space-3) var(--aui-space-4);
+    color: var(--aui-color-fg-muted);
+    font-size: var(--aui-text-xs);
+    text-align: start;
+  }
+
+  .head { background-color: var(--aui-color-bg-subtle); }
+
+  .sticky .head th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--aui-color-bg-subtle);
+  }
+
+  .th {
+    padding: var(--aui-space-3) var(--aui-space-4);
+    border-block-end: 1px solid var(--aui-color-border);
+    color: var(--aui-color-fg-muted);
+    font-size: var(--aui-text-xs);
+    font-weight: var(--aui-weight-semibold);
+    letter-spacing: 0.04em;
+    text-align: start;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .td { padding: var(--aui-space-3) var(--aui-space-4); border-block-end: 1px solid var(--aui-color-border); vertical-align: top; }
+
+  .compact .th, .compact .td { padding: var(--aui-space-2) var(--aui-space-3); }
+  .roomy .th, .roomy .td { padding: var(--aui-space-4) var(--aui-space-5); }
+
+  .body tr:last-child .td { border-block-end: 0; }
+
+  .zebra .body tr:nth-child(even) { background-color: var(--aui-color-bg-subtle); }
+
+  .row { transition: background-color var(--aui-duration-fast) var(--aui-ease-standard); }
+  .interactive .body .row:hover { background-color: var(--aui-color-bg-subtle); cursor: pointer; }
+  .row[data-selected="true"] { background-color: var(--aui-color-accent-subtle); }
+
+  .numeric { text-align: end; font-variant-numeric: tabular-nums; }
+
+  /* The sortable header is a button inside the th, not a clickable th — the
+     cell is a table header, and the control that sorts it is a button. */
+  .sortButton {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--aui-space-1);
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: var(--aui-radius-sm);
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+  }
+
+  .sortButton:hover { color: var(--aui-color-fg); }
+
+  .sortIcon { flex-shrink: 0; opacity: 0.4; transition: opacity var(--aui-duration-fast) var(--aui-ease-standard); }
+  .th[aria-sort] .sortIcon { opacity: 1; color: var(--aui-color-accent); }
+
+  .foot { background-color: var(--aui-color-bg-subtle); font-weight: var(--aui-weight-medium); }
+  .foot .td { border-block-start: 1px solid var(--aui-color-border); border-block-end: 0; }
+
+  .empty { padding: var(--aui-space-8); color: var(--aui-color-fg-muted); text-align: center; }
+}

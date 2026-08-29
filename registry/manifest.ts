@@ -667,4 +667,43 @@ export const registry: RegistryItem[] = [
     ],
     registryDependencies: ["dialog"],
   },
+  {
+    name: "combobox",
+    type: "registry:ui",
+    title: "Combobox",
+    description: "Filterable combobox that keeps focus in the input.",
+    files: [
+      "components/Combobox/Combobox.tsx",
+      "components/Combobox/Combobox.module.css",
+      "components/Combobox/Combobox.types.ts",
+      "components/Combobox/index.ts",
+    ],
+    registryDependencies: ["utils", "portal", "presence", "dismissable-layer", "use-controllable-state", "use-field", "use-floating", "tokens"],
+  },
+  {
+    name: "number-input",
+    type: "registry:ui",
+    title: "NumberInput",
+    description: "Numeric field with steppers, clamping and draft text.",
+    files: [
+      "components/NumberInput/NumberInput.tsx",
+      "components/NumberInput/NumberInput.module.css",
+      "components/NumberInput/NumberInput.types.ts",
+      "components/NumberInput/index.ts",
+    ],
+    registryDependencies: ["utils", "use-controllable-state", "use-field", "tokens"],
+  },
+  {
+    name: "table",
+    type: "registry:ui",
+    title: "Table",
+    description: "Table primitives with density, zebra striping and sortable headers.",
+    files: [
+      "components/Table/Table.tsx",
+      "components/Table/Table.module.css",
+      "components/Table/Table.types.ts",
+      "components/Table/index.ts",
+    ],
+    registryDependencies: ["utils", "visually-hidden", "tokens"],
+  },
 ];

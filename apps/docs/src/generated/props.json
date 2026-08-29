@@ -3052,5 +3052,568 @@
         }
       ]
     }
+  ],
+  "components/Combobox/Combobox.types.ts": [
+    {
+      "name": "ComboboxOwnProps",
+      "props": [
+        {
+          "name": "options",
+          "type": "ComboboxOption[]",
+          "required": true
+        },
+        {
+          "name": "clearable",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Show a button that clears the selection."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "emptyMessage",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": "\"No results\"",
+          "description": "Shown when nothing matches."
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "((options: ComboboxOption[], query: string) => ComboboxOption[])",
+          "required": false,
+          "description": "Decides which options survive the query. Replace it when filtering happens\non a server, in which case return the list unchanged."
+        },
+        {
+          "name": "inputValue",
+          "type": "string",
+          "required": false,
+          "description": "Text in the field. Controlled separately from the selection."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Submitted with the surrounding form."
+        },
+        {
+          "name": "onInputChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"bottom-start\""
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "ComboboxSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "Selected value."
+        }
+      ]
+    },
+    {
+      "name": "ComboboxProps",
+      "props": [
+        {
+          "name": "options",
+          "type": "ComboboxOption[]",
+          "required": true
+        },
+        {
+          "name": "clearable",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Show a button that clears the selection."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "emptyMessage",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": "\"No results\"",
+          "description": "Shown when nothing matches."
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "((options: ComboboxOption[], query: string) => ComboboxOption[])",
+          "required": false,
+          "description": "Decides which options survive the query. Replace it when filtering happens\non a server, in which case return the list unchanged."
+        },
+        {
+          "name": "inputValue",
+          "type": "string",
+          "required": false,
+          "description": "Text in the field. Controlled separately from the selection."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Submitted with the surrounding form."
+        },
+        {
+          "name": "onInputChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"bottom-start\""
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "ComboboxSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "Selected value."
+        }
+      ]
+    }
+  ],
+  "components/NumberInput/NumberInput.types.ts": [
+    {
+      "name": "NumberInputOwnProps",
+      "props": [
+        {
+          "name": "decrementLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "number | null",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "hideSteppers",
+          "type": "boolean",
+          "required": false,
+          "description": "Hide the increment and decrement buttons."
+        },
+        {
+          "name": "incrementLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "largeStep",
+          "type": "number",
+          "required": false,
+          "description": "Step used with PageUp and PageDown. Defaults to ten steps."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: number | null) => void)",
+          "required": false
+        },
+        {
+          "name": "precision",
+          "type": "number",
+          "required": false,
+          "description": "Decimal places to round to. Inferred from `step` when omitted."
+        },
+        {
+          "name": "size",
+          "type": "NumberInputSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1"
+        },
+        {
+          "name": "value",
+          "type": "number | null",
+          "required": false,
+          "description": "Empty is represented as `null`, not as 0 — a blank field has no value."
+        },
+        {
+          "name": "wrap",
+          "type": "boolean",
+          "required": false,
+          "description": "Wrap past the ends instead of stopping. Requires both min and max."
+        },
+        {
+          "name": "wrapperClassName",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "NumberInputProps",
+      "props": [
+        {
+          "name": "decrementLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "number | null",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "hideSteppers",
+          "type": "boolean",
+          "required": false,
+          "description": "Hide the increment and decrement buttons."
+        },
+        {
+          "name": "incrementLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "largeStep",
+          "type": "number",
+          "required": false,
+          "description": "Step used with PageUp and PageDown. Defaults to ten steps."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: number | null) => void)",
+          "required": false
+        },
+        {
+          "name": "precision",
+          "type": "number",
+          "required": false,
+          "description": "Decimal places to round to. Inferred from `step` when omitted."
+        },
+        {
+          "name": "size",
+          "type": "NumberInputSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1"
+        },
+        {
+          "name": "value",
+          "type": "number | null",
+          "required": false,
+          "description": "Empty is represented as `null`, not as 0 — a blank field has no value."
+        },
+        {
+          "name": "wrap",
+          "type": "boolean",
+          "required": false,
+          "description": "Wrap past the ends instead of stopping. Requires both min and max."
+        },
+        {
+          "name": "wrapperClassName",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "components/Table/Table.types.ts": [
+    {
+      "name": "TableRootProps",
+      "props": [
+        {
+          "name": "containerClassName",
+          "type": "string",
+          "required": false,
+          "description": "Class for the scroll container around the table."
+        },
+        {
+          "name": "density",
+          "type": "TableDensity",
+          "required": false,
+          "defaultValue": "\"default\""
+        },
+        {
+          "name": "interactive",
+          "type": "boolean",
+          "required": false,
+          "description": "Highlight rows on hover. Pair it with a real control in the row."
+        },
+        {
+          "name": "plain",
+          "type": "boolean",
+          "required": false,
+          "description": "Drop the surrounding border and radius."
+        },
+        {
+          "name": "stickyHeader",
+          "type": "boolean",
+          "required": false,
+          "description": "Pin the header while the body scrolls."
+        },
+        {
+          "name": "zebra",
+          "type": "boolean",
+          "required": false,
+          "description": "Shade alternate rows."
+        }
+      ]
+    },
+    {
+      "name": "TableRowProps",
+      "props": [
+        {
+          "name": "selected",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "TableCellProps",
+      "props": [
+        {
+          "name": "numeric",
+          "type": "boolean",
+          "required": false,
+          "description": "Right-align and use tabular figures, so digits line up in a column."
+        }
+      ]
+    },
+    {
+      "name": "TableHeaderCellProps",
+      "props": [
+        {
+          "name": "numeric",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "onSort",
+          "type": "(() => void)",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "false | SortDirection",
+          "required": false,
+          "description": "Current sort of this column, or `false` when it is sortable but not the\none being sorted by. Omit entirely for a column that cannot be sorted."
+        }
+      ]
+    },
+    {
+      "name": "TableEmptyProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false
+        }
+      ]
+    }
   ]
 }
