@@ -269,3 +269,19 @@ export type {
   AlertDialogContentProps, AlertDialogTitleProps, AlertDialogDescriptionProps,
   AlertDialogActionProps,
 } from "./AlertDialog";
+
+export { Combobox } from "./Combobox";
+export type { ComboboxProps, ComboboxOwnProps, ComboboxOption, ComboboxSize } from "./Combobox";
+
+export { NumberInput } from "./NumberInput";
+export type { NumberInputProps, NumberInputOwnProps, NumberInputSize } from "./NumberInput";
+
+export {
+  Table, TableRoot, TableHeader, TableBody, TableFooter, TableCaption,
+  TableRow, TableCell, TableHeaderCell, TableEmpty,
+} from "./Table";
+export type {
+  TableDensity, SortDirection, TableRootProps, TableHeaderProps, TableBodyProps,
+  TableFooterProps, TableCaptionProps, TableRowProps, TableCellProps,
+  TableHeaderCellProps, TableEmptyProps,
+} from "./Table";
