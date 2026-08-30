@@ -66,10 +66,12 @@ Every component:
 
 ```
 packages/
-  tokens/    design tokens -> tokens.css + typed TS mirror
-  core/      the library (@abek/awesome-ui)
-  config/    shared tsconfig
+  tokens/     design tokens -> tokens.css + typed TS mirror
+  core/       the library (@abek/awesome-ui)
+  highlight/  small syntax highlighter shared by docs and landing
+  config/     shared tsconfig
 apps/
+  landing/     marketing site, built out of the library itself
   docs/        documentation site
   playground/  Vite sandbox for fast iteration
 registry/
@@ -93,12 +95,25 @@ pnpm registry     # regenerate registry/__generated__
 pnpm changeset    # record a version bump
 ```
 
-Run the docs site, or the bare sandbox:
+Run the landing page, the docs site, or the bare sandbox:
 
 ```bash
+pnpm --filter @awesome-ui/landing dev
 pnpm --filter @awesome-ui/docs dev
 pnpm --filter @awesome-ui/playground dev
 ```
+
+## Landing page
+
+`apps/landing` is built out of the library it advertises — every control on it is
+imported from the published entry point rather than mocked up. That makes the
+showcase a standing check that the package works outside its own test suite, and
+it means the page cannot show something the library does not actually do.
+
+Its numeric claims are tested against the repo: the component count is read from
+the source tree, the "zero runtime dependencies" line fails if a dependency is
+ever added, and the version is compared with the package's own. A landing page
+that overstates its project is worse than one that says less.
 
 ## Documentation
 
@@ -273,9 +288,10 @@ one visit.
 
 Plus `ThemeProvider`, the primitive and hook layers, and the positioning engine.
 
-505 tests, 53 registry items, 40 kB gzipped.
+518 tests, 53 registry items, 40 kB gzipped.
 
-505 tests in total: 394 in the library, 111 in the docs site.
+518 tests in total: 394 in the library, 99 in the docs site, 13 on the landing
+page and 12 on the highlighter.
 
 The package is ready to publish and the docs site is ready to deploy; neither
 has happened yet.
