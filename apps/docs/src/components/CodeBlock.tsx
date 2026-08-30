@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "@abek/awesome-ui";
-import { tokenize } from "../highlight";
-import type { Language } from "../highlight";
+import { tokenize } from "@awesome-ui/highlight";
+import type { Language } from "@awesome-ui/highlight";
 import { CheckIcon, CopyIcon } from "./Icons";
 
 export function CodeBlock({

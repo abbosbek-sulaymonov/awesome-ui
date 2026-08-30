@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { tokenize } from "../src/highlight";
+import { tokenize } from "../src/index";
 
 const typesOf = (code: string, lang?: Parameters<typeof tokenize>[1]) =>
   tokenize(code, lang).map((token) => token.type);
@@ -78,11 +78,19 @@ describe("tokenize", () => {
     expect(tokenize("", "text")).toEqual([]);
   });
 
-  it("survives every example in the docs without losing characters", async () => {
-    const { examples } = await import("../src/examples");
-    for (const example of examples) {
-      const rebuilt = tokenize(example.source).map((token) => token.value).join("");
-      expect(rebuilt).toBe(example.source);
-    }
+  it("never loses characters on a realistic module", () => {
+    // The docs suite runs this same round-trip over every real example; this
+    // keeps a representative case here, where the highlighter now lives.
+    const source = [
+      'import { Button, toast } from "@abek/awesome-ui";',
+      "",
+      "// A comment with a URL: https://example.com/path?a=1",
+      "export default function Demo({ label = `hi ${name}` }: Props) {",
+      "  const [open, setOpen] = useState<boolean>(false);",
+      '  return <Button variant="solid" onClick={() => toast.success(label)}>{label}</Button>;',
+      "}",
+    ].join("\n");
+
+    expect(tokenize(source).map((token) => token.value).join("")).toBe(source);
   });
 });
