@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>awesome-ui — accessible React components</title>
+    <meta
+      name="description"
+      content="A React component library: 33 accessible components, CSS Modules, zero runtime dependencies. Ships as a package or as source you own."
+    />
+    <meta property="og:title" content="awesome-ui" />
+    <meta
+      property="og:description"
+      content="33 accessible React components. CSS Modules, zero runtime dependencies, 40 kB gzipped."
+    />
+    <meta property="og:type" content="website" />
+    <script>
+      // Applied before first paint so a dark-mode visitor never sees a white flash.
+      (function () {
+        try {
+          var m = localStorage.getItem("aui-theme");
+          if (m === "light" || m === "dark") document.documentElement.setAttribute("data-theme", m);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
