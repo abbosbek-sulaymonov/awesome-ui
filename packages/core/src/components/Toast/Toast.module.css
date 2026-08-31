@@ -48,10 +48,15 @@
 
   .toast[data-state="open"] {
     animation: aui-toast-in var(--aui-duration-normal) var(--aui-ease-emphasized);
-  }
+  }  /* `forwards` holds the final keyframe until React unmounts the node.
+     Without it the fill mode is `none`, so the element snaps back to its base
+     style the instant the animation ends — fully opaque again — and stays that
+     way for the frame or two before the animationend handler removes it. That
+     snap-back is the flash. */
+
 
   .toast[data-state="closed"] {
-    animation: aui-toast-out var(--aui-duration-fast) var(--aui-ease-standard);
+    animation: aui-toast-out var(--aui-duration-fast) var(--aui-ease-standard) forwards;
   }
 
   .viewport[data-position^="bottom"] .toast[data-state="open"] {

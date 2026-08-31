@@ -6,8 +6,13 @@
     background-color: var(--aui-color-overlay);
   }
 
-  .overlay[data-state="open"] { animation: aui-drawer-overlay-in var(--aui-duration-normal) var(--aui-ease-standard); }
-  .overlay[data-state="closed"] { animation: aui-drawer-overlay-out var(--aui-duration-fast) var(--aui-ease-standard); }
+  .overlay[data-state="open"] { animation: aui-drawer-overlay-in var(--aui-duration-normal) var(--aui-ease-standard); }  /* `forwards` holds the final keyframe until React unmounts the node.
+     Without it the fill mode is `none`, so the element snaps back to its base
+     style the instant the animation ends — fully opaque again — and stays that
+     way for the frame or two before the animationend handler removes it. That
+     snap-back is the flash. */
+
+  .overlay[data-state="closed"] { animation: aui-drawer-overlay-out var(--aui-duration-fast) var(--aui-ease-standard) forwards; }
 
   .content {
     position: fixed;
@@ -41,13 +46,13 @@
 
   /* Slides in from its own edge, so the animation matches where it lives. */
   .right[data-state="open"] { animation: aui-drawer-in-right var(--aui-duration-normal) var(--aui-ease-emphasized); }
-  .right[data-state="closed"] { animation: aui-drawer-out-right var(--aui-duration-fast) var(--aui-ease-standard); }
+  .right[data-state="closed"] { animation: aui-drawer-out-right var(--aui-duration-fast) var(--aui-ease-standard) forwards; }
   .left[data-state="open"] { animation: aui-drawer-in-left var(--aui-duration-normal) var(--aui-ease-emphasized); }
-  .left[data-state="closed"] { animation: aui-drawer-out-left var(--aui-duration-fast) var(--aui-ease-standard); }
+  .left[data-state="closed"] { animation: aui-drawer-out-left var(--aui-duration-fast) var(--aui-ease-standard) forwards; }
   .top[data-state="open"] { animation: aui-drawer-in-top var(--aui-duration-normal) var(--aui-ease-emphasized); }
-  .top[data-state="closed"] { animation: aui-drawer-out-top var(--aui-duration-fast) var(--aui-ease-standard); }
+  .top[data-state="closed"] { animation: aui-drawer-out-top var(--aui-duration-fast) var(--aui-ease-standard) forwards; }
   .bottom[data-state="open"] { animation: aui-drawer-in-bottom var(--aui-duration-normal) var(--aui-ease-emphasized); }
-  .bottom[data-state="closed"] { animation: aui-drawer-out-bottom var(--aui-duration-fast) var(--aui-ease-standard); }
+  .bottom[data-state="closed"] { animation: aui-drawer-out-bottom var(--aui-duration-fast) var(--aui-ease-standard) forwards; }
 
   .header { display: flex; flex-direction: column; gap: var(--aui-space-1); }
   .title { margin: 0; font-size: var(--aui-text-lg); font-weight: var(--aui-weight-semibold); line-height: var(--aui-leading-tight); }
