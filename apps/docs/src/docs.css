@@ -113,7 +113,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-a { color: var(--aui-color-accent); text-underline-offset: 3px; }
+/**
+ * Scoped away from library components.
+ *
+ * These rules are unlayered and the library's live in `@layer aui.components`;
+ * unlayered declarations beat layered ones regardless of specificity. An
+ * unscoped `a { color }` therefore repaints the anchor inside
+ * `<Button asChild><a>…</a></Button>` in the accent colour — which on a solid
+ * button is the same colour as its background, leaving an apparently empty
+ * blue rectangle.
+ */
+a:not([class*="aui-"]) { color: var(--aui-color-accent); text-underline-offset: 3px; }
 
 /**
  * Focus ring for the docs' own chrome only.
@@ -476,9 +486,12 @@ a { color: var(--aui-color-accent); text-underline-offset: 3px; }
   overflow-x: auto;
 }
 
-table { width: 100%; border-collapse: collapse; font-size: var(--aui-text-sm); }
+/* Scoped to the generated props table. Styling bare `th`/`td` from here would
+   reach the library's own Table on its documentation page, for the same
+   layer-precedence reason as the anchor rule above. */
+.tableWrap table { width: 100%; border-collapse: collapse; font-size: var(--aui-text-sm); }
 
-th {
+.tableWrap th {
   padding: var(--aui-space-3) var(--aui-space-4);
   border-block-end: 1px solid var(--docs-border-soft);
   color: var(--aui-color-fg-subtle);
@@ -490,13 +503,13 @@ th {
   white-space: nowrap;
 }
 
-td {
+.tableWrap td {
   padding: var(--aui-space-3) var(--aui-space-4);
   border-block-end: 1px solid var(--docs-border-soft);
   vertical-align: top;
 }
 
-tr:last-child td { border-block-end: 0; }
+.tableWrap tr:last-child td { border-block-end: 0; }
 
 .propName {
   color: var(--aui-color-fg);
