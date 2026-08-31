@@ -59,7 +59,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-a { color: var(--aui-color-accent); text-underline-offset: 3px; }
+/**
+ * Scoped away from library components.
+ *
+ * These rules are unlayered and the library's live in `@layer aui.components`;
+ * unlayered declarations beat layered ones regardless of specificity. An
+ * unscoped `a { color }` therefore repaints the anchor inside
+ * `<Button asChild><a>…</a></Button>` in the accent colour — which on a solid
+ * button is the same colour as its background, leaving an apparently empty
+ * blue rectangle.
+ */
+a:not([class*="aui-"]) { color: var(--aui-color-accent); text-underline-offset: 3px; }
 
 :focus-visible:not([class*="aui-"]) {
   outline: var(--aui-focus-ring-width) solid var(--aui-color-focus-ring);
