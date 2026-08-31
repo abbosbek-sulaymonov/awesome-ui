@@ -16,8 +16,13 @@
   }
 
   .content:focus { outline: none; }
-  .content[data-state="open"] { animation: aui-menu-in var(--aui-duration-fast) var(--aui-ease-standard); }
-  .content[data-state="closed"] { animation: aui-menu-out var(--aui-duration-fast) var(--aui-ease-standard); }
+  .content[data-state="open"] { animation: aui-menu-in var(--aui-duration-fast) var(--aui-ease-standard); }  /* `forwards` holds the final keyframe until React unmounts the node.
+     Without it the fill mode is `none`, so the element snaps back to its base
+     style the instant the animation ends — fully opaque again — and stays that
+     way for the frame or two before the animationend handler removes it. That
+     snap-back is the flash. */
+
+  .content[data-state="closed"] { animation: aui-menu-out var(--aui-duration-fast) var(--aui-ease-standard) forwards; }
 
   .item {
     display: flex;
