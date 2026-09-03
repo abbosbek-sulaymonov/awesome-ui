@@ -3615,5 +3615,463 @@
         }
       ]
     }
+  ],
+  "components/Calendar/Calendar.types.ts": [
+    {
+      "name": "CalendarOwnProps",
+      "props": [
+        {
+          "name": "defaultMonth",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "Date | null",
+          "required": false
+        },
+        {
+          "name": "isDateDisabled",
+          "type": "((date: Date) => boolean)",
+          "required": false,
+          "description": "Rejects individual days inside the range — weekends, holidays, taken slots."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Calendar\"",
+          "description": "Accessible name for the grid."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "description": "BCP 47 tag for month and weekday names. Defaults to the browser's."
+        },
+        {
+          "name": "max",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "month",
+          "type": "Date",
+          "required": false,
+          "description": "Month on display. Controlled separately from the selection."
+        },
+        {
+          "name": "nextLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onMonthChange",
+          "type": "((month: Date) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: Date) => void)",
+          "required": false
+        },
+        {
+          "name": "plain",
+          "type": "boolean",
+          "required": false,
+          "description": "Drop the surrounding surface, for embedding in a popover that has its own."
+        },
+        {
+          "name": "previousLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "showToday",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Show the \"Today\" shortcut."
+        },
+        {
+          "name": "todayLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "Date | null",
+          "required": false,
+          "description": "Selected day. `null` means nothing is selected."
+        },
+        {
+          "name": "weekStartsOn",
+          "type": "Weekday",
+          "required": false,
+          "defaultValue": "1",
+          "description": "0 is Sunday."
+        }
+      ]
+    },
+    {
+      "name": "CalendarProps",
+      "props": [
+        {
+          "name": "defaultMonth",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "Date | null",
+          "required": false
+        },
+        {
+          "name": "isDateDisabled",
+          "type": "((date: Date) => boolean)",
+          "required": false,
+          "description": "Rejects individual days inside the range — weekends, holidays, taken slots."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"Calendar\"",
+          "description": "Accessible name for the grid."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "description": "BCP 47 tag for month and weekday names. Defaults to the browser's."
+        },
+        {
+          "name": "max",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "month",
+          "type": "Date",
+          "required": false,
+          "description": "Month on display. Controlled separately from the selection."
+        },
+        {
+          "name": "nextLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "onMonthChange",
+          "type": "((month: Date) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: Date) => void)",
+          "required": false
+        },
+        {
+          "name": "plain",
+          "type": "boolean",
+          "required": false,
+          "description": "Drop the surrounding surface, for embedding in a popover that has its own."
+        },
+        {
+          "name": "previousLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "showToday",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Show the \"Today\" shortcut."
+        },
+        {
+          "name": "todayLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "Date | null",
+          "required": false,
+          "description": "Selected day. `null` means nothing is selected."
+        },
+        {
+          "name": "weekStartsOn",
+          "type": "Weekday",
+          "required": false,
+          "defaultValue": "1",
+          "description": "0 is Sunday."
+        }
+      ]
+    }
+  ],
+  "components/DatePicker/DatePicker.types.ts": [
+    {
+      "name": "DatePickerOwnProps",
+      "props": [
+        {
+          "name": "calendarLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "Date | null",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "isDateDisabled",
+          "type": "((date: Date) => boolean)",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Submitted with the surrounding form as `YYYY-MM-DD`."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: Date | null) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "openCalendarLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"YYYY-MM-DD\""
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"bottom-start\""
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "DatePickerSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "value",
+          "type": "Date | null",
+          "required": false
+        },
+        {
+          "name": "weekStartsOn",
+          "type": "Weekday",
+          "required": false,
+          "defaultValue": "1",
+          "description": "0 is Sunday."
+        }
+      ]
+    },
+    {
+      "name": "DatePickerProps",
+      "props": [
+        {
+          "name": "calendarLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "Date | null",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "fieldClassName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "isDateDisabled",
+          "type": "((date: Date) => boolean)",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "Date",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Submitted with the surrounding form as `YYYY-MM-DD`."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean) => void)",
+          "required": false
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: Date | null) => void)",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "openCalendarLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"YYYY-MM-DD\""
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "required": false,
+          "defaultValue": "\"bottom-start\""
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "DatePickerSize",
+          "required": false,
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "value",
+          "type": "Date | null",
+          "required": false
+        },
+        {
+          "name": "weekStartsOn",
+          "type": "Weekday",
+          "required": false,
+          "defaultValue": "1",
+          "description": "0 is Sunday."
+        }
+      ]
+    }
   ]
 }

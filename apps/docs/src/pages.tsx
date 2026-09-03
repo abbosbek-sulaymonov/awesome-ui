@@ -680,6 +680,73 @@ export function App() {
     ),
   },
   {
+    slug: "calendar",
+    title: "Calendar",
+    group: "Forms",
+    lead: "A month grid you can drive from the keyboard.",
+    propsFile: "components/Calendar/Calendar.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          Marked up as a real <code>&lt;table&gt;</code> with{" "}
+          <code>role=&quot;grid&quot;</code>. A grid of buttons in divs loses the row and
+          column relationships, so a screen reader can no longer say which week or
+          weekday a day belongs to.
+        </p>
+        <p>
+          <strong>Only one day is ever in the tab order.</strong> Arrow keys move a roving
+          focus inside the grid — 42 tab stops per month would be unusable. Home and End
+          jump to the ends of the month, PageUp and PageDown move a month, and with Shift
+          they move a year.
+        </p>
+        <p>
+          Focus is tracked separately from the selection, so the grid can be navigated
+          without choosing anything. A keyboard user has to be able to look before they
+          commit.
+        </p>
+        <p>
+          The grid is <strong>always six weeks</strong>. One that changed height between
+          months would make everything below it jump as you page, and move the day you
+          were about to click out from under the pointer.
+        </p>
+        <p>
+          Month and weekday names come from <code>Intl</code>, so they follow the
+          reader&rsquo;s locale without a dependency.
+        </p>
+      </div>
+    ),
+  },
+  {
+    slug: "date-picker",
+    title: "DatePicker",
+    group: "Forms",
+    lead: "An editable date field with a calendar attached.",
+    propsFile: "components/DatePicker/DatePicker.types.ts",
+    blockLayout: true,
+    notes: (
+      <div className="prose">
+        <p>
+          <strong>The field stays editable</strong> rather than being a read-only trigger.
+          Typing is faster than paging a grid for anyone who knows the date they want, and
+          it is the only reasonable route for a birth year decades back.
+        </p>
+        <p>
+          Text is held separately from the date while the field has focus. Parsing every
+          keystroke makes a date impossible to type — <code>2026-0</code> is not a date,
+          and reformatting from a partial value fights the caret.
+        </p>
+        <p>
+          Dates are parsed as <em>local</em> calendar days.{" "}
+          <code>new Date(&quot;2026-03-01&quot;)</code> is UTC midnight, which is the
+          previous day anywhere west of Greenwich — the off-by-one that shows the wrong
+          date for half the world. Impossible dates such as{" "}
+          <code>2026-02-30</code> are rejected rather than rolled over into March.
+        </p>
+      </div>
+    ),
+  },
+  {
     slug: "dialog",
     title: "Dialog",
     group: "Overlays",
