@@ -1,0 +1,111 @@
+@layer aui.components {
+  .root {
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--aui-space-3);
+    padding: var(--aui-space-3);
+    background-color: var(--aui-color-surface);
+    border: 1px solid var(--aui-color-border);
+    border-radius: var(--aui-radius-lg);
+    color: var(--aui-color-fg);
+    font-family: var(--aui-font-sans);
+  }
+
+  .plain { padding: 0; background: none; border: 0; border-radius: 0; }
+
+  .header { display: flex; align-items: center; justify-content: space-between; gap: var(--aui-space-2); }
+
+  .heading {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: var(--aui-text-sm);
+    font-weight: var(--aui-weight-semibold);
+  }
+
+  .navButton {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--aui-space-8);
+    height: var(--aui-space-8);
+    padding: 0;
+
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--aui-radius-md);
+    color: var(--aui-color-fg-muted);
+    cursor: pointer;
+    transition: background-color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .navButton:hover:not(:disabled) { background-color: var(--aui-color-bg-subtle); color: var(--aui-color-fg); }
+  .navButton:disabled { cursor: not-allowed; opacity: 0.4; }
+
+  .grid { border-collapse: collapse; }
+
+  .weekday {
+    padding-block-end: var(--aui-space-1);
+    color: var(--aui-color-fg-subtle);
+    font-size: var(--aui-text-xs);
+    font-weight: var(--aui-weight-medium);
+    text-align: center;
+  }
+
+  .cell { padding: 1px; }
+
+  .day {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--aui-radius-md);
+    color: var(--aui-color-fg);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--aui-text-sm);
+    font-variant-numeric: tabular-nums;
+
+    transition:
+      background-color var(--aui-duration-fast) var(--aui-ease-standard),
+      color var(--aui-duration-fast) var(--aui-ease-standard);
+  }
+
+  .day:hover:not(:disabled):not([aria-selected="true"]) { background-color: var(--aui-color-bg-subtle); }
+
+  /* Days from the neighbouring months stay legible but recede, so the month
+     being shown reads as a block. */
+  .day[data-outside="true"] { color: var(--aui-color-fg-subtle); }
+
+  .day[data-today="true"] { border-color: var(--aui-color-border-strong); font-weight: var(--aui-weight-semibold); }
+
+  .day[aria-selected="true"] {
+    background-color: var(--aui-color-accent);
+    border-color: var(--aui-color-accent);
+    color: var(--aui-color-fg-on-accent);
+    font-weight: var(--aui-weight-medium);
+  }
+
+  .day:disabled { color: var(--aui-color-fg-subtle); cursor: not-allowed; opacity: 0.45; }
+
+  .footer { display: flex; justify-content: space-between; gap: var(--aui-space-2); }
+
+  .footerButton {
+    padding: var(--aui-space-1) var(--aui-space-2);
+    background: none;
+    border: 0;
+    border-radius: var(--aui-radius-sm);
+    color: var(--aui-color-accent);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--aui-text-xs);
+    font-weight: var(--aui-weight-medium);
+  }
+
+  .footerButton:hover { text-decoration: underline; text-underline-offset: 3px; }
+}
