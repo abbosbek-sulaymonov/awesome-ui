@@ -285,3 +285,9 @@ export type {
   TableFooterProps, TableCaptionProps, TableRowProps, TableCellProps,
   TableHeaderCellProps, TableEmptyProps,
 } from "./Table";
+
+export { Calendar } from "./Calendar";
+export type { CalendarProps, CalendarOwnProps } from "./Calendar";
+
+export { DatePicker } from "./DatePicker";
+export type { DatePickerProps, DatePickerOwnProps, DatePickerSize } from "./DatePicker";

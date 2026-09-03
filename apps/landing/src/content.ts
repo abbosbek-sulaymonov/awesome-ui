@@ -17,7 +17,7 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-  { value: "33", label: "components" },
+  { value: "35", label: "components" },
   { value: "505", label: "tests" },
   { value: "40 kB", label: "gzipped" },
   { value: "0", label: "runtime dependencies" },

@@ -17,6 +17,12 @@ export {
   isFocusable,
   isTabbable,
 } from "./tabbable";
+export {
+  addDays, addMonths, addYears, clampDate, compareDays, daysInMonth, endOfMonth,
+  formatFullDate, formatMonthYear, fromISODate, getMonthGrid, getWeekdayNames,
+  isSameDay, isSameMonth, isWithin, startOfDay, startOfMonth, toISODate,
+} from "./date";
+export type { Weekday } from "./date";
 export { getPaginationRange } from "./pagination";
 export type { PaginationItem, PaginationRangeOptions } from "./pagination";
 export { createVariants } from "./variants";

@@ -706,4 +706,40 @@ export const registry: RegistryItem[] = [
     ],
     registryDependencies: ["utils", "visually-hidden", "tokens"],
   },
+  {
+    name: "date-utils",
+    type: "registry:lib",
+    title: "Date helpers",
+    description: "Calendar-day arithmetic, month grids and ISO parsing, with no dependencies.",
+    files: ["utils/date.ts"],
+  },
+  {
+    name: "calendar",
+    type: "registry:ui",
+    title: "Calendar",
+    description: "Month grid with roving focus and locale-aware names.",
+    files: [
+      "components/Calendar/Calendar.tsx",
+      "components/Calendar/Calendar.module.css",
+      "components/Calendar/Calendar.types.ts",
+      "components/Calendar/index.ts",
+    ],
+    registryDependencies: ["utils", "date-utils", "use-controllable-state", "use-id", "tokens"],
+  },
+  {
+    name: "date-picker",
+    type: "registry:ui",
+    title: "DatePicker",
+    description: "Editable date field with an attached calendar.",
+    files: [
+      "components/DatePicker/DatePicker.tsx",
+      "components/DatePicker/DatePicker.module.css",
+      "components/DatePicker/DatePicker.types.ts",
+      "components/DatePicker/index.ts",
+    ],
+    registryDependencies: [
+      "utils", "date-utils", "calendar", "portal", "presence", "dismissable-layer",
+      "use-controllable-state", "use-field", "use-floating", "tokens",
+    ],
+  },
 ];
