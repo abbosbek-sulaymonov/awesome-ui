@@ -2,7 +2,7 @@
 
 A React component library. Accessible primitives, CSS Modules, zero runtime dependencies.
 
-33 components, ~40 kB gzipped. Ships two ways from one source: as this package, or as
+35 components, ~42 kB gzipped. Ships two ways from one source: as this package, or as
 source you copy into your own tree.
 
 ## Install
@@ -32,7 +32,7 @@ Requires React 18 or 19. Both are peer dependencies, so nothing is bundled.
 | Group | Components |
 | --- | --- |
 | Actions | `Button`, `Toggle`, `ToggleGroup` |
-| Forms | `Input`, `Textarea`, `NumberInput`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Combobox`, `Slider` |
+| Forms | `Input`, `Textarea`, `NumberInput`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Combobox`, `Slider`, `Calendar`, `DatePicker` |
 | Navigation | `Menu`, `Tabs`, `Accordion`, `Collapsible`, `Breadcrumb`, `Pagination` |
 | Data display | `Table`, `Card`, `Badge`, `Avatar`, `Spinner`, `Separator` |
 | Feedback | `Alert`, `Progress`, `Skeleton`, `Toast` |
